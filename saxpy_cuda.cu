@@ -26,7 +26,7 @@ int main(void)
 
 	// Run kernel on 1M elements on the CPU
 	int blockSize = 256;
-	int numBlocks = (N + blockSize - 1) / blockSize;
+	int numBlocks = 4096;
 	saxpy_timer t;
 	
 	saxpy<<<numBlocks, blockSize>>>(N, AVAL, x, y);
@@ -34,8 +34,9 @@ int main(void)
 	cudaDeviceSynchronize();
 	
 	// Check for errors (all values should be 3.0f)
-	saxpy_verify(y);
+	std::cout << "N: " << N << std::endl;
 	std::cout << "Total elapsed: " << t.elapsed_msec() << " ms" << std::endl;
+	saxpy_verify(y);
 	
 	// Free memory
 	cudaFree(x);

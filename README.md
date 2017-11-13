@@ -19,6 +19,12 @@ We only measure the time to perform the above loop, and not other things such as
 initialization and data transfers between CPU and GPU.
 
 
+# My Setup
+
+For my test, I've configured N to be 2^26, or about 67 million elements. I have fairly decent
+Intel i7-6700 CPU @ 3.40GHz running Windows 10.
+
+
 # Naive Python Loop
 
 This is a naive Python implementation using loop, something like:
@@ -30,7 +36,12 @@ This is a naive Python implementation using loop, something like:
       y[i] += AVAL * x[i]
 ```
 
-Run [saxpy_loop.py](saxpy_loop.py) to see the result.
+Run [saxpy_loop.py](saxpy_loop.py) to see the result. On my computer, it takes this much:
+```
+N: 67108864
+Elapsed: 11628.000021 ms
+Error: 0.0
+```
 
 # Python Numpy
 
@@ -42,7 +53,15 @@ Improved Python version with vectorized Numpy implementation:
   y += AVAL * x
 ```
 
-Run [saxpy_numpy.py](saxpy_numpy.py) to see the result. You will need Numpy of course. 
+Run [saxpy_numpy.py](saxpy_numpy.py) to see the result. You will need Numpy of course. Here is
+the output on my computer:
+```
+N: 67108864
+Elapsed: 262.000083923 ms
+Error: 0.0
+```
+
+It shows about 44x speed up over the plain Python loop version. Now let's see how things go with C++.
 
 
 # General C++ Instructions
@@ -69,7 +88,13 @@ static void saxpy(size_t n, real_t a, real_t *x, real_t *y)
   }
 }
 ```
-See [saxpy_cpu.cpp](saxpy_cpu.cpp) for the implemention.
+See [saxpy_cpu.cpp](saxpy_cpu.cpp) for the implemention. Running `saxpy_cpu` on my computer 
+gives the following output
+```
+N: 67108864
+Errors: 0
+Elapsed: 41.6829 ms
+```
 
 
 # CUDA
@@ -93,45 +118,59 @@ Some select resources on CUDA:
  - [Supported GPU (GeForce only)](https://www.geforce.com/hardware/technology/cuda/supported-gpus)
  - [An Even Easier Introduction to CUDA](https://devblogs.nvidia.com/parallelforall/even-easier-introduction-cuda/)
 
+### Installation
 
-### Building and Running
+1. Make sure you have CUDA capable graphic cards (see Supported GPU link above)
+2. Install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). 
+3. Make sure `nvcc` and `nvprof` are available in the PATH of your command prompt. 
 
-Source file: [saxpy_cuda.cu](saxpy_cuda.cu)
+### Implementation
 
-Requirements: [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Make sure `nvcc` and
-`nvprof` are available in the PATH of your command prompt.
+It's implemented in [saxpy_cuda.cu](saxpy_cuda.cu) file.
 
-Configuring: edit the [Makefile](Makefile) and include `saxpy_cuda` in `TARGET` variable
-and configure the flags in Step 3 as necessary.
+### Configuring and Building
 
-Building: just run `make` or `nmake`
+Edit the [Makefile](Makefile) and include `saxpy_cuda` in `TARGET` variable.
+Configure the flags in Step 3 as necessary.
 
-Running: run `nvprof saxpy_cuda`, and you will see the time it takes to execute saxpy in the
-output similar to this:
+Then just run `make` (or `nmake`) to build things
+
+### Running
+
+Run `nvprof saxpy_cuda`.
+
+The time it takes to execute saxpy is in the output similar to this:
 ```
-==2168== Profiling result:
+==14940== Profiling application: saxpy_cuda
+==14940== Profiling result:
 Time(%)      Time     Calls       Avg       Min       Max  Name
-100.00%  7.9757ms         1  7.9757ms  7.9757ms  7.9757ms  saxpy(unsigned __int64, float, float*, float*)
+100.00%  31.942ms         1  31.942ms  31.942ms  31.942ms  saxpy(unsigned __int64, float, float*, float*)
 ```
 
 
 # OpenCL
 
 Open Computing Language (OpenCL) is a framework for writing parallel programs in CPUs, GPUs,
-DSPs, FPGAs, and other processors or hardware accelerators. So unlike CUDA, OpenCL is available 
+DSPs, FPGAs, and other processors or hardware accelerators. Unlike CUDA, OpenCL is available 
 across much wider range of platforms, including NVidia hardware as well, and implementations
 are available from AMD, Apple, ARM, Creative, IBM, Intel, Nvidia, Samsung, etc. It's even installed
 by default on MacOS since MacOS 10.7. So this sounds like a good framework to try.
 
-OpenCL provides both C and C++ API for us. I would very much recommend using the C++
-API because it's easier to use though. For comparison, here is [saxpy in C++](saxpy_ocl1.cpp) 
-and here is [saxpy in C](saxpy_ocl2.cpp). You can see that C code is about five times longer 
-than the C++ one (at least the core C++ code, inside `main`).
-
 Some select resources on OpenCL:
-- [OpenCL (Wikipedia)](https://en.wikipedia.org/wiki/OpenCL)
-- [A Gentle Introduction to OpenCL (Dr.Dobb's)](http://www.drdobbs.com/parallel/a-gentle-introduction-to-opencl/231002854)
-- [OpenCL on Visual Studio : Configuration tutorial for the confused](https://medium.com/@pratikone/opencl-on-visual-studio-configuration-tutorial-for-the-confused-3ec1c2b5f0ca)
+- Beginner:
+  - [OpenCL (Wikipedia)](https://en.wikipedia.org/wiki/OpenCL)
+  - [A Gentle Introduction to OpenCL (Dr.Dobb's)](http://www.drdobbs.com/parallel/a-gentle-introduction-to-opencl/231002854)
+  - [OpenCL on Visual Studio : Configuration tutorial for the confused](https://medium.com/@pratikone/opencl-on-visual-studio-configuration-tutorial-for-the-confused-3ec1c2b5f0ca)
+- Intermediate/advanced:
+  - [The OpenCL Programming (free ebook)](https://www.fixstars.com/en/opencl/book/OpenCLProgrammingBook/contents/)
+  - [OpenCL Best Practices (PDF)](https://www.cs.cmu.edu/afs/cs/academic/class/15668-s11/www/cuda-doc/OpenCL_Best_Practices_Guide.pdf)
+
+### Implementation
+
+I provide two implementations, [saxpy using C++ API](saxpy_ocl1.cpp) and 
+[saxpy using C API](saxpy_ocl2.cpp). You can see that C code is about five times longer 
+than the C++ one (see the core C++ code, inside `main`).
+
 
 ### Installation
 
@@ -146,16 +185,67 @@ provides the driver for Intel Core and Xeon processors. I assume drivers for the
 are available from the manufacturer's website, or perhaps via Windows Update mechanism.  
 
 
-### Building and Running
+### Configure and Build
 
-Source: I provide two implementations, [saxpy in C++](saxpy_ocl1.cpp) and [saxpy in C](saxpy_ocl2.cpp).
+Edit the [Makefile](Makefile) and include `saxpy_ocl1` and `saxpy_ocl2` in `TARGET` 
+variable. 
 
-Configuring: edit the [Makefile](Makefile) and include `saxpy_ocl1` and `saxpy_ocl2` in `TARGET` 
-variable. Configure the flags in Step 3 as necessary.
+Configure the flags in Step 3 as necessary.
 
-Building: just run `make` or `nmake`
+Then just run `make` (or `nmake`) to build things.
 
-Running: running `saxpy_ocl1` or `saxpy_ocl2` without any arguments will run saxpy on default
+### Running
+
+Running `saxpy_ocl1` or `saxpy_ocl2` without any arguments will run saxpy on default
 device (in my case, it's the GPU). You can force it to run on GPU or CPU by giving it `cpu` or
 `gpu` argument. 
 
+Here's the output on my computer:
+```
+C:\...\> saxpy_ocl1
+Platform "NVIDIA CUDA ". Devices:
+ - [gpu ] NVIDIA Corporation : GeForce GTX 745
+   (Max compute units: 3, max work group size: 1024)
+
+Platform "Intel(R) OpenCL ". Devices:
+ - [cpu ] Intel(R) Corporation : Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+   (Max compute units: 8, max work group size: 8192)
+
+Platform "Experimental OpenCL 2.1 CPU Only Platform ". Devices:
+ - [cpu ] Intel(R) Corporation : Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+   (Max compute units: 8, max work group size: 8192)
+
+Using NVIDIA Corporation  GeForce GTX 745
+Elapsed: 31.7932 ms
+Errors: 0
+```
+
+In this case, the result is more or less the same as the CUDA version.
+
+
+### Running on CPU
+
+I was expecting that OpenCL on CPU will automagically partition our code to run in parallel.
+Here is the result.
+
+```
+C:\..> saxpy_ocl1 cpu
+Platform "NVIDIA CUDA ". Devices:
+ - [gpu ] NVIDIA Corporation : GeForce GTX 745
+   (Max compute units: 3, max work group size: 1024)
+
+Platform "Intel(R) OpenCL ". Devices:
+ - [cpu ] Intel(R) Corporation : Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+   (Max compute units: 8, max work group size: 8192)
+
+Platform "Experimental OpenCL 2.1 CPU Only Platform ". Devices:
+ - [cpu ] Intel(R) Corporation : Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+   (Max compute units: 8, max work group size: 8192)
+
+Using Intel(R) Corporation  Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+Elapsed: 120.771 ms
+Errors: 0
+```
+
+So the result is pretty disappointing. I'm not sure why the performance is so slow, about four
+times slover. My CPU have four cores though, not sure if it has something to do with it.

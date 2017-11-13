@@ -101,7 +101,8 @@ int main(int argc, const char *argv[])
 	    "                    __global const float* X,"
 	    "                    __global float* Y)"
 	    "{"
-	    "    Y[get_global_id(0)] += alpha * X[get_global_id(0)];"
+	    "    int i = get_global_id(0); "
+	    "    Y[i] += alpha * X[i];"
 	    "}" ;
 	sources.push_back({kernel_code.c_str(),kernel_code.length()});
 

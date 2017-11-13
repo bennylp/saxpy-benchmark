@@ -41,12 +41,8 @@ TARGETS = $(TARGETS) saxpy_ocl2$(EXE)
 
 # Typical settings for MacOS:
 #
-#OCL_CC = $(CC)
 #OCL_LDFLAGS = -framework OpenCL
-# These usually are not required on MacOS:
-#OCL_DIR = /System/Library/Frameworks/OpenCL.framework
-#OCL_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenCL.framework
-#OCL_CFLAGS = -I$(OCL_DIR)/Versions/A/Headers
+
 
 # Sample settings for Windows:
 #

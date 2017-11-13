@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 
-const unsigned N = (1 << 24);
+const unsigned N = (1 << 26);
 //const unsigned N = (1 << 5);
 const unsigned XVAL = 2.0f;
 const unsigned YVAL = 1.0f;

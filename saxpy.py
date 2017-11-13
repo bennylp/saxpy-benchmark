@@ -1,6 +1,6 @@
 import math
 
-N = 2 ** 24
+N = 2 ** 26
 XVAL = 2.0
 YVAL = 1.0
 AVAL = 3.0

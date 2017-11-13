@@ -7,9 +7,9 @@
 #include "saxpy.h"
 
 #define __CL_ENABLE_EXCEPTIONS
-#define CL_VERSION_1_2
-//#include <CL/cl.hpp>
-#include "extra/cl.hpp"
+//#define CL_VERSION_1_2
+//#include "extra/cl.hpp"
+#include <CL/cl.hpp>
 
 static std::string dev_type_name(unsigned dev_type)
 {
@@ -22,7 +22,7 @@ static std::string dev_type_name(unsigned dev_type)
     if (dev_type & CL_DEVICE_TYPE_ACCELERATOR)
     	ret += "accel ";
     if (dev_type & CL_DEVICE_TYPE_CUSTOM)
-        	ret += "custom ";
+        ret += "custom ";
     return ret;
 }
 
@@ -53,7 +53,8 @@ static cl::Device select_device(const std::string &wanted)
 	    std::cout << " - [" << dev_type_name(dev_type)
 		      << "] " << dev.getInfo<CL_DEVICE_VENDOR>()
 		      << ": " << dev.getInfo<CL_DEVICE_NAME>()
-		      << " (max compute units: " << dev.getInfo<CL_DEVICE_MAX_COMPUTE_UNITS>()
+		      << std::endl;
+	    std::cout << "   (Max compute units: " << dev.getInfo<CL_DEVICE_MAX_COMPUTE_UNITS>()
 		      << ", max work group size: " << dev.getInfo<CL_DEVICE_MAX_WORK_GROUP_SIZE>()
 		      << ")" << std::endl;
 
@@ -86,6 +87,7 @@ static cl::Device select_device(const std::string &wanted)
 int main(int argc, const char *argv[])
 {
     cl_int err = CL_SUCCESS;
+
     try {
 	cl::Device default_device = select_device(argc > 1 ? argv[1] : "");
 	std::cout << "Using " << default_device.getInfo<CL_DEVICE_VENDOR>()
@@ -146,12 +148,6 @@ int main(int argc, const char *argv[])
 	delete [] cpuY;
 
     } catch (cl::Error err) {
-	std::cerr
-	   << "ERROR: "
-	   << err.what()
-	   << "("
-	   << err.err()
-	   << ")"
-	   << std::endl;
+	std::cerr << "ERROR: " << err.what() << "(" << err.err() << ")" << std::endl;
     }
 }

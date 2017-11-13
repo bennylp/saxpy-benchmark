@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
     exitOnFail(status, "number of platforms");
 
     // get platform IDs
-    cl_platform_id platformIDs[numPlatforms];
+#define MAX_PLATFORMS	16
+    cl_platform_id platformIDs[MAX_PLATFORMS];
     status = clGetPlatformIDs(numPlatforms, platformIDs, NULL);
     exitOnFail(status, "get platform IDs");
 
@@ -65,7 +66,8 @@ int main(int argc, char *argv[])
         if (CL_SUCCESS == status)
         {
             // get device IDs for a platform
-            cl_device_id deviceIDs[numDevices];
+#define MAX_DEVICES	128
+            cl_device_id deviceIDs[MAX_DEVICES];
             status = clGetDeviceIDs(platformIDs[i],
                                     CL_DEVICE_TYPE_ALL,
                                     numDevices,

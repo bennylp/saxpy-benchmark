@@ -9,7 +9,7 @@
 # Windows / Visual Studio tools
 CC = cl
 CC_O = /Fe:
-EXE = 
+EXE = .exe
 CFLAGS = /Ox /EHsc /TP
 RM = del
 
@@ -26,9 +26,9 @@ RM = del
 ###################################################################
 TARGET = 
 TARGETS = $(TARGETS) saxpy_cpu$(EXE)
-TARGETS = $(TARGETS) saxpy_cuda
-#TARGETS = $(TARGETS) saxpy_ocl2$(EXE)
-#TARGETS = $(TARGETS) saxpy_ocl1$(EXE)
+TARGETS = $(TARGETS) saxpy_cuda$(EXE)
+TARGETS = $(TARGETS) saxpy_ocl1$(EXE)
+TARGETS = $(TARGETS) saxpy_ocl2$(EXE)
 
 
 ###################################################################
@@ -41,15 +41,22 @@ TARGETS = $(TARGETS) saxpy_cuda
 
 # Typical settings for MacOS:
 #
-OPENCL_LDFLAGS = -framework OpenCL
+#OCL_CC = $(CC)
+#OCL_LDFLAGS = -framework OpenCL
 # These usually are not required on MacOS:
-#OPENCL_DIR = /System/Library/Frameworks/OpenCL.framework
-#OPENCL_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenCL.framework
-#OPENCL_CFLAGS = -I$(OPENCL_DIR)/Versions/A/Headers
+#OCL_DIR = /System/Library/Frameworks/OpenCL.framework
+#OCL_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/OpenCL.framework
+#OCL_CFLAGS = -I$(OCL_DIR)/Versions/A/Headers
 
 # Sample settings for Windows:
 #
+# With OpenCL From CUDA SDK
+#OCL_CFLAGS = /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"
+#OCL_LDFLAGS = /link /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64" OpenCL.lib
 
+# With Intel OpenCL
+OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
+OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
 
 ###################################################################
 # Done. 
@@ -59,16 +66,16 @@ OPENCL_LDFLAGS = -framework OpenCL
 all: $(TARGETS)
 
 saxpy_cpu$(EXE): saxpy_cpu.cpp saxpy.h
-	$(CC) $(CFLAGS) $(CC_O) $(@)$(EXE) saxpy_cpu.cpp
+	$(CC) $(CFLAGS) $(CC_O) $(@) saxpy_cpu.cpp
 
-saxpy_cuda: saxpy_cuda.cu saxpy.h
+saxpy_cuda$(EXE): saxpy_cuda.cu saxpy.h
 	nvcc -Wno-deprecated-gpu-targets saxpy_cuda.cu -o saxpy_cuda
 		
-saxpy_ocl2$(EXE): saxpy_ocl2.cpp saxpy.h
-	$(CC) $(CFLAGS) $(OPENCL_CFLAGS) $(OPENCL_LDFLAGS) $(CC_O) $(@)$(EXE) saxpy_ocl2.cpp
-
 saxpy_ocl1$(EXE): saxpy_ocl1.cpp saxpy.h
-	$(CC) $(CFLAGS) $(OPENCL_CFLAGS) $(OPENCL_LDFLAGS) $(CC_O) $(@)$(EXE) saxpy_ocl1.cpp
+	$(CC) $(CFLAGS) $(OCL_CFLAGS) $(CC_O) $(@) saxpy_ocl1.cpp $(OCL_LDFLAGS)
 	
+saxpy_ocl2$(EXE): saxpy_ocl2.cpp saxpy.h
+	$(CC) $(CFLAGS) $(OCL_CFLAGS) $(CC_O) $(@) saxpy_ocl2.cpp $(OCL_LDFLAGS)
+
 clean:
 	$(RM) $(TARGETS) *.lib *.a *.exe *.obj *.o *.exp *.pyc

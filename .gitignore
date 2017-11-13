@@ -2,4 +2,8 @@
 .cproject
 .pydevproject
 *.lib
+*.o
+*.obj
+*.exe
+*.exp
 

@@ -122,7 +122,7 @@ Some select resources on CUDA:
 
 1. Make sure you have CUDA capable graphic cards (see Supported GPU link above)
 2. Install [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). 
-3. Make sure `nvcc` and `nvprof` are available in the PATH of your command prompt. 
+3. Make sure `nvcc` is available in the PATH of your command prompt. 
 
 ### Implementation
 
@@ -137,14 +137,13 @@ Then just run `make` (or `nmake`) to build things
 
 ### Running
 
-Run `nvprof saxpy_cuda`.
+Run `saxpy_cuda`.
 
 The time it takes to execute saxpy is in the output similar to this:
 ```
-==14940== Profiling application: saxpy_cuda
-==14940== Profiling result:
-Time(%)      Time     Calls       Avg       Min       Max  Name
-100.00%  31.942ms         1  31.942ms  31.942ms  31.942ms  saxpy(unsigned __int64, float, float*, float*)
+N: 67108864
+Total elapsed: 32.2043 ms
+Errors: 0
 ```
 
 

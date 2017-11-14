@@ -10,6 +10,7 @@ This repository contains several implementations of SAXPY such as:
  - naive Python loop [[saxpy_loop.py](saxpy_loop.py)]
  - Python Numpy [[saxpy_numpy.py](saxpy_numpy.py)]
  - naive C++ loop [[saxpy_cpu.cpp](saxpy_cpu.cpp)]
+ - TensorFlow (CPU and GPU) [[saxpy_tf.py](saxpy_tf.py)]
  - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
  - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
  - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
@@ -314,3 +315,47 @@ Error: 0.0
 
 Interestingly the PyOpenCL CPU result is a lot (more than 4x) faster than the PyOpenCL GPU.
 In fact, it is faster than the OpenCL C++ version for CPU!
+
+
+# TensorFlow
+
+TensorFlow ([https://www.tensorflow.org/](https://www.tensorflow.org/)) is an open-source software 
+library for Machine Intelligence. It is created by Google and is the most widely used machine 
+learning framework today.
+
+It feels a bit silly to use TensorFlow just to run SAXPY, but I think expression like SAXPY is
+very common in machine learning (imagine `A` is learning rate), so the test is pretty justifiable.
+
+### Implementation
+
+See [saxpy_tf.py](saxpy_tf.py).
+
+### Installation
+
+I install `tensorflow-gpu` with `pip3`. See [TF installation instructions](https://www.tensorflow.org/install/)
+for more info.
+
+### Running
+
+Running `saxpy_tf.py` without any arguments will use GPU if available, or CPU if no GPU is 
+installed. This one is running on GPU:
+
+```
+C:\..> python3 saxpy_tf.py
+Using default device
+N: 67108864
+Elapsed: 79.21028137207031 ms
+Errors: 0.0
+```
+
+You can give it `cpu` or `gpu` argument to make it to use the CPU or GPU device. Giving `cpu` 
+gives the following result:
+
+
+```
+C:\..> python3 saxpy_tf.py cpu
+Using /device:CPU:0
+N: 67108864
+Elapsed: 233.62112045288086 ms
+Errors: 0.0
+```

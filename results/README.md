@@ -7,6 +7,66 @@ file. Feel free to submit a result:
 2. Create an entry in [result_specs.json](result_specs.json)
 3. Create pull request
 
+When creating a CSV, please standardize the column names to use the following names, otherwise
+the CSV will be rejected by `create_charts.py`:
+- 'Python loop [cpu]', 'Numpy [cpu]', 
+- 'C++ plain [cpu]', 
+- 'C++ CUDA [cpu]', 
+- 'C++ OCL [cpu]', 'C++ OCL [gpu]',
+- 'PyOCL [cpu]', 'PyOCL [gpu]',
+- 'TensorFlow [cpu]', 'TensorFlow [gpu]'
+
+
+# i7-6700 3.40GHz, NVidia GTX 475
+
+Submitted by Benny Prijono on 2017-11-14
+
+
+### Specs
+
+|    |    |
+|----|----|
+| System | HP Pavilion 550-227 desktop |
+|  | Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable) |
+| OS | Windows 10 64bit |
+| GPU | NVidia GeForce GTX 475 4GB mem |
+| C++ Compiler | Visual Studio 2015 C++ compiler 64bit version |
+| Python | 2.7.12 64bit |
+| Python3 | 3.5.3 64bit |
+| TensorFlow | TensorFlow 1.4 (GPU) |
+| CUDA | Version 8.0.61 |
+| OpenCL | - Intel OpenCL SDK Version 7.0.0.2519 |
+|  | - OpenCL from CUDA SDK |
+| PyOpenCL | version 2017.2 |
+
+
+### Result
+
+![benny-desktop1.png](benny-desktop1.png?raw=true "benny-desktop1.png")
+
+
+ ### Details
+
+| Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
+|--------| --------: | --------: | --------: |
+| Python loop [cpu] | 12494.000 | 198.252 | 390.80x |
+| Numpy [cpu] | 289.167 | 21.628 | 9.04x |
+| PyOCL [gpu] | 222.500 | 3.271 | 6.96x |
+| TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
+| C++ OCL [cpu] | 110.983 | 2.128 | 3.47x |
+| TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
+| PyOCL [cpu] | 46.000 | 1.265 | 1.44x |
+| C++ plain [cpu] | 42.213 | 3.059 | 1.32x |
+| C++ CUDA [cpu] | 32.218 | 0.019 | 1.01x |
+| C++ OCL [gpu] | 31.970 | 0.057 | 1.00x |
+
+
+### Notes
+
+- **outlier "Python loop [cpu]" is removed from the chart**
+
+
+
 
 # MacBook Pro 13" late 2013, on board Intel Iris GPU
 
@@ -32,62 +92,15 @@ Submitted by Benny Prijono on 2017-11-14
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
-| Python loop | 20491.674 | 2353.082 | 429.93x |
-| Py Numpy | 448.097 | 14.627 | 9.40x |
-| C++ OCL GPU | 56.174 | 1.138 | 1.18x |
-| C++ loop | 50.127 | 2.145 | 1.05x |
-| C++ OCL CPU | 47.663 | 0.936 | 1.00x |
+| Python loop [cpu] | 20491.674 | 2353.082 | 429.93x |
+| Numpy [cpu] | 448.097 | 14.627 | 9.40x |
+| C++ OCL [gpu] | 56.174 | 1.138 | 1.18x |
+| C++ plain [cpu] | 50.127 | 2.145 | 1.05x |
+| C++ OCL [cpu] | 47.663 | 0.936 | 1.00x |
 
 
 ### Notes
 
-- **outlier "Python loop" is removed from the chart**
-
-
-
-
-# i7-6700 3.40GHz, NVidia GTX 475
-
-Submitted by Benny Prijono on 2017-11-14
-
-
-### Specs
-
-|    |    |
-|----|----|
-| System | HP Pavilion 550-227 desktop |
-|  | Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable) |
-| OS | Windows 10 64bit |
-| GPU | NVidia GeForce GTX 475 4GB mem |
-| Compiler | Visual Studio 2015 C++ compiler 64bit version |
-| CUDA | Version 8.0.61 |
-| OpenCL | - Intel OpenCL SDK Version 7.0.0.2519 |
-|  | - OpenCL from CUDA SDK |
-| Python | 2.7.12 64bit |
-| PyOpenCL | version 2017.2 (prebuilt binary) |
-
-
-### Result
-
-![benny-desktop1.png](benny-desktop1.png?raw=true "benny-desktop1.png")
-
-
- ### Details
-
-| Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
-|--------| --------: | --------: | --------: |
-| Python loop | 12494.000 | 198.252 | 390.80x |
-| Py Numpy | 289.167 | 21.628 | 9.04x |
-| PyOCL GPU | 222.500 | 3.271 | 6.96x |
-| C++ OCL CPU | 110.983 | 2.128 | 3.47x |
-| PyOCL CPU | 46.000 | 1.265 | 1.44x |
-| C++ loop | 42.213 | 3.059 | 1.32x |
-| C++ CUDA | 32.218 | 0.019 | 1.01x |
-| C++ OCL GPU | 31.970 | 0.057 | 1.00x |
-
-
-### Notes
-
-- **outlier "Python loop" is removed from the chart**
+- **outlier "Python loop [cpu]" is removed from the chart**
 
 

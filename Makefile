@@ -7,18 +7,18 @@
 # Step 1: Configure your compiler
 ###################################################################
 # Windows / Visual Studio tools
-#CC = cl
-#CC_O = /Fe:
-#EXE = .exe
-#CFLAGS = /Ox /EHsc /TP
-#RM = del
+CC = cl
+CC_O = /Fe:
+EXE = .exe
+CFLAGS = /Ox /EHsc /TP
+RM = del
 
 # Linux/MacOS/Unix tools
-CC = g++
-CC_O = -o
-EXE = 
-CFLAGS = -O3 -std=c++11
-RM = rm -f
+#CC = g++
+#CC_O = -o
+#EXE = 
+#CFLAGS = -O3 -std=c++11
+#RM = rm -f
 
 
 ###################################################################
@@ -27,9 +27,8 @@ RM = rm -f
 TARGETS = saxpy_cpu$(EXE) \
           saxpy_ocl1$(EXE) \
           saxpy_ocl2$(EXE) \
-          saxpy_oclso$(EXE)
-
-#          saxpy_cuda$(EXE) \
+          saxpy_oclso$(EXE) \
+          saxpy_cuda$(EXE)
 
 
 ###################################################################
@@ -42,9 +41,8 @@ TARGETS = saxpy_cpu$(EXE) \
 
 # Typical settings for MacOS:
 #
-OCL_CFLAGS =
-OCL_LDFLAGS = -framework OpenCL
-
+#OCL_CFLAGS =
+#OCL_LDFLAGS = -framework OpenCL
 
 # Sample settings for Windows:
 #
@@ -53,8 +51,8 @@ OCL_LDFLAGS = -framework OpenCL
 #OCL_LDFLAGS = /link /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64" OpenCL.lib
 
 # With Intel OpenCL
-#OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
-#OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
+OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
+OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
 
 ###################################################################
 # Done. 
@@ -62,6 +60,7 @@ OCL_LDFLAGS = -framework OpenCL
 ###################################################################
 
 all: $(TARGETS)
+	cd results && $(MAKE)
 
 saxpy_cpu$(EXE): saxpy_cpu.cpp saxpy.h
 	$(CC) $(CFLAGS) $(CC_O) $(@) saxpy_cpu.cpp

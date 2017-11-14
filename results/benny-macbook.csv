@@ -1,4 +1,4 @@
-Python loop,Py Numpy,C++ loop,C++ OCL CPU,C++ OCL GPU
+Python loop [cpu],Numpy [cpu],C++ plain [cpu],C++ OCL [cpu],C++ OCL [gpu]
 24696.272,469.925,52.950,46.851,56.071
 19327.970,447.507,50.205,47.905,57.313
 19619.652,453.204,51.399,49.171,55.913

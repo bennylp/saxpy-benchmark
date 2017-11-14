@@ -1,17 +1,4 @@
 [
- {
-  "title": "MacBook Pro 13\" late 2013, on board Intel Iris GPU",
-  "data": "benny-macbook.csv",
-  "date": "2017-11-14",
-  "by": "Benny Prijono",
-  "remarks": "",
-  "details": [
-    ["System", "MacBook Pro 13\" late 2013"],
-    ["OS", "OS X 10.11.14"],
-    ["GPU", "on board Intel Iris"],
-    ["OpenCL", "preinstalled (XCode 5.1.1)"]
-  ]
- },
   {
   "title": "i7-6700 3.40GHz, NVidia GTX 475",
   "data": "benny-desktop1.csv",
@@ -23,12 +10,27 @@
     ["", "Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)"],
     ["OS", "Windows 10 64bit"],
     ["GPU", "NVidia GeForce GTX 475 4GB mem"],
-    ["Compiler", "Visual Studio 2015 C++ compiler 64bit version"],
+    ["C++ Compiler", "Visual Studio 2015 C++ compiler 64bit version"],
+    ["Python", "2.7.12 64bit"],
+    ["Python3", "3.5.3 64bit"],
+    ["TensorFlow", "TensorFlow 1.4 (GPU)"],
     ["CUDA", "Version 8.0.61"],
     ["OpenCL", "- Intel OpenCL SDK Version 7.0.0.2519"],
     ["", "- OpenCL from CUDA SDK"],
-    ["Python", "2.7.12 64bit"],
-    ["PyOpenCL", "version 2017.2 (prebuilt binary)"]
+    ["PyOpenCL", "version 2017.2"]
+  ]
+ },
+ {
+  "title": "MacBook Pro 13\" late 2013, on board Intel Iris GPU",
+  "data": "benny-macbook.csv",
+  "date": "2017-11-14",
+  "by": "Benny Prijono",
+  "remarks": "",
+  "details": [
+    ["System", "MacBook Pro 13\" late 2013"],
+    ["OS", "OS X 10.11.14"],
+    ["GPU", "on board Intel Iris"],
+    ["OpenCL", "preinstalled (XCode 5.1.1)"]
   ]
  }
 ]

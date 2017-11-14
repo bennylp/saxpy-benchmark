@@ -1,7 +1,7 @@
 N = 2 ** 26
-XVAL = 2.0
-YVAL = 1.0
-AVAL = 3.0
+XVAL = 2.5
+YVAL = 1.5
+AVAL = 3.5
 
 def verify(y):
     import numpy as np

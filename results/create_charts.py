@@ -7,6 +7,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+known_columns = set(['Python loop [cpu]', 'Numpy [cpu]',
+                     'C++ plain [cpu]',
+                     'C++ CUDA [cpu]',
+                     'C++ OCL [cpu]', 'C++ OCL [gpu]',
+                     'PyOCL [cpu]', 'PyOCL [gpu]',
+                     'TensorFlow [cpu]', 'TensorFlow [gpu]'])
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
@@ -32,6 +38,10 @@ def create_chart(spec, output_md, use_rel=True):
 
     df = pd.read_csv(spec['data'])
     m = df.mean().sort_values(ascending=False)
+    for idx in m.index:
+        if idx not in known_columns:
+            sys.stderr.write("Error: unrecognized column name '{}'\n".format(idx))
+            sys.exit(1)
     rel = m / m[-1]
     std = df.std()
 
@@ -68,7 +78,7 @@ def create_chart(spec, output_md, use_rel=True):
     y = rel
     xlims = None
 
-    fig = plt.figure(figsize=(10, 2 + 0.4 * len(m)))
+    fig = plt.figure(figsize=(10, 2 + 0.6 * len(m)))
     if xlims:
         ax = brokenaxes(xlims=xlims, hspace=.05)
     else:
@@ -87,7 +97,7 @@ def create_chart(spec, output_md, use_rel=True):
     ax.set_title(spec['title'], fontdict={'size': 14})
 
     ax.grid(color='w')
-    plt.savefig(png_file)
+    plt.savefig(png_file, bbox_inches='tight')
 
     output_md += "\n\n"
     return output_md
@@ -101,6 +111,15 @@ file. Feel free to submit a result:
 1. Record your test results in a CSV file. Repeat each test at least 5 times. See other csv files for samples.
 2. Create an entry in [result_specs.json](result_specs.json)
 3. Create pull request
+
+When creating a CSV, please standardize the column names to use the following names, otherwise
+the CSV will be rejected by `create_charts.py`:
+- 'Python loop [cpu]', 'Numpy [cpu]', 
+- 'C++ plain [cpu]', 
+- 'C++ CUDA [cpu]', 
+- 'C++ OCL [cpu]', 'C++ OCL [gpu]',
+- 'PyOCL [cpu]', 'PyOCL [gpu]',
+- 'TensorFlow [cpu]', 'TensorFlow [gpu]'
 """
 
 if __name__ == "__main__":

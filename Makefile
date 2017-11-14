@@ -29,6 +29,7 @@ TARGETS = $(TARGETS) saxpy_cpu$(EXE)
 TARGETS = $(TARGETS) saxpy_cuda$(EXE)
 TARGETS = $(TARGETS) saxpy_ocl1$(EXE)
 TARGETS = $(TARGETS) saxpy_ocl2$(EXE)
+TARGETS = $(TARGETS) saxpy_oclso$(EXE)
 
 
 ###################################################################
@@ -73,5 +74,8 @@ saxpy_ocl1$(EXE): saxpy_ocl1.cpp saxpy.h
 saxpy_ocl2$(EXE): saxpy_ocl2.cpp saxpy.h
 	$(CC) $(CFLAGS) $(OCL_CFLAGS) $(CC_O) $(@) saxpy_ocl2.cpp $(OCL_LDFLAGS)
 
+saxpy_oclso$(EXE): saxpy_oclso.cpp
+	$(CC) $(CFLAGS) $(OCL_CFLAGS) $(CC_O) $(@) saxpy_oclso.cpp $(OCL_LDFLAGS)
+	
 clean:
 	$(RM) $(TARGETS) *.lib *.a *.exe *.obj *.o *.exp *.pyc

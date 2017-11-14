@@ -12,6 +12,7 @@ This repository contains several implementations of SAXPY such as:
  - naive C++ loop
  - C++ CUDA (GPU)
  - OpenCL (both CPU and GPU) 
+ - PyOpenCL (both CPU and GPU)
 
 For the benchmark, we only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
@@ -20,9 +21,18 @@ the loop time since our loop is very simple.
 
 # My Setup
 
-For my test, I've configured N to be 2^26, or about 67 million elements. I have fairly decent
-Intel i7-6700 CPU @ 3.40GHz running Windows 10, with a consumer grade NVidia GeForce GTX 745
-graphics card installed.
+For my test, I've configured N to be 2^26, or about 67 million elements. 
+
+- Hardware:
+  - Intel i7-6700 CPU @ 3.40GHz 
+  - NVidia GeForce GTX 745 graphics card
+- Software:
+  - Windows 10 64bit
+  - Visual Studio 2015 C++ compiler 64bit version
+  - [CUDA Version 8.0.61](https://developer.nvidia.com/cuda-zone)
+  - [Intel OpenCL SDK Version 7.0.0.2519](https://software.intel.com/en-us/intel-opencl) 
+  - Python 2.7.12 64bit
+  - [PyOpenCL version 2017.2](https://mathema.tician.de/software/pyopencl/)
 
 
 # Naive Python Loop
@@ -259,3 +269,41 @@ Errors: 0
 
 So the result is pretty disappointing. I'm not sure why the performance is so slow, about four
 times slover. My CPU have four cores though, not sure if it has something to do with it.
+
+# PyOpenCL
+
+PyOpenCL is a binding for OpenCL in Python.  See the documentation in 
+[PyOpenCL web page](https://mathema.tician.de/software/pyopencl/) for installation guide etc.
+FWIW, I use the prebuilt x64 binary for Python 2.7.
+
+Our SAXPY implementation is [saxpy_pyocl.py](saxpy_pyocl.py).
+
+Here is my test result:
+```
+C:\..> saxpy_pyocl.py
+PyOpenCL version 2017.2
+Using GeForce GTX 745
+N: 67108864
+Elapsed: 221.999883652 ms
+Error: 0.0
+```
+
+So the result is a long way (almost 7x slower) than the OpenCL C++ version. In fact the result
+is only slightly faster than the Numpy version.
+
+### Running on CPU
+
+The [saxpy_pyocl.py](saxpy_pyocl.py) may take `cpu` or `gpu` argument. Giving it `cpu` gives
+the following result:
+```
+C:\..> saxpy_pyocl.py cpu
+Using Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+N: 67108864
+C:\Anaconda2\lib\site-packages\pyopencl\cffi_cl.py:1502: CompilerWarning: Non-empty compiler output encountered. 
+Set the environment variable PYOPENCL_COMPILER_OUTPUT=1 to see more.
+  "to see more.", CompilerWarning)
+Elapsed: 46.9999313354 ms
+Error: 0.0
+```
+
+Interestingly the PyOpenCL CPU result is a lot (more than 4x) faster than the PyOpenCL GPU.

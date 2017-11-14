@@ -1,15 +1,16 @@
 import time
 
-from saxpy import *
+import saxpy
 
-x = [XVAL] * N
-y = [YVAL] * N
-
-t0 = time.time()
-for i in range(N):
-    y[i] += AVAL * x[i]
-t1 = time.time()
+x = [saxpy.XVAL] * saxpy.N
+y = [saxpy.YVAL] * saxpy.N
 
 print("N: {}".format(len(x)))
+
+t0 = time.time()
+for i in range(saxpy.N):
+    y[i] += saxpy.AVAL * x[i]
+t1 = time.time()
+
 print("Elapsed: {} ms".format((t1 - t0) * 1000))
-saxpy_verify(y)
+saxpy.verify(y)

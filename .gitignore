@@ -6,4 +6,4 @@
 *.obj
 *.exe
 *.exp
-
+*.pyc

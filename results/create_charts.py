@@ -18,17 +18,29 @@ def create_chart(spec, output_md):
     output_md += "\n# {}\n\n".format(spec['title'])
     output_md += "(tested by {} on {})\n\n".format(spec['by'], spec['date'])
 
+    if spec['remarks']:
+        output_md += spec['remarks'] + "\n\n"
+
+    details = spec.get('details')
+    if details:
+        output_md += "\n### Specs\n\n"
+        for row in details:
+            output_md += "| {} | {} |\n".format(row[0], row[1])
+        output_md += "\n"
+
     df = pd.read_csv(spec['data'])
     m = df.mean().sort_values(ascending=False)
+    std = df.std()
 
+    output_md += "\n### Result\n\n"
     output_md += '![{}]({}?raw=true "{}")\n\n'.format(png_file, png_file, png_file)
 
-    output_md += "Details:\n"
-    output_md += "| Test   | Time (ms) | \n"
-    output_md += "|--------| --------: |\n"
+    output_md += "\n ### Details\n\n"
+    output_md += "| Test   | Mean Time (ms) | StdDev (ms) |\n"
+    output_md += "|--------| --------: | --------: |\n"
 
-    for i in range(len(m.index)):
-        output_md += "| {} | {} |\n".format(m.index[i], "%.3f" % m[i])
+    for idx in m.index:
+        output_md += "| {} | {} | {} |\n".format(idx, "%.3f" % m[idx], "%.3f" % std[idx])
 
     output_md += "\n"
 
@@ -37,12 +49,12 @@ def create_chart(spec, output_md):
     for i in range(len(m) - 1):
         if m[i] / m[i + 1] > 20:
             # print('** Warning: removing outlier "%s" from the chart' % m.index[i])
-            notes += '- outliner "{}" is removed from the chart\n'.format(m.index[i])
+            notes += '- outlier "{}" is removed from the chart\n'.format(m.index[i])
         else:
             break
 
     if notes:
-        output_md += "\nNotes:\n" + notes
+        output_md += "\n### Notes\n\n" + notes
 
     m = m[i:]
 

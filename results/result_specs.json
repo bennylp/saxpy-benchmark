@@ -17,7 +17,8 @@
     ["CUDA", "Version 8.0.61"],
     ["OpenCL", "- Intel OpenCL SDK Version 7.0.0.2519"],
     ["", "- OpenCL from CUDA SDK"],
-    ["PyOpenCL", "version 2017.2"]
+    ["PyOpenCL", "version 2017.2"],
+    ["Octave", "version 4.2.1 64bit"]
   ]
  },
  {

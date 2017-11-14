@@ -7,14 +7,21 @@ file. Feel free to submit a result:
 2. Create an entry in [result_specs.json](result_specs.json)
 3. Create pull request
 
-When creating a CSV, please standardize the column names to use the following names, otherwise
-the CSV will be rejected by `create_charts.py`:
-- 'Python loop [cpu]', 'Numpy [cpu]', 
-- 'C++ plain [cpu]', 
-- 'C++ CUDA [cpu]', 
-- 'C++ OCL [cpu]', 'C++ OCL [gpu]',
-- 'PyOCL [cpu]', 'PyOCL [gpu]',
-- 'TensorFlow [cpu]', 'TensorFlow [gpu]'
+When creating a CSV, please standardize the column names to the following, otherwise
+the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
+some statistics with them in the future:
+- C++ CUDA [cpu]
+- TensorFlow [gpu]
+- C++ OCL [gpu]
+- PyOCL [cpu]
+- C++ OCL [cpu]
+- PyOCL [gpu]
+- Octave [cpu]
+- TensorFlow [cpu]
+- C++ loop [cpu]
+- Numpy [cpu]
+- Python loop [cpu]
+
 
 
 # i7-6700 3.40GHz, NVidia GTX 475
@@ -38,27 +45,29 @@ Submitted by Benny Prijono on 2017-11-14
 | OpenCL | - Intel OpenCL SDK Version 7.0.0.2519 |
 |  | - OpenCL from CUDA SDK |
 | PyOpenCL | version 2017.2 |
+| Octave | version 4.2.1 64bit |
 
 
-### Result
-
-![benny-desktop1.png](benny-desktop1.png?raw=true "benny-desktop1.png")
-
-
- ### Details
+ ### Result Details
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop [cpu] | 12494.000 | 198.252 | 390.80x |
+| Octave [cpu] | 314.848 | 15.985 | 9.85x |
 | Numpy [cpu] | 289.167 | 21.628 | 9.04x |
 | PyOCL [gpu] | 222.500 | 3.271 | 6.96x |
 | TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
 | C++ OCL [cpu] | 110.983 | 2.128 | 3.47x |
 | TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
 | PyOCL [cpu] | 46.000 | 1.265 | 1.44x |
-| C++ plain [cpu] | 42.213 | 3.059 | 1.32x |
+| C++ loop [cpu] | 42.213 | 3.059 | 1.32x |
 | C++ CUDA [cpu] | 32.218 | 0.019 | 1.01x |
 | C++ OCL [gpu] | 31.970 | 0.057 | 1.00x |
+
+
+### Result
+
+![benny-desktop1.png](benny-desktop1.png?raw=true "benny-desktop1.png")
 
 
 ### Notes
@@ -83,20 +92,20 @@ Submitted by Benny Prijono on 2017-11-14
 | OpenCL | preinstalled (XCode 5.1.1) |
 
 
-### Result
-
-![benny-macbook.png](benny-macbook.png?raw=true "benny-macbook.png")
-
-
- ### Details
+ ### Result Details
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop [cpu] | 20491.674 | 2353.082 | 429.93x |
 | Numpy [cpu] | 448.097 | 14.627 | 9.40x |
 | C++ OCL [gpu] | 56.174 | 1.138 | 1.18x |
-| C++ plain [cpu] | 50.127 | 2.145 | 1.05x |
+| C++ loop [cpu] | 50.127 | 2.145 | 1.05x |
 | C++ OCL [cpu] | 47.663 | 0.936 | 1.00x |
+
+
+### Result
+
+![benny-macbook.png](benny-macbook.png?raw=true "benny-macbook.png")
 
 
 ### Notes

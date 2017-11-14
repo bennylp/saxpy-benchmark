@@ -14,6 +14,7 @@ This repository contains several implementations of SAXPY such as:
  - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
  - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
  - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
+ - Octave [[saxpy.m](saxpy.m)]
 
 For the benchmark, we only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
@@ -25,7 +26,7 @@ the loop time since our loop is very simple.
 See the [results](results/) directory for the full results.
 
 Here is a sample result. Note that the naive Python loop result is **excluded** from the chart
-because its value is too big (around 300x slower than native C++ version).
+because its value is too big (around 300x slower than C++ loop in most benchmarks).
 
 ![benny-desktop1.png](results/benny-desktop1.png?raw=true "benny-desktop1.png")
 
@@ -359,4 +360,34 @@ Using /device:CPU:0
 N: 67108864
 Elapsed: 233.62112045288086 ms
 Errors: 0.0
+```
+
+# Octave
+
+GNU Octave ([https://www.gnu.org/software/octave/](https://www.gnu.org/software/octave/)) is a
+scientific programming language with powerful mathematics-oriented syntax with built-in plotting 
+and visualization tools, with syntax largely compatible with Matlab. 
+
+It's very popular for prototyping machine learning models because of its array accessing syntax
+cleanliness and for its speed too, some say. So let's put it through its paces.
+
+
+Similar to Numpy, implementing SAXPY as vectorized computation is trivial. In fact this is the
+whole source code ([saxpy.m](saxpy.m)):
+
+```
+N = 2 ^ 26
+XVAL = 2.5;
+YVAL = 1.3;
+AVAL = 3.7;
+
+x = ones(N,1) * XVAL;
+y = ones(N,1) * YVAL;
+
+tic;
+y += x * AVAL;
+toc
+
+answer = YVAL + AVAL * XVAL;
+error = sum(abs(y - answer))
 ```

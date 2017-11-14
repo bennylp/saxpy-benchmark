@@ -8,11 +8,12 @@ import numpy as np
 import pandas as pd
 
 known_columns = set(['Python loop [cpu]', 'Numpy [cpu]',
-                     'C++ plain [cpu]',
+                     'C++ loop [cpu]',
                      'C++ CUDA [cpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]',
-                     'TensorFlow [cpu]', 'TensorFlow [gpu]'])
+                     'TensorFlow [cpu]', 'TensorFlow [gpu]',
+                     'Octave [cpu]'])
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
@@ -40,15 +41,12 @@ def create_chart(spec, output_md, use_rel=True):
     m = df.mean().sort_values(ascending=False)
     for idx in m.index:
         if idx not in known_columns:
-            sys.stderr.write("Error: unrecognized column name '{}'\n".format(idx))
+            sys.stderr.write("Error: unrecognized column name '{}'. Standard names are required.\n".format(idx))
             sys.exit(1)
     rel = m / m[-1]
     std = df.std()
 
-    output_md += "\n### Result\n\n"
-    output_md += '![{}]({}?raw=true "{}")\n\n'.format(png_file, png_file, png_file)
-
-    output_md += "\n ### Details\n\n"
+    output_md += "\n ### Result Details\n\n"
     output_md += "| Test   | Mean Time (ms) | StdDev (ms) | Time (rel)\n"
     output_md += "|--------| --------: | --------: | --------: |\n"
 
@@ -57,6 +55,9 @@ def create_chart(spec, output_md, use_rel=True):
                                                  "%.2fx" % rel[idx])
 
     output_md += "\n"
+
+    output_md += "\n### Result\n\n"
+    output_md += '![{}]({}?raw=true "{}")\n\n'.format(png_file, png_file, png_file)
 
     # Remove outliers as we don't support broken/discontinuous axis yet
     notes = ""
@@ -112,19 +113,17 @@ file. Feel free to submit a result:
 2. Create an entry in [result_specs.json](result_specs.json)
 3. Create pull request
 
-When creating a CSV, please standardize the column names to use the following names, otherwise
-the CSV will be rejected by `create_charts.py`:
-- 'Python loop [cpu]', 'Numpy [cpu]', 
-- 'C++ plain [cpu]', 
-- 'C++ CUDA [cpu]', 
-- 'C++ OCL [cpu]', 'C++ OCL [gpu]',
-- 'PyOCL [cpu]', 'PyOCL [gpu]',
-- 'TensorFlow [cpu]', 'TensorFlow [gpu]'
+When creating a CSV, please standardize the column names to the following, otherwise
+the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
+some statistics with them in the future:
 """
 
 if __name__ == "__main__":
     specs = json.loads(open('result_specs.json').read())
     output_md = README_MD
+
+    output_md += "".join(["- %s\n" % nm for nm in list(known_columns)])
+    output_md += "\n"
 
     for spec in specs:
         output_md = create_chart(spec, output_md)

@@ -14,6 +14,8 @@ file. To submit a result:
 
 ### Specs
 
+|    |    |
+|----|----|
 | System | MacBook Pro 13" late 2013 |
 | OS | OS X 10.11.14 |
 | GPU | on board Intel Iris |
@@ -49,6 +51,8 @@ file. To submit a result:
 
 ### Specs
 
+|    |    |
+|----|----|
 | System | HP Pavilion 550-227 desktop |
 |  | Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable) |
 | OS | Windows 10 64bit |
@@ -72,9 +76,9 @@ file. To submit a result:
 |--------| --------: | --------: |
 | Python loop | 12494.000 | 198.252 |
 | Numpy | 289.167 | 21.628 |
-| PyOpenCL GPU | 222.500 | 3.271 |
+| PyOCL GPU | 222.500 | 3.271 |
 | OpenCL CPU | 110.983 | 2.128 |
-| PyOpenCL CPU | 46.000 | 1.265 |
+| PyOCL CPU | 46.000 | 1.265 |
 | C++ | 42.213 | 3.059 |
 | CUDA | 32.218 | 0.019 |
 | OpenCL GPU | 31.970 | 0.057 |

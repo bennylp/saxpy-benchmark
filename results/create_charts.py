@@ -24,6 +24,8 @@ def create_chart(spec, output_md):
     details = spec.get('details')
     if details:
         output_md += "\n### Specs\n\n"
+        output_md += "|    |    |\n"
+        output_md += "|----|----|\n"
         for row in details:
             output_md += "| {} | {} |\n".format(row[0], row[1])
         output_md += "\n"

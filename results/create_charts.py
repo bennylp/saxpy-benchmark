@@ -93,7 +93,7 @@ def create_chart(spec, output_md, use_rel=True):
     ax.set_yticks(y_pos)
     ax.set_yticklabels(tests, fontdict={'size': 10})
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Relative Duration (times slower than fastest test)', fontdict={'size': 10})
+    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 10})
     ax.set_title(spec['title'], fontdict={'size': 14})
 
     ax.grid(color='w')

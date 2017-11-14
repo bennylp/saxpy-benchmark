@@ -24,7 +24,8 @@ the loop time since our loop is very simple.
 
 See the [results](results/) directory for the full results.
 
-Here is a sample result:
+Here is a sample result. Note that the naive Python loop result is **excluded** from the chart
+because its value is too big (around 300x slower than native C++ version).
 
 ![benny-desktop1.png](results/benny-desktop1.png?raw=true "benny-desktop1.png")
 

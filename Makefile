@@ -48,12 +48,12 @@ TARGETS = $(TARGETS) saxpy_oclso$(EXE)
 # Sample settings for Windows:
 #
 # With OpenCL From CUDA SDK
-#OCL_CFLAGS = /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"
-#OCL_LDFLAGS = /link /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64" OpenCL.lib
+OCL_CFLAGS = /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"
+OCL_LDFLAGS = /link /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64" OpenCL.lib
 
 # With Intel OpenCL
-OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
-OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
+#OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
+#OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
 
 ###################################################################
 # Done. 

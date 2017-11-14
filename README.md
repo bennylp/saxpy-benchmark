@@ -1,18 +1,18 @@
-# The SAXPY GPGPU Benchmark
+# SAXPY GPGPU Benchmark
 
 SAXPY (Single Precision A * X Plus Y) is basically:
 ```python
   for i=0 to N:
-     Y[i] += alpha * X[i]
+     Y[i] += A * X[i]
 ```
 
 This repository contains several implementations of SAXPY such as:
- - naive Python loop
- - Python Numpy
- - naive C++ loop
- - C++ CUDA (GPU)
- - OpenCL (both CPU and GPU) 
- - PyOpenCL (both CPU and GPU)
+ - [saxpy_loop.py](saxpy_loop.py):  naive Python loop
+ - [saxpy_numpy.py](saxpy_numpy.py): Python Numpy
+ - [saxpy_cpu.cpp](saxpy_cpu.cpp):  naive C++ loop
+ - [saxpy_cuda.cu](saxpy_cuda.cu):  C++ CUDA (GPU)
+ - [saxpy_ocl1.cpp](saxpy_ocl1.cpp): OpenCL (CPU and GPU) 
+ - [saxpy_pyocl.py](saxpy_pyocl.py): PyOpenCL (CPU and GPU)
 
 For the benchmark, we only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
@@ -21,10 +21,8 @@ the loop time since our loop is very simple.
 
 # My Setup
 
-For my test, I've configured N to be 2^26, or about 67 million elements. 
-
 - Hardware:
-  - Intel i7-6700 CPU @ 3.40GHz 
+  - Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)
   - NVidia GeForce GTX 745 graphics card
 - Software:
   - Windows 10 64bit
@@ -33,7 +31,10 @@ For my test, I've configured N to be 2^26, or about 67 million elements.
   - [Intel OpenCL SDK Version 7.0.0.2519](https://software.intel.com/en-us/intel-opencl) 
   - Python 2.7.12 64bit
   - [PyOpenCL version 2017.2](https://mathema.tician.de/software/pyopencl/)
+- Setup:
+  - N is 2^26, or about 67 million elements.
 
+<A name="naive-python></A>
 
 # Naive Python Loop
 
@@ -182,18 +183,28 @@ Some select resources on OpenCL:
   - [The OpenCL Programming (free ebook)](https://www.fixstars.com/en/opencl/book/OpenCLProgrammingBook/contents/)
   - [OpenCL Best Practices (PDF)](https://www.cs.cmu.edu/afs/cs/academic/class/15668-s11/www/cuda-doc/OpenCL_Best_Practices_Guide.pdf)
 
-### Implementation
+### Implementations
 
 Two implementations are provided, [saxpy_ocl1.cpp](saxpy_ocl1.cpp) and [saxpy_ocl2.cpp](saxpy_ocl2.cpp).
-One is using C++ API, and the other is C API. You can see that C++ code is much shorter than the C
-one.
+One is using OpenCL C++ API (provided by `cl.hpp`), and the other is using the C API (`cl.h` or `OpenCL.h`). 
+You can see that C++ code is shorter and easier to use than the C one. 
+There is no performance difference between the two as far as I can see.
 
 
 ### Installation
 
-If you have installed NVidia CUDA SDK, actually it includes OpenCL SDK in its standard
-`include` and `lib` directories. Unfortunately this only supports NVidia cards, it doesn't support
- `cpu` target. 
+OpenCL consists of two things, the **SDK** and the **drivers**.
+ 
+The SDK is basically the `cl.h` or `opencl.h` and its supporting headers, optionally `cl.hpp`
+for the C++ API, and the library file (`OpenCL.lib` on Windows).
+
+The drivers are the one that manages the execution of your parallel code (called kernel) in the
+target device, which can be CPU, GPU, etc.
+
+For the SDK, if you have installed NVidia CUDA SDK, actually it includes OpenCL SDK in its standard
+`include` and `lib` directories (you can see the locations in the [Makefile](Makefile)). 
+This OpenCL SDK is ready to use. But unless you install other
+drivers, this will only support NVidia cards. It doesn't support `cpu` target. 
 
 For more comprehensive SDK, you can get [Intel SDK for OpenCL](https://software.intel.com/en-us/intel-opencl),
 which is available for Windows and Linux. On Windows, it provides nice integration with Visual Studio, which many will appreciate I'm sure.
@@ -307,3 +318,4 @@ Error: 0.0
 ```
 
 Interestingly the PyOpenCL CPU result is a lot (more than 4x) faster than the PyOpenCL GPU.
+In fact, it is faster than the OpenCL C++ version for CPU!

@@ -8,14 +8,14 @@ import numpy as np
 import pandas as pd
 
 
-def create_chart(spec, output_md):
+def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
 
     plt.style.use('ggplot')
 
     png_file = os.path.splitext(spec['data'])[0] + ".png"
 
-    output_md += "\n# {}\n\n".format(spec['title'])
+    output_md += "\n\n# {}\n\n".format(spec['title'])
     output_md += "Submitted by {} on {}\n\n".format(spec['by'], spec['date'])
 
     if spec['remarks']:
@@ -61,28 +61,30 @@ def create_chart(spec, output_md):
         output_md += "\n### Notes\n\n" + notes
 
     m = m[i:]
+    rel = rel[i:]
 
     tests = m.index
-    y_pos = np.arange(len(tests))
-    y = m
-    error = None
+    y_pos = np.arange(len(tests)) * 0.6
+    y = rel
     xlims = None
 
-    fig = plt.figure(figsize=(8, 1.5 + 0.6 * len(m)))
+    fig = plt.figure(figsize=(10, 2 + 0.4 * len(m)))
     if xlims:
         ax = brokenaxes(xlims=xlims, hspace=.05)
     else:
         ax = plt.subplot(111)
 
-    ax.barh(y_pos, y, xerr=error, align='center', color='green', ecolor='black')
+    ax.barh(y_pos, y, height=0.4, align='center', color='green', ecolor='black')
+
     for i, v in enumerate(y):
-        ax.text(v + 3, i + .25, '%.3f' % v)
+        # ax.text(v, i, '%.3fx' % v)
+        ax.text(max(0, v - 0.7), y_pos[i], '%.3fx' % v, fontdict={'size': 8}, color='w')
 
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(tests)
+    ax.set_yticklabels(tests, fontdict={'size': 10})
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Time (ms)')
-    ax.set_title(spec['title'])
+    ax.set_xlabel('Relative Duration (times slower than fastest test)', fontdict={'size': 10})
+    ax.set_title(spec['title'], fontdict={'size': 14})
 
     ax.grid(color='w')
     plt.savefig(png_file)

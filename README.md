@@ -21,25 +21,11 @@ the loop time since our loop is very simple.
 
 # Results
 
-Here are some sample results.
+See the [results](results/) directory for the full results.
 
-## i7-6700, Windows10, GeForce GTX 745 GPU
- 
-- Hardware:
-  - Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)
-  - NVidia GeForce GTX 745 graphics card
-- Software:
-  - Windows 10 64bit
-  - Visual Studio 2015 C++ compiler 64bit version
-  - [CUDA Version 8.0.61](https://developer.nvidia.com/cuda-zone)
-  - [Intel OpenCL SDK Version 7.0.0.2519](https://software.intel.com/en-us/intel-opencl) 
-  - Python 2.7.12 64bit
-  - [PyOpenCL version 2017.2](https://mathema.tician.de/software/pyopencl/)
-- Setup:
-  - N is 2^26, or about 67 million elements.
+Here is a sample result:
 
-## MacBook Pro 13" Late 2013, onboard Intel Iris GPU
-
+![benny-desktop1.png](results/benny-desktop1.png?raw=true "benny-desktop1.png")
 
 
 # Naive Python Loop

@@ -7,6 +7,7 @@ file. Feel free to submit a result:
 2. Create an entry in [result_specs.json](result_specs.json)
 3. Create pull request
 
+
 # MacBook Pro 13" late 2013, on board Intel Iris GPU
 
 Submitted by Benny Prijono on 2017-11-14
@@ -32,15 +33,16 @@ Submitted by Benny Prijono on 2017-11-14
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop | 20491.674 | 2353.082 | 429.93x |
-| Numpy | 448.097 | 14.627 | 9.40x |
-| OpenCL GPU | 56.174 | 1.138 | 1.18x |
-| C++ | 50.127 | 2.145 | 1.05x |
-| OpenCL CPU | 47.663 | 0.936 | 1.00x |
+| Py Numpy | 448.097 | 14.627 | 9.40x |
+| C++ OCL GPU | 56.174 | 1.138 | 1.18x |
+| C++ loop | 50.127 | 2.145 | 1.05x |
+| C++ OCL CPU | 47.663 | 0.936 | 1.00x |
 
 
 ### Notes
 
 - **outlier "Python loop" is removed from the chart**
+
 
 
 
@@ -75,13 +77,13 @@ Submitted by Benny Prijono on 2017-11-14
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop | 12494.000 | 198.252 | 390.80x |
-| Numpy | 289.167 | 21.628 | 9.04x |
+| Py Numpy | 289.167 | 21.628 | 9.04x |
 | PyOCL GPU | 222.500 | 3.271 | 6.96x |
-| OpenCL CPU | 110.983 | 2.128 | 3.47x |
+| C++ OCL CPU | 110.983 | 2.128 | 3.47x |
 | PyOCL CPU | 46.000 | 1.265 | 1.44x |
-| C++ | 42.213 | 3.059 | 1.32x |
-| CUDA | 32.218 | 0.019 | 1.01x |
-| OpenCL GPU | 31.970 | 0.057 | 1.00x |
+| C++ loop | 42.213 | 3.059 | 1.32x |
+| C++ CUDA | 32.218 | 0.019 | 1.01x |
+| C++ OCL GPU | 31.970 | 0.057 | 1.00x |
 
 
 ### Notes

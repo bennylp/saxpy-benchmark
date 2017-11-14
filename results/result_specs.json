@@ -1,0 +1,14 @@
+[
+ {
+  "title": "MacBook Pro 13\" late 2013, on board Intel Iris GPU",
+  "data": "benny-macbook.csv",
+  "date": "2017-11-14",
+  "by": "Benny Prijono",
+  "detail": {
+    "System": "MacBook Pro 13\" late 2013",
+    "OS": "OS X 10.11.14",
+    "GPU": "on board Intel Iris",
+    "OpenCL": "preinstalled (XCode 5.1.1)"
+  }
+ }
+]

@@ -3,24 +3,28 @@
 SAXPY (Single Precision A * X Plus Y) is basically:
 ```python
   for i=0 to N:
-     Y[i] += A * X[i]
+     Y[i] = A * X[i] + Y[i]
 ```
 
 This repository contains several implementations of SAXPY such as:
- - [saxpy_loop.py](saxpy_loop.py):  naive Python loop
- - [saxpy_numpy.py](saxpy_numpy.py): Python Numpy
- - [saxpy_cpu.cpp](saxpy_cpu.cpp):  naive C++ loop
- - [saxpy_cuda.cu](saxpy_cuda.cu):  C++ CUDA (GPU)
- - [saxpy_ocl1.cpp](saxpy_ocl1.cpp): OpenCL (CPU and GPU) 
- - [saxpy_pyocl.py](saxpy_pyocl.py): PyOpenCL (CPU and GPU)
+ - naive Python loop [[saxpy_loop.py](saxpy_loop.py)]
+ - Python Numpy [[saxpy_numpy.py](saxpy_numpy.py)]
+ - naive C++ loop [[saxpy_cpu.cpp](saxpy_cpu.cpp)]
+ - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
+ - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
+ - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
 
 For the benchmark, we only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
 the loop time since our loop is very simple.
 
 
-# My Setup
+# Results
 
+Here are some sample results.
+
+## i7-6700, Windows10, GeForce GTX 745 GPU
+ 
 - Hardware:
   - Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)
   - NVidia GeForce GTX 745 graphics card
@@ -34,7 +38,9 @@ the loop time since our loop is very simple.
 - Setup:
   - N is 2^26, or about 67 million elements.
 
-<A name="naive-python></A>
+## MacBook Pro 13" Late 2013, onboard Intel Iris GPU
+
+
 
 # Naive Python Loop
 
@@ -114,7 +120,7 @@ So even the simplest C/C++ version is over 6x faster than Numpy.
 
 # CUDA
 
-CUDA® is a parallel computing platform and programming model developed by NVIDIA for 
+CUDAï¿½ is a parallel computing platform and programming model developed by NVIDIA for 
 general computing on (NVIDIA) graphical processing units (GPGPU). Because NVIDIA is
 THE undisputed leader in GPU/GPGPU market, that makes CUDA the leading API for GPGPU area. 
 In machine learning, AFAIK it is the API that is used by pretty much all ML frameworks utilizing
@@ -195,23 +201,26 @@ There is no performance difference between the two as far as I can see.
 
 OpenCL consists of two things, the **SDK** and the **drivers**.
  
-The SDK is basically the `cl.h` or `opencl.h` and its supporting headers, optionally `cl.hpp`
+The SDK is basically the `cl.h` or `opencl.h` and its dependency headers, optionally `cl.hpp`
 for the C++ API, and the library file (`OpenCL.lib` on Windows).
 
 The drivers are the one that manages the execution of your parallel code (called kernel) in the
 target device, which can be CPU, GPU, etc.
 
-For the SDK, if you have installed NVidia CUDA SDK, actually it includes OpenCL SDK in its standard
+If you're on MacOS, OpenCL is already installed by default.
+
+If you have installed NVidia CUDA SDK, actually it includes OpenCL SDK in its standard
 `include` and `lib` directories (you can see the locations in the [Makefile](Makefile)). 
 This OpenCL SDK is ready to use. But unless you install other
 drivers, this will only support NVidia cards. It doesn't support `cpu` target. 
 
 For more comprehensive SDK, you can get [Intel SDK for OpenCL](https://software.intel.com/en-us/intel-opencl),
-which is available for Windows and Linux. On Windows, it provides nice integration with Visual Studio, which many will appreciate I'm sure.
+available for Windows and Linux. On Windows, it provides nice integration with Visual Studio, 
+which many will appreciate I'm sure.
 
-Note that this is only the SDK; you still need to download the OpenCL drivers for the hardware that you have. For example, the [Intel OpenCL driver](https://software.intel.com/en-us/articles/opencl-drivers)
+For the drivers, the [Intel OpenCL driver](https://software.intel.com/en-us/articles/opencl-drivers)
 provides the driver for Intel Core and Xeon processors. I assume drivers for the graphics cards
-will be available from the manufacturer's website, or perhaps via Windows Update mechanism.  
+will be available from the manufacturer's website, or perhaps via Windows Update mechanism if you're on Windows.  
 
 
 ### Configure and Build

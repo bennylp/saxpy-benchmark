@@ -1,6 +1,9 @@
 #include <iostream>
+#include <cmath>
 #define __CL_ENABLE_EXCEPTIONS
-#include <CL/cl.hpp>
+//#define CL_VERSION_1_2
+//#include <CL/cl.hpp>		// <-- On Error, use the "extra/cl.hpp" instead
+#include "extra/cl.hpp"
 
 const int N = 1 << 26;
 const unsigned XVAL = 2.0f;

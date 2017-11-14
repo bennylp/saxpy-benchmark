@@ -9,8 +9,8 @@
 
 #define __CL_ENABLE_EXCEPTIONS
 //#define CL_VERSION_1_2
-//#include "extra/cl.hpp"
-#include <CL/cl.hpp>
+//#include <CL/cl.hpp>		// <-- On Error, use the "extra/cl.hpp" instead
+#include "extra/cl.hpp"
 
 static std::string dev_type_name(unsigned dev_type)
 {

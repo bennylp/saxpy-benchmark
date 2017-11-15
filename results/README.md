@@ -10,22 +10,22 @@ file. Feel free to submit a result:
 When creating a CSV, please standardize the column names to the following, otherwise
 the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
 some statistics with them in the future:
-- C++ CUDA [cpu]
-- C++ OCL [cpu]
 - C++ OCL [gpu]
-- PyOCL [cpu]
-- TensorFlow [cpu]
-- R [cpu]
-- Octave [cpu]
 - C++ loop [cpu]
-- Python loop [cpu]
+- TensorFlow [cpu]
 - TensorFlow [gpu]
-- Numpy [cpu]
+- PyOCL [cpu]
+- Octave [cpu]
 - PyOCL [gpu]
+- Numpy [cpu]
+- Python loop [cpu]
+- C++ OCL [cpu]
+- C++ CUDA [cpu]
+- R [cpu]
 
 
 
-# i7-6700 3.40GHz, NVidia GTX 475
+# i7-6700 3.40GHz 4 cores CPU, NVidia GTX 475 GPU
 
 Submitted by Benny Prijono on 2017-11-14
 

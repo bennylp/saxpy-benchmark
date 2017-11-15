@@ -75,28 +75,36 @@ def create_chart(spec, output_md, use_rel=True):
     m = m[i:]
     rel = rel[i:]
 
+    BAR_HEIGHT = 0.3
+
     tests = m.index
-    y_pos = np.arange(len(tests)) * 0.6
+    y_pos = np.arange(len(tests)) * BAR_HEIGHT
     y = rel
     xlims = None
 
-    fig = plt.figure(figsize=(10, 2 + 0.6 * len(m)))
+    fig = plt.figure(figsize=(9, 2 + BAR_HEIGHT * len(m)))
     if xlims:
         ax = brokenaxes(xlims=xlims, hspace=.05)
     else:
         ax = plt.subplot(111)
 
-    ax.barh(y_pos, y, height=0.4, align='center', color='green', ecolor='black')
+    ax.barh(y_pos, y, height=BAR_HEIGHT - 0.15, align='center', color='green', ecolor='black')
 
     for i, v in enumerate(y):
         # ax.text(v, i, '%.3fx' % v)
-        ax.text(max(0, v - 0.7), y_pos[i], '%.3fx' % v, fontdict={'size': 8}, color='w')
+        ax.text(max(0, v - 0.7), y_pos[i] + 0.03, '%.3fx' % v, fontdict={'size': 8}, color='w')
+        ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 8}, color='grey')
+
+    ax.text(y[0] * 5 / 8, y_pos[-1] - 0.15, 'SAXPY Benchmark',
+            fontdict={'size': 8}, color='grey')
+    ax.text(y[0] * 5 / 8, y_pos[-1], 'https://github.com/bennylp/saxpy-gpgpu',
+            fontdict={'size': 8}, color='grey')
 
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(tests, fontdict={'size': 10})
+    ax.set_yticklabels(tests, fontdict={'size': 9}, color="#101010")
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 10})
-    ax.set_title(spec['title'], fontdict={'size': 14})
+    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 11}, color="#101010")
+    ax.set_title(spec['title'], fontdict={'size': 13})
 
     ax.grid(color='w')
     plt.savefig(png_file, bbox_inches='tight')

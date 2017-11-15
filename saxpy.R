@@ -11,9 +11,9 @@ y <- array(YVAL, dim=c(N))
 
 t0 <- Sys.time()
 y <- y + x * AVAL
-diff = Sys.time() - t0
+diff <- Sys.time() - t0
 cat("Elapsed:", diff*1000, " ms\n")
 
 answer <- YVAL + AVAL * XVAL
-error = sum(abs(y - answer))
+error <- sum(abs(y - answer))
 cat("Error:", error, "\n")

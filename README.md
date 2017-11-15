@@ -335,7 +335,7 @@ See [saxpy_tf.py](saxpy_tf.py).
 
 ### Installation
 
-I install `tensorflow-gpu` with `pip3`. See [TF installation instructions](https://www.tensorflow.org/install/)
+I installed `tensorflow-gpu` with `pip3`. See [TF installation instructions](https://www.tensorflow.org/install/)
 for more info.
 
 ### Running
@@ -399,7 +399,7 @@ R ([https://www.r-project.org/](https://www.r-project.org/)) is a free software 
 for statistical computing and graphics. In data science field, it is at least as popular, if not
 more, than Python/Numpy. It is said to be fast too. Let's see how it performs.
 
-Vector operations in R is also trivial, this is the whole code for our test:
+Vector operations in R is also trivial, this is the whole code for our test ([saxpy.R](saxpy.R)):
 ```r
 N <- 2 ^ 26
 cat("N:", N, "\n")
@@ -414,12 +414,12 @@ y <- array(YVAL, dim=c(N))
 
 t0 <- Sys.time()
 y <- y + x * AVAL
-diff = Sys.time() - t0
+diff <- Sys.time() - t0
 cat("Elapsed:", diff*1000, " ms\n")
 
 answer <- YVAL + AVAL * XVAL
-error = sum(abs(y - answer))
+error <- sum(abs(y - answer))
 cat("Error:", error, "\n")
 ```
 
-For the benchmark, I run `Rscript` with `--arch x64` argument.
+For the benchmark, run `Rscript` with `--arch x64` argument.

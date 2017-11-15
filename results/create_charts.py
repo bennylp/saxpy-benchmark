@@ -93,17 +93,17 @@ def create_chart(spec, output_md, use_rel=True):
     for i, v in enumerate(y):
         # ax.text(v, i, '%.3fx' % v)
         ax.text(max(0, v - 0.7), y_pos[i] + 0.03, '%.3fx' % v, fontdict={'size': 8}, color='w')
-        ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 8}, color='grey')
+        ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 6}, color='grey')
 
-    ax.text(y[0] * 5 / 8, y_pos[-1] - 0.15, 'SAXPY Benchmark',
+    ax.text(y[0] * 5 / 8, y_pos[-1] + 0.15 - 0.15, 'SAXPY Benchmark',
             fontdict={'size': 8}, color='grey')
-    ax.text(y[0] * 5 / 8, y_pos[-1], 'https://github.com/bennylp/saxpy-gpgpu',
+    ax.text(y[0] * 5 / 8, y_pos[-1] + 0.15 , 'https://github.com/bennylp/saxpy-benchmark',
             fontdict={'size': 8}, color='grey')
 
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(tests, fontdict={'size': 9}, color="#101010")
+    ax.set_yticklabels(tests, fontdict={'size': 9}, color="#202020")
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 11}, color="#101010")
+    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 11}, color="#202020")
     ax.set_title(spec['title'], fontdict={'size': 13})
 
     ax.grid(color='w')

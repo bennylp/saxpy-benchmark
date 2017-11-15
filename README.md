@@ -9,12 +9,13 @@ SAXPY (Single Precision A * X Plus Y) is basically:
 This repository contains several implementations of SAXPY such as:
  - naive Python loop [[saxpy_loop.py](saxpy_loop.py)]
  - Python Numpy [[saxpy_numpy.py](saxpy_numpy.py)]
+ - Octave [[saxpy.m](saxpy.m)]
+ - R [[saxpy.R](saxpy.R)]
  - naive C++ loop [[saxpy_cpu.cpp](saxpy_cpu.cpp)]
  - TensorFlow (CPU and GPU) [[saxpy_tf.py](saxpy_tf.py)]
  - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
  - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
  - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
- - Octave [[saxpy.m](saxpy.m)]
 
 For the benchmark, we only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
@@ -391,3 +392,34 @@ toc
 answer = YVAL + AVAL * XVAL;
 error = sum(abs(y - answer))
 ```
+
+# R
+
+R ([https://www.r-project.org/](https://www.r-project.org/)) is a free software environment 
+for statistical computing and graphics. In data science field, it is at least as popular, if not
+more, than Python/Numpy. It is said to be fast too. Let's see how it performs.
+
+Vector operations in R is also trivial, this is the whole code for our test:
+```r
+N <- 2 ^ 26
+cat("N:", N, "\n")
+
+# Random numbers
+XVAL <- 10 * runif(1)
+YVAL <- 10 * runif(1)
+AVAL <- 10 * runif(1)
+
+x <- array(XVAL, dim=c(N))
+y <- array(YVAL, dim=c(N))
+
+t0 <- Sys.time()
+y <- y + x * AVAL
+diff = Sys.time() - t0
+cat("Elapsed:", diff*1000, " ms\n")
+
+answer <- YVAL + AVAL * XVAL
+error = sum(abs(y - answer))
+cat("Error:", error, "\n")
+```
+
+For the benchmark, I run `Rscript` with `--arch x64` argument.

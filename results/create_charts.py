@@ -13,7 +13,7 @@ known_columns = set(['Python loop [cpu]', 'Numpy [cpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]',
                      'TensorFlow [cpu]', 'TensorFlow [gpu]',
-                     'Octave [cpu]'])
+                     'Octave [cpu]', 'R [cpu]'])
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
@@ -61,10 +61,11 @@ def create_chart(spec, output_md, use_rel=True):
 
     # Remove outliers as we don't support broken/discontinuous axis yet
     notes = ""
-    for i in range(len(m) - 1):
-        if m[i] / m[i + 1] > 20:
+    for i in range(len(m)):
+        if m[i] / m[-1] > 20:
             # print('** Warning: removing outlier "%s" from the chart' % m.index[i])
-            notes += '- **outlier "{}" is removed from the chart**\n'.format(m.index[i])
+            notes += '- **outlier "{}" is removed from the chart because it is {}x slower**\n'.format(
+                            m.index[i], int(m[i] / m[-1]))
         else:
             break
 

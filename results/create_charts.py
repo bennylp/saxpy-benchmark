@@ -95,9 +95,9 @@ def create_chart(spec, output_md, use_rel=True):
         ax.text(max(0, v - 0.7), y_pos[i] + 0.03, '%.3fx' % v, fontdict={'size': 8}, color='w')
         ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 6}, color='grey')
 
-    ax.text(y[0] * 5 / 8, y_pos[-1] + 0.15 - 0.15, 'SAXPY Benchmark',
+    ax.text(y[0] * 5 / 8, y_pos[-1], 'SAXPY Benchmark',
             fontdict={'size': 8}, color='grey')
-    ax.text(y[0] * 5 / 8, y_pos[-1] + 0.15 , 'https://github.com/bennylp/saxpy-benchmark',
+    ax.text(y[0] * 5 / 8, y_pos[-1] + 0.1, 'https://github.com/bennylp/saxpy-benchmark',
             fontdict={'size': 8}, color='grey')
 
     ax.set_yticks(y_pos)

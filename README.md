@@ -17,7 +17,10 @@ This repository contains several implementations of SAXPY such as:
  - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
  - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
 
-For the benchmark, we only measure the time to perform the actual loop and not other things 
+Unless noted differently, we use the best mean to do the job on each platform,
+e.g. vectorization on Numpy, R, and Octave.
+
+We only measure the time to perform the actual loop and not other things 
 such as initialization and data transfers between CPU and GPU, which most likely will exceed
 the loop time since our loop is very simple.
 

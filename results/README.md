@@ -10,18 +10,19 @@ file. Feel free to submit a result:
 When creating a CSV, please standardize the column names to the following, otherwise
 the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
 some statistics with them in the future:
-- PyOCL [gpu]
-- Numpy [cpu]
-- PyOCL [cpu]
-- TensorFlow [cpu]
+- Java loop [cpu]
 - R [cpu]
-- TensorFlow [gpu]
-- Python loop [cpu]
-- C++ OCL [gpu]
-- Octave [cpu]
-- C++ CUDA [cpu]
 - C++ OCL [cpu]
+- PyOCL [cpu]
+- Python loop [cpu]
+- C++ CUDA [cpu]
 - C++ loop [cpu]
+- PyOCL [gpu]
+- TensorFlow [gpu]
+- Octave [cpu]
+- Numpy [cpu]
+- TensorFlow [cpu]
+- C++ OCL [gpu]
 
 
 
@@ -93,17 +94,23 @@ Submitted by Benny Prijono on 2017-11-14
 | OS | OS X 10.11.14 |
 | GPU | on board Intel Iris |
 | OpenCL | preinstalled (XCode 5.1.1) |
+| Python | 3.5.2 |
+| TensorFlow | 1.0.1 |
+| Octave | 3.8.0 |
 
 
  ### Result Details
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
-| Python loop [cpu] | 20491.674 | 2353.082 | 429.93x |
-| Numpy [cpu] | 448.097 | 14.627 | 9.40x |
-| C++ OCL [gpu] | 56.174 | 1.138 | 1.18x |
-| C++ loop [cpu] | 50.127 | 2.145 | 1.05x |
-| C++ OCL [cpu] | 47.663 | 0.936 | 1.00x |
+| Python loop [cpu] | 20491.674 | 2353.082 | 444.43x |
+| Numpy [cpu] | 448.097 | 14.627 | 9.72x |
+| Octave [cpu] | 424.165 | 13.562 | 9.20x |
+| TensorFlow [cpu] | 307.726 | 4.436 | 6.67x |
+| C++ OCL [gpu] | 54.344 | 0.318 | 1.18x |
+| Java loop [cpu] | 54.112 | 1.436 | 1.17x |
+| C++ loop [cpu] | 46.142 | 0.119 | 1.00x |
+| C++ OCL [cpu] | 46.108 | 0.079 | 1.00x |
 
 
 ### Result
@@ -113,6 +120,6 @@ Submitted by Benny Prijono on 2017-11-14
 
 ### Notes
 
-- **outlier "Python loop [cpu]" is removed from the chart because it is 429x slower**
+- **outlier "Python loop [cpu]" is removed from the chart because it is 444x slower**
 
 

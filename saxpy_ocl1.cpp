@@ -124,7 +124,8 @@ int main(int argc, const char *argv[])
       queue.enqueueNDRangeKernel(kernel, cl::NullRange, cl::NDRange(N));
       queue.finish();
 #endif
-      std::cout << "Elapsed: " << timer.elapsed_msec() << " ms\n";
+      double elapsed = timer.elapsed_msec();
+      std::cout << "Elapsed: " << elapsed << " ms\n";
 
       queue.enqueueReadBuffer(dev_y, CL_TRUE, 0, N * sizeof(float), host_y);
       saxpy_verify(host_y);

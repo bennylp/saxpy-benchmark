@@ -7,4 +7,5 @@
 *.exe
 *.exp
 *.pyc
+*.class
 tmp

@@ -32,7 +32,11 @@
     ["System", "MacBook Pro 13\" late 2013"],
     ["OS", "OS X 10.11.14"],
     ["GPU", "on board Intel Iris"],
-    ["OpenCL", "preinstalled (XCode 5.1.1)"]
+    ["OpenCL", "preinstalled (XCode 5.1.1)"],
+    ["Python", "3.5.2"],
+    ["TensorFlow", "1.0.1"],
+    ["Octave", "3.8.0"],
+    ["Java", "1.8.0_92"]
   ]
  }
 ]

@@ -1,11 +1,11 @@
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
 
 const unsigned N = (1 << 26);
-//const unsigned N = (1 << 5);
-const unsigned XVAL = 2.0f;
-const unsigned YVAL = 1.0f;
-const unsigned AVAL = 3.0f;
+const float XVAL = rand() % 1000000;
+const float YVAL = rand() % 1000000;
+const float AVAL = rand() % 1000000;
 
 typedef float real_t;
 

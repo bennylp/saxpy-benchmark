@@ -7,17 +7,23 @@ SAXPY (Single Precision A * X Plus Y) is basically:
 ```
 
 This repository contains several implementations of SAXPY such as:
- - naive Python loop [[saxpy_loop.py](saxpy_loop.py)]
- - Python Numpy [[saxpy_numpy.py](saxpy_numpy.py)]
- - Octave [[saxpy.m](saxpy.m)]
- - R [[saxpy.R](saxpy.R)]
- - naive C++ loop [[saxpy_cpu.cpp](saxpy_cpu.cpp)]
- - TensorFlow (CPU and GPU) [[saxpy_tf.py](saxpy_tf.py)]
- - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
- - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)] 
- - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
-
-Unless noted differently, we use the best mean to do the job on each platform,
+- C++:
+    - naive C++ loop [[saxpy_cpu.cpp](saxpy_cpu.cpp)]
+    - C++ CUDA (GPU) [[saxpy_cuda.cu](saxpy_cuda.cu)]
+    - OpenCL (CPU and GPU) [[saxpy_ocl1.cpp](saxpy_ocl1.cpp)]
+    - C++ OpenMP [[saxpy_omp.cpp](saxpy_omp.cpp)]
+- Python:
+    - naive Python loop [[saxpy_loop.py](saxpy_loop.py)]
+    - Python Numpy [[saxpy_numpy.py](saxpy_numpy.py)]
+    - TensorFlow (CPU and GPU) [[saxpy_tf.py](saxpy_tf.py)]
+    - PyOpenCL (CPU and GPU) [[saxpy_pyocl.py](saxpy_pyocl.py)]
+- Java:
+    - naive Java loop [[SaxpyLoop.java](SaxpyLoop.java)]
+- Octave [[saxpy.m](saxpy.m)]
+- R [[saxpy.R](saxpy.R)]
+ 
+ 
+Unless noted differently, we attempt to use the best mean to do the job on each platform,
 e.g. vectorization on Numpy, R, and Octave.
 
 We only measure the time to perform the actual loop and not other things 
@@ -375,7 +381,6 @@ and visualization tools, with syntax largely compatible with Matlab.
 It's very popular for prototyping machine learning models because of its array accessing syntax
 cleanliness and for its speed too, some say. So let's put it through its paces.
 
-
 Similar to Numpy, implementing SAXPY as vectorized computation is trivial. In fact this is the
 whole source code ([saxpy.m](saxpy.m)):
 
@@ -394,6 +399,12 @@ toc
 
 answer = YVAL + AVAL * XVAL;
 error = sum(abs(y - answer))
+```
+
+### Running
+
+```
+$ octave saxpy.m
 ```
 
 # R
@@ -426,3 +437,24 @@ cat("Error:", error, "\n")
 ```
 
 For the benchmark, run `Rscript` with `--arch x64` argument.
+
+# Naive Java Loop
+
+Plain Java loop:
+
+```java
+   for (int i=0; i<N; i++) {
+       y[i] += AVAL * x[i];
+   }
+```
+
+#### Configuring and Building
+
+Edit the Makefile and include `SaxpyLoop.class` in `TARGET`, then run `make`.
+
+Alternatively just run `javac SaxpyLoop.java` in command prompt.
+ 
+#### Running
+
+Just run `java SaxpyLoop`.
+

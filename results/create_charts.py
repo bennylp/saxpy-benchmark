@@ -7,13 +7,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-known_columns = set(['Python loop [cpu]', 'Numpy [cpu]',
+known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
                      'C++ loop [cpu]',
                      'C++ CUDA [cpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]',
-                     'TensorFlow [cpu]', 'TensorFlow [gpu]',
-                     'Octave [cpu]', 'R [cpu]'])
+                     'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]',
+                     'Octave [cpu]', 'R [cpu]',
+                     'Java loop [cpu]'])
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
@@ -41,7 +42,8 @@ def create_chart(spec, output_md, use_rel=True):
     m = df.mean().sort_values(ascending=False)
     for idx in m.index:
         if idx not in known_columns:
-            sys.stderr.write("Error: unrecognized column name '{}'. Standard names are required.\n".format(idx))
+            sys.stderr.write("Error: unrecognized column name '{}'. Standard names are required, choose one of:\n - {}\n".format(
+                                idx, '\n - '.join(sorted(known_columns))))
             sys.exit(1)
     rel = m / m[-1]
     std = df.std()
@@ -92,7 +94,7 @@ def create_chart(spec, output_md, use_rel=True):
 
     for i, v in enumerate(y):
         # ax.text(v, i, '%.3fx' % v)
-        ax.text(max(0, v - 0.7), y_pos[i] + 0.03, '%.3fx' % v, fontdict={'size': 8}, color='w')
+        ax.text(max(0, v - 0.4), y_pos[i] + 0.03, '%.1fx' % v, fontdict={'size': 8}, color='w')
         ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 6}, color='grey')
 
     ax.text(y[0] * 5 / 8, y_pos[-1], 'SAXPY Benchmark',
@@ -103,7 +105,7 @@ def create_chart(spec, output_md, use_rel=True):
     ax.set_yticks(y_pos)
     ax.set_yticklabels(tests, fontdict={'size': 9}, color="#202020")
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Duration Compared to Fastest Test', fontdict={'size': 11}, color="#202020")
+    ax.set_xlabel('Time (relative to fastest test)', fontdict={'size': 11}, color="#202020")
     ax.set_title(spec['title'], fontdict={'size': 13})
 
     ax.grid(color='w')
@@ -131,7 +133,7 @@ if __name__ == "__main__":
     specs = json.loads(open('result_specs.json').read())
     output_md = README_MD
 
-    output_md += "".join(["- %s\n" % nm for nm in list(known_columns)])
+    output_md += "".join(["- %s\n" % nm for nm in sorted(known_columns)])
     output_md += "\n"
 
     for spec in specs:

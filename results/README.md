@@ -97,6 +97,7 @@ Submitted by Benny Prijono on 2017-11-14
 | Python | 3.5.2 |
 | TensorFlow | 1.0.1 |
 | Octave | 3.8.0 |
+| Java | 1.8.0_92 |
 
 
  ### Result Details

@@ -65,8 +65,8 @@ all: $(TARGETS)
 saxpy_cpu$(EXE): saxpy_cpu.cpp saxpy.h
 	$(CC) $(CFLAGS) $(CC_O) $(@) saxpy_cpu.cpp
 
-saxpy_cuda$(EXE): saxpy_cuda.cu saxpy.h
-	nvcc -Wno-deprecated-gpu-targets saxpy_cuda.cu -o saxpy_cuda
+saxpy_cuda$(EXE): saxpy_cuda.cpp saxpy.h
+	nvcc -Wno-deprecated-gpu-targets --x cu -o saxpy_cuda saxpy_cuda.cpp
 		
 saxpy_ocl1$(EXE): saxpy_ocl1.cpp saxpy.h
 	$(CC) $(CFLAGS) $(OCL_CFLAGS) $(CC_O) $(@) saxpy_ocl1.cpp $(OCL_LDFLAGS)

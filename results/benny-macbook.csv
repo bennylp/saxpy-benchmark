@@ -1,4 +1,4 @@
-Python loop [cpu],Numpy [cpu],C++ loop [cpu],C++ OCL [cpu],C++ OCL [gpu],Octave [cpu],Py TensorFlow [cpu],Java loop [cpu]
+Python loop [cpu],Py Numpy [cpu],C++ loop [cpu],C++ OCL [cpu],C++ OCL [gpu],Octave [cpu],Py TensorFlow [cpu],Java loop [cpu]
 24696.272,422.1930503845,46.0557,46.0345,54.2088,402.84,294.9268817902,52.282716
 19327.97,423.1059551239,46.2879,46.0449,54.2369,436.029,294.0130233765,53.079058
 19619.652,423.5529899597,46.226,46.1948,54.6392,431.278,295.2718734741,54.223472

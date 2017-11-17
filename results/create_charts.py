@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-known_columns = set(['Python loop [cpu]', 'Numpy [cpu]',
+known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
                      'C++ loop [cpu]',
                      'C++ CUDA [cpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     specs = json.loads(open('result_specs.json').read())
     output_md = README_MD
 
-    output_md += "".join(["- %s\n" % nm for nm in list(known_columns)])
+    output_md += "".join(["- %s\n" % nm for nm in sorted(known_columns)])
     output_md += "\n"
 
     for spec in specs:

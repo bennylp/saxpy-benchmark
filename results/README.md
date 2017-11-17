@@ -10,19 +10,19 @@ file. Feel free to submit a result:
 When creating a CSV, please standardize the column names to the following, otherwise
 the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
 some statistics with them in the future:
-- Java loop [cpu]
-- R [cpu]
-- C++ OCL [cpu]
-- PyOCL [cpu]
-- Python loop [cpu]
 - C++ CUDA [cpu]
-- C++ loop [cpu]
-- PyOCL [gpu]
-- TensorFlow [gpu]
-- Octave [cpu]
-- Numpy [cpu]
-- TensorFlow [cpu]
+- C++ OCL [cpu]
 - C++ OCL [gpu]
+- C++ loop [cpu]
+- Java loop [cpu]
+- Octave [cpu]
+- Py Numpy [cpu]
+- Py TensorFlow [cpu]
+- Py TensorFlow [gpu]
+- PyOCL [cpu]
+- PyOCL [gpu]
+- Python loop [cpu]
+- R [cpu]
 
 
 
@@ -57,12 +57,12 @@ Submitted by Benny Prijono on 2017-11-14
 |--------| --------: | --------: | --------: |
 | Python loop [cpu] | 12494.000 | 198.252 | 390.80x |
 | Octave [cpu] | 314.848 | 15.985 | 9.85x |
-| Numpy [cpu] | 276.667 | 2.503 | 8.65x |
+| Py Numpy [cpu] | 276.667 | 2.503 | 8.65x |
 | PyOCL [gpu] | 222.500 | 3.271 | 6.96x |
 | R [cpu] | 216.237 | 2.749 | 6.76x |
-| TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
+| Py TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
 | C++ OCL [cpu] | 110.983 | 2.128 | 3.47x |
-| TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
+| Py TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
 | PyOCL [cpu] | 46.000 | 1.265 | 1.44x |
 | C++ loop [cpu] | 40.979 | 0.943 | 1.28x |
 | C++ CUDA [cpu] | 32.218 | 0.019 | 1.01x |
@@ -104,9 +104,9 @@ Submitted by Benny Prijono on 2017-11-14
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop [cpu] | 20491.674 | 2353.082 | 444.43x |
-| Numpy [cpu] | 448.097 | 14.627 | 9.72x |
 | Octave [cpu] | 424.165 | 13.562 | 9.20x |
-| TensorFlow [cpu] | 307.726 | 4.436 | 6.67x |
+| Py Numpy [cpu] | 422.904 | 1.792 | 9.17x |
+| Py TensorFlow [cpu] | 295.680 | 1.823 | 6.41x |
 | C++ OCL [gpu] | 54.344 | 0.318 | 1.18x |
 | Java loop [cpu] | 54.112 | 1.436 | 1.17x |
 | C++ loop [cpu] | 46.142 | 0.119 | 1.00x |

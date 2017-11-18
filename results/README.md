@@ -13,6 +13,7 @@ some statistics with them in the future:
 - C++ CUDA [cpu]
 - C++ OCL [cpu]
 - C++ OCL [gpu]
+- C++ OMP [cpu]
 - C++ loop [cpu]
 - Java loop [cpu]
 - Octave [cpu]
@@ -63,9 +64,11 @@ Submitted by Benny Prijono on 2017-11-14
 | Py TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
 | C++ OCL [cpu] | 110.983 | 2.128 | 3.47x |
 | Py TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
+| C++ OMP [cpu] | 59.132 | 27.900 | 1.85x |
 | PyOCL [cpu] | 46.000 | 1.265 | 1.44x |
-| C++ loop [cpu] | 40.979 | 0.943 | 1.28x |
-| C++ CUDA [cpu] | 32.218 | 0.019 | 1.01x |
+| Java loop [cpu] | 43.635 | 4.129 | 1.36x |
+| C++ loop [cpu] | 38.964 | 0.533 | 1.22x |
+| C++ CUDA [cpu] | 32.169 | 0.053 | 1.01x |
 | C++ OCL [gpu] | 31.970 | 0.057 | 1.00x |
 
 

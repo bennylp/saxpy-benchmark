@@ -1,5 +1,4 @@
 import time
-
 import saxpy
 
 x = [saxpy.XVAL] * saxpy.N

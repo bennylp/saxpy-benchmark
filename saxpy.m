@@ -8,7 +8,8 @@ y = ones(N,1) * YVAL;
 
 tic;
 y += x * AVAL;
-toc
+elapsed = toc;
+elapsed = elapsed * 1000
 
 answer = YVAL + AVAL * XVAL;
 error = sum(abs(y - answer))

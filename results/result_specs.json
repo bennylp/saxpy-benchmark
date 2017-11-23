@@ -1,5 +1,28 @@
 [
   {
+  "title": "i7-6700 3.40GHz 4 cores CPU, NVidia GTX 1080 GPU",
+  "data": "benny-linux.csv",
+  "date": "2017-11-21",
+  "by": "Benny Prijono",
+  "remarks": "",
+  "details": [
+    ["System", "HP Pavilion 550-227 desktop"],
+    ["", "Intel i7-6700 CPU @ 3.40GHz 16GB RAM"],
+    ["OS", "Ubuntu Linux 16.04 64bit"],
+    ["GPU", "NVidia GeForce GTX 1080 8GB mem"],
+    ["C++ Compiler", "g++ 5.4.0"],
+    ["Python3", "3.5.2 64bit"],
+    ["TensorFlow", "TensorFlow 1.4 (GPU)"],
+    ["CUDA", "Version 9.0.61"],
+    ["OpenCL", "- Khronos OpenCL header 1.2"],
+    ["", "- Intel OpenCL driver 16.1.1"],
+    ["", "- NVidia OpenCL 1.2 driver"],
+    ["PyOpenCL", "version 2015.1"],
+    ["Octave", "version 4.0.0 64bit"],
+    ["R", "version 3.2.3 64bit"]
+  ]
+ },
+  {
   "title": "i7-6700 3.40GHz 4 cores CPU, NVidia GTX 475 GPU",
   "data": "benny-desktop1.csv",
   "date": "2017-11-14",

@@ -8,8 +8,11 @@
 // - http://simpleopencl.blogspot.co.id/2013/06/tutorial-simple-start-with-opencl-and-c.html
 
 #define __CL_ENABLE_EXCEPTIONS
+//#define CL_HPP_TARGET_OPENCL_VERSION 120
 //#define CL_VERSION_1_2
 //#include <CL/cl.hpp>		// <-- On Error, use the "extra/cl.hpp" instead
+//#define CL_VERSION_2_0
+//#include <CL/cl2.hpp>		// <-- On Error, use the "extra/cl.hpp" instead
 #include "extra/cl.hpp"
 
 static std::string dev_type_name(unsigned dev_type)

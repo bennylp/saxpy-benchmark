@@ -10,7 +10,7 @@ file. Feel free to submit a result:
 When creating a CSV, please standardize the column names to the following, otherwise
 the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
 some statistics with them in the future:
-- C++ CUDA [cpu]
+- C++ CUDA [gpu]
 - C++ OCL [cpu]
 - C++ OCL [gpu]
 - C++ OMP [cpu]
@@ -24,6 +24,70 @@ some statistics with them in the future:
 - PyOCL [gpu]
 - Python loop [cpu]
 - R [cpu]
+
+
+
+# i7-6700 3.40GHz 4 cores CPU, NVidia GTX 1080 GPU
+
+Submitted by Benny Prijono on 2017-11-21
+
+
+### Specs
+
+|    |    |
+|----|----|
+| System | HP Pavilion 550-227 desktop |
+|  | Intel i7-6700 CPU @ 3.40GHz 16GB RAM |
+| OS | Ubuntu Linux 16.04 64bit |
+| GPU | NVidia GeForce GTX 1080 8GB mem |
+| C++ Compiler | g++ 5.4.0 |
+| Python3 | 3.5.2 64bit |
+| TensorFlow | TensorFlow 1.4 (GPU) |
+| CUDA | Version 9.0.61 |
+| OpenCL | - Khronos OpenCL header 1.2 |
+|  | - Intel OpenCL driver 16.1.1 |
+|  | - NVidia OpenCL 1.2 driver |
+| PyOpenCL | version 2015.1 |
+| Octave | version 4.0.0 64bit |
+| R | version 3.2.3 64bit |
+
+
+ ### Result Details
+
+| Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
+|--------| --------: | --------: | --------: |
+| Python loop [cpu] | 11934.702 | 178.077 | 3571.96x |
+| Octave [cpu] | 217.682 | 0.993 | 65.15x |
+| R [cpu] | 151.504 | 0.774 | 45.34x |
+| C++ OMP [cpu] | 144.715 | 14.128 | 43.31x |
+| Py TensorFlow [cpu] | 143.582 | 0.479 | 42.97x |
+| C++ OCL [cpu] | 80.856 | 0.061 | 24.20x |
+| PyOCL [gpu] | 77.332 | 0.257 | 23.14x |
+| Py Numpy [cpu] | 77.161 | 0.378 | 23.09x |
+| C++ loop [cpu] | 43.684 | 0.140 | 13.07x |
+| Java loop [cpu] | 42.703 | 0.100 | 12.78x |
+| PyOCL [cpu] | 39.846 | 0.598 | 11.93x |
+| Py TensorFlow [gpu] | 29.887 | 0.068 | 8.94x |
+| C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
+| C++ OCL [gpu] | 3.341 | 0.012 | 1.00x |
+
+
+### Result
+
+![benny-linux.png](benny-linux.png?raw=true "benny-linux.png")
+
+
+### Notes
+
+- **outlier "Python loop [cpu]" is removed from the chart because it is 3571x slower**
+- **outlier "Octave [cpu]" is removed from the chart because it is 65x slower**
+- **outlier "R [cpu]" is removed from the chart because it is 45x slower**
+- **outlier "C++ OMP [cpu]" is removed from the chart because it is 43x slower**
+- **outlier "Py TensorFlow [cpu]" is removed from the chart because it is 42x slower**
+- **outlier "C++ OCL [cpu]" is removed from the chart because it is 24x slower**
+- **outlier "PyOCL [gpu]" is removed from the chart because it is 23x slower**
+- **outlier "Py Numpy [cpu]" is removed from the chart because it is 23x slower**
+
 
 
 
@@ -56,19 +120,19 @@ Submitted by Benny Prijono on 2017-11-14
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
-| Python loop [cpu] | 12494.000 | 198.252 | 390.80x |
+| Python loop [cpu] | 12019.500 | 79.322 | 375.96x |
 | Octave [cpu] | 314.848 | 15.985 | 9.85x |
-| Py Numpy [cpu] | 276.667 | 2.503 | 8.65x |
 | PyOCL [gpu] | 222.500 | 3.271 | 6.96x |
 | R [cpu] | 216.237 | 2.749 | 6.76x |
 | Py TensorFlow [cpu] | 214.564 | 2.450 | 6.71x |
+| Py Numpy [cpu] | 124.167 | 1.472 | 3.88x |
 | C++ OCL [cpu] | 110.983 | 2.128 | 3.47x |
 | Py TensorFlow [gpu] | 78.536 | 0.522 | 2.46x |
 | C++ OMP [cpu] | 59.132 | 27.900 | 1.85x |
 | PyOCL [cpu] | 46.000 | 1.265 | 1.44x |
 | Java loop [cpu] | 43.635 | 4.129 | 1.36x |
 | C++ loop [cpu] | 38.964 | 0.533 | 1.22x |
-| C++ CUDA [cpu] | 32.169 | 0.053 | 1.01x |
+| C++ CUDA [gpu] | 32.169 | 0.053 | 1.01x |
 | C++ OCL [gpu] | 31.970 | 0.057 | 1.00x |
 
 
@@ -79,7 +143,7 @@ Submitted by Benny Prijono on 2017-11-14
 
 ### Notes
 
-- **outlier "Python loop [cpu]" is removed from the chart because it is 390x slower**
+- **outlier "Python loop [cpu]" is removed from the chart because it is 375x slower**
 
 
 

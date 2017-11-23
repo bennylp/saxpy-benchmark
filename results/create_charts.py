@@ -9,7 +9,7 @@ import pandas as pd
 
 known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
                      'C++ loop [cpu]',
-                     'C++ CUDA [cpu]',
+                     'C++ CUDA [gpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]',
                      'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]',

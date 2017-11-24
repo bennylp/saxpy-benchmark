@@ -16,6 +16,8 @@ some statistics with them in the future:
 - C++ OMP [cpu]
 - C++ loop [cpu]
 - Java loop [cpu]
+- MXNet [cpu]
+- MXNet [gpu]
 - Octave [cpu]
 - Py Numpy [cpu]
 - Py TensorFlow [cpu]
@@ -50,6 +52,7 @@ Submitted by Benny Prijono on 2017-11-21
 | PyOpenCL | version 2015.1 |
 | Octave | version 4.0.0 64bit |
 | R | version 3.2.3 64bit |
+| MXNet | mxnet-cu90 (0.12.1) |
 
 
  ### Result Details
@@ -57,6 +60,7 @@ Submitted by Benny Prijono on 2017-11-21
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
 | Python loop [cpu] | 11934.702 | 178.077 | 3571.96x |
+| MXNet [cpu] | 226.005 | 1.247 | 67.64x |
 | Octave [cpu] | 217.682 | 0.993 | 65.15x |
 | R [cpu] | 151.504 | 0.774 | 45.34x |
 | C++ OMP [cpu] | 144.715 | 14.128 | 43.31x |
@@ -68,6 +72,7 @@ Submitted by Benny Prijono on 2017-11-21
 | Java loop [cpu] | 42.703 | 0.100 | 12.78x |
 | PyOCL [cpu] | 39.846 | 0.598 | 11.93x |
 | Py TensorFlow [gpu] | 29.887 | 0.068 | 8.94x |
+| MXNet [gpu] | 12.843 | 0.043 | 3.84x |
 | C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
 | C++ OCL [gpu] | 3.341 | 0.012 | 1.00x |
 
@@ -80,6 +85,7 @@ Submitted by Benny Prijono on 2017-11-21
 ### Notes
 
 - **outlier "Python loop [cpu]" is removed from the chart because it is 3571x slower**
+- **outlier "MXNet [cpu]" is removed from the chart because it is 67x slower**
 - **outlier "Octave [cpu]" is removed from the chart because it is 65x slower**
 - **outlier "R [cpu]" is removed from the chart because it is 45x slower**
 - **outlier "C++ OMP [cpu]" is removed from the chart because it is 43x slower**

@@ -19,7 +19,8 @@
     ["", "- NVidia OpenCL 1.2 driver"],
     ["PyOpenCL", "version 2015.1"],
     ["Octave", "version 4.0.0 64bit"],
-    ["R", "version 3.2.3 64bit"]
+    ["R", "version 3.2.3 64bit"],
+    ["MXNet", "mxnet-cu90 (0.12.1)"]
   ]
  },
   {

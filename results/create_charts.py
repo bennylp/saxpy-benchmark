@@ -15,7 +15,8 @@ known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
                      'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]',
                      'Octave [cpu]', 'R [cpu]',
                      'Java loop [cpu]',
-                     'C++ OMP [cpu]'])
+                     'C++ OMP [cpu]',
+                     'MXNet [cpu]', 'MXNet [gpu]'])
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))

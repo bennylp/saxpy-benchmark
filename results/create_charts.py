@@ -20,7 +20,8 @@ known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
                      'Octave [cpu]', 'R [cpu]',
                      'Java loop [cpu]',
                      'C++ OMP [cpu]',
-                     'MXNet [cpu]', 'MXNet [gpu]'])
+                     'MXNet [cpu]', 'MXNet [gpu]',
+                     'Julia (loop) [cpu]', 'Julia (vec) [cpu]'])
 
 def create_chart0(spec, lang, output_dir):
     print('Processing {} "{}"'.format(spec['output'], spec['title']))

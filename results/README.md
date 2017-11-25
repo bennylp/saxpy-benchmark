@@ -16,6 +16,8 @@ some statistics with them in the future:
 - C++ OMP [cpu]
 - C++ loop [cpu]
 - Java loop [cpu]
+- Julia (loop) [cpu]
+- Julia (vec) [cpu]
 - MXNet [cpu]
 - MXNet [gpu]
 - Octave [cpu]

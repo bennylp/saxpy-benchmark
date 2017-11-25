@@ -17,7 +17,7 @@
          },
          { "data": "benny-windows.csv",
            "title": "Windows"
-         }         
+         }
         ],
     "columns": ["Python loop [cpu]", "Py Numpy [cpu]"],
     "output": "python-loop-vs-numpy-cpu.png",
@@ -34,7 +34,7 @@
            "title": "Windows"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Octave [cpu]", "R [cpu]", "C++ loop [cpu]", "Java loop [cpu]"],
+    "columns": ["Py Numpy [cpu]", "Octave [cpu]", "R [cpu]", "C++ loop [cpu]", "Java loop [cpu]", "Julia (vec) [cpu]", "Julia (loop) [cpu]"],
     "output": "script-vs-script-vs-java-vs-c++-cpu.png"
  },
  {

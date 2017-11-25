@@ -7,18 +7,18 @@
 # Step 1: Configure your compiler
 ###################################################################
 # Windows / Visual Studio tools
-#CC = cl
-#CC_O = /Fe:
-#CFLAGS = /Ox /EHsc /TP
-#EXE = .exe
-#RM = del
+CC = cl
+CC_O = /Fe:
+CFLAGS = /Ox /EHsc /TP
+EXE = .exe
+RM = del
 
 # Linux/MacOS/Unix tools
-CC = g++
-CC_O = -o
-CFLAGS = -O3 -std=c++11
-EXE =
-RM = rm -f
+#CC = g++
+#CC_O = -o
+#CFLAGS = -O3 -std=c++11
+#EXE =
+#RM = rm -f
 
 
 ###################################################################
@@ -42,9 +42,11 @@ TARGETS = saxpy_cpu$(EXE) \
 #
 # CUDA settings
 #
-CUDA_CFLAGS = -O3 -std=c++11 -Wno-deprecated-gpu-targets --x cu
-CUDA_LDFLAGS =
+#CUDA_CFLAGS = -O3 -std=c++11 -Wno-deprecated-gpu-targets --x cu
+#CUDA_LDFLAGS =
 
+CUDA_CFLAGS =
+CUDA_LDFLAGS =
 
 #
 # OpenCL settings
@@ -62,24 +64,26 @@ CUDA_LDFLAGS =
 #OCL_LDFLAGS = /link /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64" OpenCL.lib
 
 # With Intel OpenCL
-#OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
-#OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
+OCL_CFLAGS = /I"$(INTELOCLSDKROOT)/include"
+OCL_LDFLAGS = /link /LIBPATH:"$(INTELOCLSDKROOT)/lib/x64" OpenCL.lib
 
-#-DCL_USE_DEPRECATED_OPENCL_1_2_APIS=1
-OCL_CFLAGS = -I/home/bennylp/Desktop/opt/include -DCL_HPP_ENABLE_EXCEPTIONS=1
-OCL_LDFLAGS = -L/home/bennylp/Desktop/opt/lib -lOpenCL -lstdc++
+#OCL_CFLAGS = -I/home/bennylp/Desktop/opt/include -DCL_HPP_ENABLE_EXCEPTIONS=1
+#OCL_LDFLAGS = -L/home/bennylp/Desktop/opt/lib -lOpenCL -lstdc++
 
 #
 # OpenMP settings
 #
+# MacOS
 #OMP_CFLAGS = -O3 -std=c++11 -fopenmp -I/usr/local/octave/3.8.0/lib/gcc47/gcc/x86_64-apple-darwin13/4.7.3/include
 #OMP_LDFLAGS = -L/usr/local/octave/3.8.0/lib/gcc47
 
-OMP_CFLAGS = -O3 -std=c++11 -fopenmp
-OMP_LDFLAGS = 
+# Linux
+#OMP_CFLAGS = -O3 -std=c++11 -fopenmp
+#OMP_LDFLAGS = 
 
-#OMP_CFLAGS = /Ox /EHsc /openmp
-#OMP_LDFLAGS =
+# Windows
+OMP_CFLAGS = /Ox /EHsc /openmp
+OMP_LDFLAGS =
 
 ###################################################################
 # Done. 

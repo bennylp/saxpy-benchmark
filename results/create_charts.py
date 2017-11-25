@@ -64,7 +64,7 @@ def create_chart0(spec, lang, output_dir):
     y_pos = np.arange(len(df.index)) * TOTAL_HEIGHT
     # print("y_pos:", y_pos)
 
-    fig = plt.figure(figsize=(9, 2 + TOTAL_HEIGHT * len(df.index)))
+    fig = plt.figure(figsize=(7, 2 + TOTAL_HEIGHT * len(df.index)))
     ax = plt.subplot(111)
     colors = ['#009900', '#ff8000', '#999900', '#00999999']
     for i, col in enumerate(df.columns):
@@ -83,10 +83,10 @@ def create_chart0(spec, lang, output_dir):
             else:
                 ax.text(y[j] + max_value * 0.01, x[j] + yshift, txt, fontdict={'size': 8}, color=colors[i])
 
-    ax.text(rel.iloc[0, 0] * 5 / 8, y_pos[-1] + BAR_HEIGHT / 2 - 0.01,
+    ax.text(rel.iloc[0, 0] * 4 / 8, y_pos[-1] + BAR_HEIGHT / 2 - 0.01,
             '©%d SAXPY Benchmark' % datetime.date.today().year,
             fontdict={'size': 8}, color='grey')
-    ax.text(rel.iloc[0, 0] * 5 / 8, y_pos[-1] + BAR_HEIGHT / 2 - 0.01 + 0.01 * (len(df.index) * SERIES_CNT),
+    ax.text(rel.iloc[0, 0] * 4 / 8, y_pos[-1] + BAR_HEIGHT / 2 - 0.01 + 0.01 * (len(df.index) * SERIES_CNT),
             'https://github.com/bennylp/saxpy-benchmark',
             fontdict={'size': 8}, color='grey')
 

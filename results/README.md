@@ -67,12 +67,14 @@ Submitted by Benny Prijono on 2017-11-21
 | R [cpu] | 151.504 | 0.774 | 45.34x |
 | C++ OMP [cpu] | 144.715 | 14.128 | 43.31x |
 | Py TensorFlow [cpu] | 143.582 | 0.479 | 42.97x |
+| Julia (vec) [cpu] | 121.649 | 0.466 | 36.41x |
 | C++ OCL [cpu] | 80.856 | 0.061 | 24.20x |
 | PyOCL [gpu] | 77.332 | 0.257 | 23.14x |
 | Py Numpy [cpu] | 77.161 | 0.378 | 23.09x |
-| C++ loop [cpu] | 43.684 | 0.140 | 13.07x |
 | Java loop [cpu] | 42.703 | 0.100 | 12.78x |
+| Julia (loop) [cpu] | 41.343 | 0.126 | 12.37x |
 | PyOCL [cpu] | 39.846 | 0.598 | 11.93x |
+| C++ loop [cpu] | 36.676 | 0.217 | 10.98x |
 | Py TensorFlow [gpu] | 29.887 | 0.068 | 8.94x |
 | MXNet [gpu] | 12.843 | 0.043 | 3.84x |
 | C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
@@ -92,6 +94,7 @@ Submitted by Benny Prijono on 2017-11-21
 - **outlier "R [cpu]" is removed from the chart because it is 45x slower**
 - **outlier "C++ OMP [cpu]" is removed from the chart because it is 43x slower**
 - **outlier "Py TensorFlow [cpu]" is removed from the chart because it is 42x slower**
+- **outlier "Julia (vec) [cpu]" is removed from the chart because it is 36x slower**
 - **outlier "C++ OCL [cpu]" is removed from the chart because it is 24x slower**
 - **outlier "PyOCL [gpu]" is removed from the chart because it is 23x slower**
 - **outlier "Py Numpy [cpu]" is removed from the chart because it is 23x slower**

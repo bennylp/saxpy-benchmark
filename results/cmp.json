@@ -53,6 +53,21 @@
     "output": "python-loop-vs-numpy-vs-pandas-cpu.png",
     "legend": "lower right"
  },
+ {
+ 	"title": "Julia Loop vs Vector (CPU)",
+    "title-id": "Julia Loop vs Vektor (CPU)",
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }
+        ],
+    "columns": ["Julia (loop) [cpu]", "Julia (vec) [cpu]", "C++ loop [cpu]"],
+    "output": "julia-loop-vs-vector.png",
+    "legend": "lower right"
+ },
   {
     "title": "Script vs Script vs Java vs C++(CPU)",
     "title-id": "Skrip vs Skrip (CPU)",

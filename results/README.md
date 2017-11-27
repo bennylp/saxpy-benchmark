@@ -66,18 +66,18 @@ Submitted by Benny Prijono on 2017-11-21
 
 | Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
 |--------| --------: | --------: | --------: |
+| R (loop) [cpu] | 75848.000 | 0.000 | 22700.70x |
 | Python loop [cpu] | 11934.702 | 178.077 | 3571.96x |
+| R (matrix) [cpu] | 1625.473 | 1.413 | 486.49x |
+| R (data.table) [cpu] | 706.059 | 4.114 | 211.32x |
+| Py Pandas [cpu] | 297.991 | 0.627 | 89.19x |
 | MXNet [cpu] | 226.005 | 1.247 | 67.64x |
 | Octave [cpu] | 217.682 | 0.993 | 65.15x |
 | R (array) [cpu] | 151.504 | 0.774 | 45.34x |
+| R (data.frame) [cpu] | 145.518 | 0.431 | 43.55x |
 | C++ OMP [cpu] | 144.715 | 14.128 | 43.31x |
 | Py TensorFlow [cpu] | 143.582 | 0.479 | 42.97x |
 | Julia (vec) [cpu] | 121.649 | 0.466 | 36.41x |
-| R (data.frame) [cpu] | 111.000 | 0.000 | 33.22x |
-| R (matrix) [cpu] | 111.000 | 0.000 | 33.22x |
-| R (data.table) [cpu] | 111.000 | 0.000 | 33.22x |
-| R (loop) [cpu] | 111.000 | 0.000 | 33.22x |
-| Py Pandas [cpu] | 111.000 | 0.000 | 33.22x |
 | C++ OCL [cpu] | 80.856 | 0.061 | 24.20x |
 | PyOCL [gpu] | 77.332 | 0.257 | 23.14x |
 | Py Numpy [cpu] | 77.161 | 0.378 | 23.09x |
@@ -98,18 +98,18 @@ Submitted by Benny Prijono on 2017-11-21
 
 ### Notes
 
+- **outlier "R (loop) [cpu]" is removed from the chart because it is 22700x slower**
 - **outlier "Python loop [cpu]" is removed from the chart because it is 3571x slower**
+- **outlier "R (matrix) [cpu]" is removed from the chart because it is 486x slower**
+- **outlier "R (data.table) [cpu]" is removed from the chart because it is 211x slower**
+- **outlier "Py Pandas [cpu]" is removed from the chart because it is 89x slower**
 - **outlier "MXNet [cpu]" is removed from the chart because it is 67x slower**
 - **outlier "Octave [cpu]" is removed from the chart because it is 65x slower**
 - **outlier "R (array) [cpu]" is removed from the chart because it is 45x slower**
+- **outlier "R (data.frame) [cpu]" is removed from the chart because it is 43x slower**
 - **outlier "C++ OMP [cpu]" is removed from the chart because it is 43x slower**
 - **outlier "Py TensorFlow [cpu]" is removed from the chart because it is 42x slower**
 - **outlier "Julia (vec) [cpu]" is removed from the chart because it is 36x slower**
-- **outlier "R (data.frame) [cpu]" is removed from the chart because it is 33x slower**
-- **outlier "R (matrix) [cpu]" is removed from the chart because it is 33x slower**
-- **outlier "R (data.table) [cpu]" is removed from the chart because it is 33x slower**
-- **outlier "R (loop) [cpu]" is removed from the chart because it is 33x slower**
-- **outlier "Py Pandas [cpu]" is removed from the chart because it is 33x slower**
 - **outlier "C++ OCL [cpu]" is removed from the chart because it is 24x slower**
 - **outlier "PyOCL [gpu]" is removed from the chart because it is 23x slower**
 - **outlier "Py Numpy [cpu]" is removed from the chart because it is 23x slower**

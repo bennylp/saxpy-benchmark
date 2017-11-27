@@ -11,12 +11,17 @@
  },
  {
     "title": "R Loop vs Tervektorisasi (CPU)",
+    "title-id": "Loop vs Tervektorisasi di Bahasa R (CPU)",
     "series": 
-        [{ "data": "benny-windows.csv",
+        [{ "data": "benny-linux.csv",
            "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
          }         
         ],
-    "columns": ["R (loop) [cpu]", "R (array) [cpu]"],
+    "columns": ["R (loop) [cpu]", "R (array) [cpu]", "R (matrix) [cpu]", 
+    			"R (data.frame) [cpu]", "R (data.table) [cpu]"],
     "output": "r-loop-vs-vec.png",
     "legend": "right"
  },
@@ -35,6 +40,20 @@
     "legend": "lower right"
  },
  {
+    "title": "Python Loop vs Numpy vs Pandas (CPU)",
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }
+        ],
+    "columns": ["Python loop [cpu]", "Py Numpy [cpu]", "Py Pandas [cpu]"],
+    "output": "python-loop-vs-numpy-vs-pandas-cpu.png",
+    "legend": "lower right"
+ },
+  {
     "title": "Script vs Script vs Java vs C++(CPU)",
     "title-id": "Skrip vs Skrip (CPU)",
     "series": 

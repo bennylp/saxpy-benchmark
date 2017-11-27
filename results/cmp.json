@@ -10,6 +10,17 @@
     "legend": "lower right"
  },
  {
+    "title": "R Loop vs Tervektorisasi (CPU)",
+    "series": 
+        [{ "data": "benny-windows.csv",
+           "title": "Linux"
+         }         
+        ],
+    "columns": ["R (loop) [cpu]", "R (array) [cpu]"],
+    "output": "r-loop-vs-vec.png",
+    "legend": "right"
+ },
+ {
     "title": "Python Loop vs Numpy (CPU)",
     "series": 
         [{ "data": "benny-linux.csv",
@@ -34,7 +45,7 @@
            "title": "Windows"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Octave [cpu]", "R [cpu]", "C++ loop [cpu]", "Java loop [cpu]", "Julia (vec) [cpu]", "Julia (loop) [cpu]"],
+    "columns": ["Py Numpy [cpu]", "Octave [cpu]", "R (array) [cpu]", "C++ loop [cpu]", "Java loop [cpu]", "Julia (vec) [cpu]", "Julia (loop) [cpu]"],
     "output": "script-vs-script-vs-java-vs-c++-cpu.png"
  },
  {

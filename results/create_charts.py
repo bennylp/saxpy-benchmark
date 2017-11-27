@@ -11,13 +11,15 @@ import numpy as np
 import pandas as pd
 
 
-known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]',
+known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]', 'Py Pandas [cpu]',
                      'C++ loop [cpu]',
                      'C++ CUDA [gpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]',
                      'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]',
-                     'Octave [cpu]', 'R [cpu]',
+                     'Octave [cpu]',
+                     'R (loop) [cpu]', 'R (array) [cpu]', 'R (matrix) [cpu]', 'R (data.frame) [cpu]',
+                     'R (data.table) [cpu]',
                      'Java loop [cpu]',
                      'C++ OMP [cpu]',
                      'MXNet [cpu]', 'MXNet [gpu]',
@@ -34,7 +36,8 @@ def create_chart0(spec, lang, output_dir):
 
     data = {}
     for serie in spec['series']:
-        df = pd.read_csv(serie['data'])
+        print("  Reading " + serie['data'] + "...")
+        df = pd.read_csv(serie['data'], sep=',')
         if columns:
             df = df.loc[:, columns]
         if drop_columns:
@@ -52,7 +55,10 @@ def create_chart0(spec, lang, output_dir):
     """
 
     df.sort_values(df.columns[0], ascending=False, inplace=True)
+    # print(df)
     pivot_col = df.iloc[-1].idxmin()
+    # print('  Lowest column is {}'.format(pivot_col))
+    # print('  Lowest value is {}'.format(df.iloc[-1, :][pivot_col]))
     rel = df / df.iloc[-1, :][pivot_col]
     max_value = rel.max(axis=1).iloc[0]
     # print("max_value:", max_value)

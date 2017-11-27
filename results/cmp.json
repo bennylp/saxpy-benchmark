@@ -97,8 +97,8 @@
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
-    "title": "Numpy vs Frameworks (GPU)",
-    "title-id": "Numpy vs Framework (GPU)",
+    "title": "Numpy vs Frameworks (GPU and CPU)",
+    "title-id": "Numpy vs Framework (GPU dan CPU)",
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -165,7 +165,7 @@
  },
  {
     "title": "Conclusion",
-    "title-id": "Kesimpulan",
+    "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -174,7 +174,7 @@
            "title": "Windows"
          }         
         ],
-    "exclude": "Python loop [cpu]",
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]"],
     "output": "conclusion.png"
  }
 ]

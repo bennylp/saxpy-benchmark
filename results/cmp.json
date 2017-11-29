@@ -11,12 +11,17 @@
  },
  {
     "title": "R Loop vs Tervektorisasi (CPU)",
+    "title-id": "Loop vs Tervektorisasi di Bahasa R (CPU)",
     "series": 
-        [{ "data": "benny-windows.csv",
+        [{ "data": "benny-linux.csv",
            "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
          }         
         ],
-    "columns": ["R (loop) [cpu]", "R (array) [cpu]"],
+    "columns": ["R (loop) [cpu]", "R (array) [cpu]", "R (matrix) [cpu]", 
+    			"R (data.frame) [cpu]", "R (data.table) [cpu]"],
     "output": "r-loop-vs-vec.png",
     "legend": "right"
  },
@@ -35,6 +40,35 @@
     "legend": "lower right"
  },
  {
+    "title": "Python Loop vs Numpy vs Pandas (CPU)",
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }
+        ],
+    "columns": ["Python loop [cpu]", "Py Numpy [cpu]", "Py Pandas [cpu]"],
+    "output": "python-loop-vs-numpy-vs-pandas-cpu.png",
+    "legend": "lower right"
+ },
+ {
+ 	"title": "Julia Loop vs Vector (CPU)",
+    "title-id": "Julia Loop vs Vektor (CPU)",
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }
+        ],
+    "columns": ["Julia (loop) [cpu]", "Julia (vec) [cpu]", "C++ loop [cpu]"],
+    "output": "julia-loop-vs-vector.png",
+    "legend": "lower right"
+ },
+  {
     "title": "Script vs Script vs Java vs C++(CPU)",
     "title-id": "Skrip vs Skrip (CPU)",
     "series": 
@@ -63,8 +97,8 @@
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
-    "title": "Numpy vs Frameworks (GPU)",
-    "title-id": "Numpy vs Framework (GPU)",
+    "title": "Numpy vs Frameworks (GPU and CPU)",
+    "title-id": "Numpy vs Framework (GPU dan CPU)",
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -131,7 +165,7 @@
  },
  {
     "title": "Conclusion",
-    "title-id": "Kesimpulan",
+    "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -140,7 +174,7 @@
            "title": "Windows"
          }         
         ],
-    "exclude": "Python loop [cpu]",
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]"],
     "output": "conclusion.png"
  }
 ]

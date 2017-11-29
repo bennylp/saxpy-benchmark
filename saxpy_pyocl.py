@@ -24,8 +24,8 @@ def main(where):
     if not dev:
         raise RuntimeError("No matching device found")
 
-    print("Using {}".format(dev.get_info(cl.device_info.NAME)))
     ctx = cl.Context([dev])
+    print("Using: {}".format(ctx.get_info(cl.context_info.DEVICES)))
 
     host_x = np.ones([saxpy.N], dtype=np.float32) * saxpy.XVAL
     host_y = np.ones([saxpy.N], dtype=np.float32) * saxpy.YVAL
@@ -45,11 +45,18 @@ def main(where):
             """).build()
 
     queue = cl.CommandQueue(ctx)
+    queue.flush()
+
+    saxpy_kernel = prg.saxpy
+    saxpy_kernel.set_arg(0, np.float32(saxpy.AVAL))
+    saxpy_kernel.set_arg(1, dev_x)
+    saxpy_kernel.set_arg(2, dev_y)
 
     t0 = time.time()
-    event = prg.saxpy(queue, host_x.shape, None, np.float32(saxpy.AVAL), dev_x, dev_y)
+    event = cl.enqueue_nd_range_kernel(queue, saxpy_kernel, host_x.shape, None)
     event.wait()
     t1 = time.time()
+
     print("Elapsed: {} ms".format((t1 - t0) * 1000))
 
     cl.enqueue_read_buffer(queue, dev_y, host_y).wait()

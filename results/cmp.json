@@ -164,6 +164,19 @@
     "output": "pyopencl-vs-opencl.png"
  },
  {
+    "title": "PyCUDA vs C++ (GPU)",
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }         
+        ],
+    "columns": ["PyCUDA [gpu]", "C++ OCL [gpu]", "C++ loop [cpu]"],
+    "output": "pycuda-vs-c++.png"
+ },
+ {
     "title": "Conclusion",
     "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
     "series": 

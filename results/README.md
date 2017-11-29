@@ -25,6 +25,7 @@ some statistics with them in the future:
 - Py Pandas [cpu]
 - Py TensorFlow [cpu]
 - Py TensorFlow [gpu]
+- PyCUDA [gpu]
 - PyOCL [cpu]
 - PyOCL [gpu]
 - Python loop [cpu]
@@ -87,6 +88,7 @@ Submitted by Benny Prijono on 2017-11-21
 | C++ loop [cpu] | 36.676 | 0.217 | 10.98x |
 | Py TensorFlow [gpu] | 29.887 | 0.068 | 8.94x |
 | MXNet [gpu] | 12.843 | 0.043 | 3.84x |
+| PyCUDA [gpu] | 3.621 | 0.009 | 1.08x |
 | C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
 | C++ OCL [gpu] | 3.341 | 0.012 | 1.00x |
 

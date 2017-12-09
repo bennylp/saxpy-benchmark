@@ -1,6 +1,6 @@
 [
   {
-  "title": "Ubuntu 16.04 + NVidia GTX 1080",
+  "title": "Ubuntu 16.04, NVidia GTX 1080",
   "data": "benny-linux.csv",
   "date": "2017-11-21",
   "by": "Benny Prijono",
@@ -25,7 +25,7 @@
   ]
  },
   {
-  "title": "Windows 10 + NVidia GTX 1080",
+  "title": "Windows 10, NVidia GTX 1080",
   "data": "benny-desktop1.csv",
   "date": "2017-11-14",
   "by": "Benny Prijono",

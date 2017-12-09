@@ -22,6 +22,8 @@ some statistics with them in the future:
 - MXNet [cpu]
 - MXNet [gpu]
 - Octave [cpu]
+- Py CNTK [cpu]
+- Py CNTK [gpu]
 - Py Numpy [cpu]
 - Py Pandas [cpu]
 - Py TensorFlow [cpu]
@@ -38,7 +40,7 @@ some statistics with them in the future:
 
 
 
-# Ubuntu 16.04 + NVidia GTX 1080
+# Ubuntu 16.04, NVidia GTX 1080
 
 Submitted by Benny Prijono on 2017-11-21
 
@@ -75,6 +77,8 @@ Same machine as Windows (dual-boot)
 | Python loop [cpu] | 11934.702 | 178.077 | 3571.96x |
 | R (matrix) [cpu] | 1625.473 | 1.413 | 486.49x |
 | R (data.table) [cpu] | 706.059 | 4.114 | 211.32x |
+| Py CNTK [cpu] | 682.768 | 0.965 | 204.35x |
+| Py CNTK [gpu] | 406.687 | 1.101 | 121.72x |
 | Py Pandas [cpu] | 297.991 | 0.627 | 89.19x |
 | MXNet [cpu] | 226.005 | 1.247 | 67.64x |
 | Octave [cpu] | 217.682 | 0.993 | 65.15x |
@@ -109,6 +113,8 @@ Same machine as Windows (dual-boot)
 - **outlier "Python loop [cpu]" is removed from the chart because it is 3571x slower**
 - **outlier "R (matrix) [cpu]" is removed from the chart because it is 486x slower**
 - **outlier "R (data.table) [cpu]" is removed from the chart because it is 211x slower**
+- **outlier "Py CNTK [cpu]" is removed from the chart because it is 204x slower**
+- **outlier "Py CNTK [gpu]" is removed from the chart because it is 121x slower**
 - **outlier "Py Pandas [cpu]" is removed from the chart because it is 89x slower**
 - **outlier "MXNet [cpu]" is removed from the chart because it is 67x slower**
 - **outlier "Octave [cpu]" is removed from the chart because it is 65x slower**
@@ -124,7 +130,7 @@ Same machine as Windows (dual-boot)
 
 
 
-# Windows 10 + NVidia GTX 1080
+# Windows 10, NVidia GTX 1080
 
 Submitted by Benny Prijono on 2017-11-14
 

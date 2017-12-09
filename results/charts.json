@@ -88,16 +88,14 @@
  {
     "title": "Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)",
     "title-id": "Vektorisasi Python Numpy vs Framework (CPU)",
-    "remarks": ["SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow and MXNet"],
+    "remarks": ["SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.",
+    		    "Note: CNTK result is way off, not sure why. Please have a look at the source code."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
-         },
-         { "data": "benny-windows.csv",
-           "title": "Windows"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]"],
+    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]", "Py CNTK [cpu]"],
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
@@ -107,12 +105,9 @@
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
-         },
-         { "data": "benny-windows.csv",
-           "title": "Windows"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]", "Py TensorFlow [gpu]", "MXNet [gpu]"],
+    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]", "Py TensorFlow [gpu]", "MXNet [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
     "output": "vectorized-numpy-vs-frameworks-gpu.png"
  },
  {
@@ -121,12 +116,9 @@
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
-         },
-         { "data": "benny-windows.csv",
-           "title": "Windows"
          }
         ],
-    "columns": ["Py TensorFlow [gpu]", "MXNet [gpu]", "C++ loop [cpu]"],
+    "columns": ["Py TensorFlow [gpu]", "MXNet [gpu]", "Py CNTK [gpu]", "C++ loop [cpu]"],
     "output": "frameworks-gpu-vs-c++-cpu.png"
  },
  {
@@ -198,6 +190,32 @@
     "output": "tensorflow-python-vs-c++.png"
  },
  {
+    "title": "Linux Conclusion",
+    "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
+    "remarks": ["All results, excluding Python and R loops"],
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         }         
+        ],
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]"],
+    "output": "conclusion-linux.png"
+ },
+ {
+    "title": "Windows Conclusion",
+    "remarks": ["All results, excluding Python and R loops"],
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }         
+        ],
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]", "C++ TensorFlow [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
+    "output": "conclusion-windows.png"
+ },
+ {
     "title": "Conclusion",
     "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
     "remarks": ["All results, excluding Python and R loops"],
@@ -209,7 +227,7 @@
            "title": "Windows"
          }         
         ],
-    "exclude": ["Python loop [cpu]", "R (loop) [cpu]", "C++ TensorFlow [gpu]"],
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]", "C++ TensorFlow [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
     "output": "conclusion.png"
  }
 ]

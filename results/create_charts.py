@@ -36,7 +36,9 @@ known_columns = {
     'MXNet [cpu]': 'saxpy_mxnet.py',
     'MXNet [gpu]': 'saxpy_mxnet.py',
     'Julia (loop) [cpu]': 'saxpy_loop.jl',
-    'Julia (vec) [cpu]': 'saxpy_array.jl'
+    'Julia (vec) [cpu]': 'saxpy_array.jl',
+    'Py CNTK [gpu]': 'saxpy_cntk.py',
+    'Py CNTK [cpu]': 'saxpy_cntk.py'
 }
 
 
@@ -259,7 +261,7 @@ def create_front_page():
 
     doc = ""
     doc += "# SAXPY CPU and GPGPU Benchmarks\n\n"
-    doc += "Table of Contents:\n\n"
+    doc += "**Table of Contents**:\n\n"
     doc += "- [Benchmarks](#benchmarks)\n"
     for spec in chart_specs:
         doc += "   - [{}](#{})\n".format(spec['title'],
@@ -284,6 +286,12 @@ def create_front_page():
         png_file = "results/charts-en/" + spec['output']
         doc += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
                                                     png_file, png_file)
+        if 'exclude' in spec:
+            doc += "**Excluded** from the charts:\n"
+            for col in spec.get('exclude', []):
+                doc += "- {} ([src/{}](src/{}))\n".format(col,
+                                                          known_columns[col], known_columns[col])
+            doc += "\n"
 
     doc += "\n\n"
     doc += "# Machine Specifications\n"

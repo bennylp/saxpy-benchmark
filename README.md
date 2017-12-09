@@ -1,6 +1,6 @@
 # SAXPY CPU and GPGPU Benchmarks
 
-Table of Contents:
+**Table of Contents**:
 
 - [Benchmarks](#benchmarks)
    - [Python: Loop vs Numpy (CPU)](#python-loop-vs-numpy-cpu)
@@ -17,10 +17,12 @@ Table of Contents:
    - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu-gpu)
    - [PyCUDA vs C++ (GPU)](#pycuda-vs-c-gpu)
    - [Tensorflow: Python vs C++ (GPU)](#tensorflow-python-vs-c-gpu)
+   - [Linux Conclusion](#linux-conclusion)
+   - [Windows Conclusion](#windows-conclusion)
    - [Conclusion](#conclusion)
 - [Machine Specifications](#machine-specifications)
-   - [Ubuntu 16.04 + NVidia GTX 1080](#ubuntu-1604-nvidia-gtx-1080)
-   - [Windows 10 + NVidia GTX 1080](#windows-10-nvidia-gtx-1080)
+   - [Ubuntu 16.04, NVidia GTX 1080](#ubuntu-1604-nvidia-gtx-1080)
+   - [Windows 10, NVidia GTX 1080](#windows-10-nvidia-gtx-1080)
    - [MacBook Pro 13" late 2013, on board Intel Iris GPU](#macbook-pro-13-late-2013-on-board-intel-iris-gpu)
 
 
@@ -88,11 +90,14 @@ Comparison among different programming languages
 
 ## Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)
 
-SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow and MXNet
+SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.
+
+Note: CNTK result is way off, not sure why. Please have a look at the source code.
 
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 - MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
 
@@ -105,6 +110,8 @@ Same as above, but compare on GPU as well
 - MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 - MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-gpu.png](results/charts-en/vectorized-numpy-vs-frameworks-gpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-gpu.png")
 
@@ -114,6 +121,7 @@ Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
 - Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 - MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/frameworks-gpu-vs-c++-cpu.png](results/charts-en/frameworks-gpu-vs-c++-cpu.png?raw=true "results/charts-en/frameworks-gpu-vs-c++-cpu.png")
@@ -169,16 +177,46 @@ Comparing Tensorflow C++ and Python performance
 
 ![results/charts-en/tensorflow-python-vs-c++.png](results/charts-en/tensorflow-python-vs-c++.png?raw=true "results/charts-en/tensorflow-python-vs-c++.png")
 
+## Linux Conclusion
+
+All results, excluding Python and R loops
+
+![results/charts-en/conclusion-linux.png](results/charts-en/conclusion-linux.png?raw=true "results/charts-en/conclusion-linux.png")
+
+**Excluded** from the charts:
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
+
+## Windows Conclusion
+
+All results, excluding Python and R loops
+
+![results/charts-en/conclusion-windows.png](results/charts-en/conclusion-windows.png?raw=true "results/charts-en/conclusion-windows.png")
+
+**Excluded** from the charts:
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
+- C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+
 ## Conclusion
 
 All results, excluding Python and R loops
 
 ![results/charts-en/conclusion.png](results/charts-en/conclusion.png?raw=true "results/charts-en/conclusion.png")
 
+**Excluded** from the charts:
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
+- C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+
 
 
 # Machine Specifications
-## Ubuntu 16.04 + NVidia GTX 1080
+## Ubuntu 16.04, NVidia GTX 1080
 
 |    |    |
 |----|----|
@@ -199,7 +237,7 @@ All results, excluding Python and R loops
 | R | version 3.2.3 64bit |
 | MXNet | mxnet-cu90 (0.12.1) |
 
-## Windows 10 + NVidia GTX 1080
+## Windows 10, NVidia GTX 1080
 
 |    |    |
 |----|----|

@@ -44,7 +44,7 @@ some statistics with them in the future:
 
 Submitted by Benny Prijono on 2017-11-21
 
-Same machine as Windows (dual-boot)
+Note: same machine as Windows below (dual-boot)
 
 
 ### Specs
@@ -134,7 +134,7 @@ Same machine as Windows (dual-boot)
 
 Submitted by Benny Prijono on 2017-11-14
 
-Same machine as Linux (dual-boot)
+Note: same machine as Linux above (dual-boot)
 
 
 ### Specs

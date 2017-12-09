@@ -297,6 +297,8 @@ def create_front_page():
     doc += "# Machine Specifications\n"
     for spec in result_specs:
         doc += "## " + spec['title'] + "\n\n"
+        if spec.get('remarks'):
+            doc += spec['remarks'] + '\n\n'
         doc += "|    |    |\n"
         doc += "|----|----|\n"
         for row in spec['details']:

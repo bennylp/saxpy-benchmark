@@ -218,6 +218,8 @@ All results, excluding Python and R loops
 # Machine Specifications
 ## Ubuntu 16.04, NVidia GTX 1080
 
+Note: same machine as Windows below (dual-boot)
+
 |    |    |
 |----|----|
 | System | HP Pavilion 550-227 desktop |
@@ -238,6 +240,8 @@ All results, excluding Python and R loops
 | MXNet | mxnet-cu90 (0.12.1) |
 
 ## Windows 10, NVidia GTX 1080
+
+Note: same machine as Linux above (dual-boot)
 
 |    |    |
 |----|----|

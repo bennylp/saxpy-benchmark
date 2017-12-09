@@ -4,7 +4,7 @@
   "data": "benny-linux.csv",
   "date": "2017-11-21",
   "by": "Benny Prijono",
-  "remarks": "Same machine as Windows (dual-boot)",
+  "remarks": "Note: same machine as Windows below (dual-boot)",
   "details": [
     ["System", "HP Pavilion 550-227 desktop"],
     ["", "Intel i7-6700 CPU @ 3.40GHz 16GB RAM"],
@@ -29,7 +29,7 @@
   "data": "benny-desktop1.csv",
   "date": "2017-11-14",
   "by": "Benny Prijono",
-  "remarks": "Same machine as Linux (dual-boot)",
+  "remarks": "Note: same machine as Linux above (dual-boot)",
   "details": [
     ["System", "HP Pavilion 550-227 desktop"],
     ["", "Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)"],

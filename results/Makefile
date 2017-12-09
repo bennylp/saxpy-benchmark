@@ -14,4 +14,3 @@ charts-en/conclusion.png: charts.json create_charts.py benny-linux.csv benny-win
 
 ../front-page.md: result_specs.json charts.json create_charts.py *.csv
 		python3 create_charts.py report
-	

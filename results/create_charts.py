@@ -94,8 +94,9 @@ def create_chart0(spec, lang, output_dir):
     for i, col in enumerate(df.columns):
         x = y_pos + (i * BAR_HEIGHT)
         y = rel[col]
+        color = spec['series'][i].get('color', colors[i])
         ax.barh(x, y, height=BAR_HEIGHT, align='center',
-                color=colors[i], ecolor='black', label=col)
+                color=color, ecolor='black', label=col)
         for j, row in enumerate(df.index):
             txt = '%.1f ms    (%.1fx)' % (df.loc[df.index[j], col], y[j])
             w = len(txt) * max_value * 0.012
@@ -277,6 +278,12 @@ def create_front_page():
         doc += "## " + spec['title'] + "\n\n"
         for remark in spec.get('remarks', []):
             doc += remark + "\n\n"
+        if 'exclude' in spec:
+            doc += "**Excluded** from the charts:\n"
+            for col in spec.get('exclude', []):
+                doc += "- {} ([src/{}](src/{}))\n".format(col,
+                                                          known_columns[col], known_columns[col])
+            doc += "\n"
         if 'columns' in spec:
             for col in spec.get('columns', []):
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
@@ -286,12 +293,6 @@ def create_front_page():
         png_file = "results/charts-en/" + spec['output']
         doc += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
                                                     png_file, png_file)
-        if 'exclude' in spec:
-            doc += "**Excluded** from the charts:\n"
-            for col in spec.get('exclude', []):
-                doc += "- {} ([src/{}](src/{}))\n".format(col,
-                                                          known_columns[col], known_columns[col])
-            doc += "\n"
 
     doc += "\n\n"
     doc += "# Machine Specifications\n"

@@ -192,7 +192,6 @@
  {
     "title": "Linux Conclusion",
     "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
-    "remarks": ["All results, excluding Python and R loops"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -203,13 +202,11 @@
  },
  {
     "title": "Windows Conclusion",
-    "remarks": ["All results, excluding Python and R loops"],
     "series": 
-        [{ "data": "benny-linux.csv",
-           "title": "Linux"
-         },
+        [
          { "data": "benny-windows.csv",
-           "title": "Windows"
+           "title": "Windows",
+           "color": "#ff8000"
          }         
         ],
     "exclude": ["Python loop [cpu]", "R (loop) [cpu]", "C++ TensorFlow [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
@@ -218,7 +215,6 @@
  {
     "title": "Conclusion",
     "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
-    "remarks": ["All results, excluding Python and R loops"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"

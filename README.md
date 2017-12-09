@@ -179,39 +179,33 @@ Comparing Tensorflow C++ and Python performance
 
 ## Linux Conclusion
 
-All results, excluding Python and R loops
+**Excluded** from the charts:
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 
 ![results/charts-en/conclusion-linux.png](results/charts-en/conclusion-linux.png?raw=true "results/charts-en/conclusion-linux.png")
 
+## Windows Conclusion
+
 **Excluded** from the charts:
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
-
-## Windows Conclusion
-
-All results, excluding Python and R loops
+- C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/conclusion-windows.png](results/charts-en/conclusion-windows.png?raw=true "results/charts-en/conclusion-windows.png")
 
-**Excluded** from the charts:
-- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
-- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
-- C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
-- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
-- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
-
 ## Conclusion
 
-All results, excluding Python and R loops
-
-![results/charts-en/conclusion.png](results/charts-en/conclusion.png?raw=true "results/charts-en/conclusion.png")
-
 **Excluded** from the charts:
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 - C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
 - Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+
+![results/charts-en/conclusion.png](results/charts-en/conclusion.png?raw=true "results/charts-en/conclusion.png")
 
 
 

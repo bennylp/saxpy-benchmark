@@ -238,6 +238,7 @@ Note: same machine as Windows below (dual-boot)
 | Octave | version 4.0.0 64bit |
 | R | version 3.2.3 64bit |
 | MXNet | mxnet-cu90 (0.12.1) |
+| CNTK | CNTK 2.3.1 (CUDA-8, CudNN6) |
 
 ## Windows 10, NVidia GTX 1080
 

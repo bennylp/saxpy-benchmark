@@ -16,7 +16,7 @@ known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]', 'Py Pandas [cpu]',
                      'C++ CUDA [gpu]',
                      'C++ OCL [cpu]', 'C++ OCL [gpu]',
                      'PyOCL [cpu]', 'PyOCL [gpu]', 'PyCUDA [gpu]',
-                     'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]',
+                     'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]', 'C++ TensorFlow [gpu]',
                      'Octave [cpu]',
                      'R (loop) [cpu]', 'R (array) [cpu]', 'R (matrix) [cpu]', 'R (data.frame) [cpu]',
                      'R (data.table) [cpu]',
@@ -24,6 +24,7 @@ known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]', 'Py Pandas [cpu]',
                      'C++ OMP [cpu]',
                      'MXNet [cpu]', 'MXNet [gpu]',
                      'Julia (loop) [cpu]', 'Julia (vec) [cpu]'])
+
 
 def create_chart0(spec, lang, output_dir):
     print('Processing {} "{}"'.format(spec['output'], spec['title']))
@@ -41,7 +42,7 @@ def create_chart0(spec, lang, output_dir):
         if columns:
             df = df.loc[:, columns]
         if drop_columns:
-            df = df.drop(drop_columns, axis=1)
+            df = df.drop(drop_columns, axis=1, errors='ignore')
         df = df.mean()
         data[serie['title']] = df
 
@@ -86,9 +87,11 @@ def create_chart0(spec, lang, output_dir):
             shift = 0
             yshift = 0.02
             if xpos > 0:
-                ax.text(xpos, x[j] + yshift, txt, fontdict={'size': 8}, color='w')
+                ax.text(xpos, x[j] + yshift, txt,
+                        fontdict={'size': 8}, color='w')
             else:
-                ax.text(y[j] + max_value * 0.01, x[j] + yshift, txt, fontdict={'size': 8}, color=colors[i])
+                ax.text(y[j] + max_value * 0.01, x[j] + yshift,
+                        txt, fontdict={'size': 8}, color=colors[i])
 
     ax.text(rel.iloc[0, 0] * 4 / 8, y_pos[-1] + BAR_HEIGHT / 2 - 0.01,
             '©%d SAXPY Benchmark' % datetime.date.today().year,
@@ -105,12 +108,15 @@ def create_chart0(spec, lang, output_dir):
     ax.invert_yaxis()  # labels read top-to-bottom
     label = 'Waktu (relatif thd. tercepat)' if lang == 'id' else 'Time (relative to fastest)'
     ax.set_xlabel(label, fontdict={'size': 11}, color="#202020")
-    ax.set_title(spec.get('title-' + lang) or spec['title'], fontdict={'size': 13})
-    ax.legend(loc=spec.get('legend') or 'right', title='Legenda:' if lang == 'id' else 'Legend:')
+    ax.set_title(spec.get('title-' + lang)
+                 or spec['title'], fontdict={'size': 13})
+    ax.legend(loc=spec.get('legend') or 'right',
+              title='Legenda:' if lang == 'id' else 'Legend:')
 
     ax.grid(color='w')
     plt.savefig(output_dir + '/' + png_file, bbox_inches='tight')
     return
+
 
 def create_chart(spec, output_md, use_rel=True):
     print('Processing {} "{}"'.format(spec['data'], spec['title']))
@@ -139,7 +145,7 @@ def create_chart(spec, output_md, use_rel=True):
     for idx in m.index:
         if idx not in known_columns:
             sys.stderr.write("Error: unrecognized column name '{}'. Standard names are required, choose one of:\n - {}\n".format(
-                                idx, '\n - '.join(sorted(known_columns))))
+                idx, '\n - '.join(sorted(known_columns))))
             sys.exit(1)
     rel = m / m[-1]
     std = df.std()
@@ -150,12 +156,13 @@ def create_chart(spec, output_md, use_rel=True):
 
     for idx in m.index:
         output_md += "| {} | {} | {} | {} |\n".format(idx, "%.3f" % m[idx], "%.3f" % std[idx],
-                                                 "%.2fx" % rel[idx])
+                                                      "%.2fx" % rel[idx])
 
     output_md += "\n"
 
     output_md += "\n### Result\n\n"
-    output_md += '![{}]({}?raw=true "{}")\n\n'.format(png_file, png_file, png_file)
+    output_md += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
+                                                      png_file, png_file)
 
     # Remove outliers as we don't support broken/discontinuous axis yet
     notes = ""
@@ -163,7 +170,7 @@ def create_chart(spec, output_md, use_rel=True):
         if m[i] / m[-1] > 20:
             # print('** Warning: removing outlier "%s" from the chart' % m.index[i])
             notes += '- **outlier "{}" is removed from the chart because it is {}x slower**\n'.format(
-                            m.index[i], int(m[i] / m[-1]))
+                m.index[i], int(m[i] / m[-1]))
         else:
             break
 
@@ -186,12 +193,15 @@ def create_chart(spec, output_md, use_rel=True):
     else:
         ax = plt.subplot(111)
 
-    ax.barh(y_pos, y, height=BAR_HEIGHT - 0.15, align='center', color='green', ecolor='black')
+    ax.barh(y_pos, y, height=BAR_HEIGHT - 0.15,
+            align='center', color='green', ecolor='black')
 
     for i, v in enumerate(y):
         # ax.text(v, i, '%.3fx' % v)
-        ax.text(max(0, v - 0.4), y_pos[i] + 0.03, '%.1fx' % v, fontdict={'size': 8}, color='w')
-        ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' % m[i], fontdict={'size': 6}, color='grey')
+        ax.text(max(0, v - 0.4), y_pos[i] + 0.03,
+                '%.1fx' % v, fontdict={'size': 8}, color='w')
+        ax.text(v + 0.1, y_pos[i] + 0.03, '%.1f ms' %
+                m[i], fontdict={'size': 6}, color='grey')
 
     ax.text(y[0] * 5 / 8, y_pos[-1], '©%d SAXPY Benchmark' % datetime.date.today().year,
             fontdict={'size': 8}, color='grey')
@@ -201,7 +211,8 @@ def create_chart(spec, output_md, use_rel=True):
     ax.set_yticks(y_pos)
     ax.set_yticklabels(tests, fontdict={'size': 9}, color="#202020")
     ax.invert_yaxis()  # labels read top-to-bottom
-    ax.set_xlabel('Time (relative to fastest test)', fontdict={'size': 11}, color="#202020")
+    ax.set_xlabel('Time (relative to fastest test)',
+                  fontdict={'size': 11}, color="#202020")
     ax.set_title(spec['title'], fontdict={'size': 13})
 
     ax.grid(color='w')
@@ -209,6 +220,37 @@ def create_chart(spec, output_md, use_rel=True):
 
     output_md += "\n\n"
     return output_md
+
+
+def create_front_page():
+    chart_specs = json.loads(open("charts.json").read())
+    result_specs = json.loads(open("result_specs.json").read())
+
+    doc = ""
+    doc += "# SAXPY CPU and GPGPU Benchmark\n"
+    doc += "## Machine Specifications\n"
+    for spec in result_specs:
+        doc += "### " + spec['title'] + "\n\n"
+        doc += "|    |    |\n"
+        doc += "|----|----|\n"
+        for row in spec['details']:
+            doc += "| {} | {} |\n".format(row[0], row[1])
+        doc += "\n"
+    doc += "\n"
+    doc += "## Benchmarks\n"
+    for spec in chart_specs:
+        doc += "### " + spec['title'] + "\n\n"
+        for remark in spec.get('remarks', []):
+            doc += remark + "\n\n"
+        png_file = "results/charts-en/" + spec['output']
+        doc += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
+                                                    png_file, png_file)
+
+    fname = "../front-page.md"
+    print("Creating " + fname)
+    out = open(fname, "wt")
+    out.write(doc)
+    out.close()
 
 
 README_MD = """
@@ -235,7 +277,7 @@ if __name__ == "__main__":
         if sys.argv[i] == '--lang':
             i += 1
             lang = sys.argv[i]
-        elif sys.argv[i] in ['cmp']:
+        elif sys.argv[i] in ['cmp', 'report']:
             cmd = sys.argv[i]
         else:
             spec_file = sys.argv[i]
@@ -245,6 +287,8 @@ if __name__ == "__main__":
         specs = json.loads(open(spec_file).read())
         for spec in specs:
             create_chart0(spec, lang, 'charts-' + lang)
+    elif cmd == "report":
+        create_front_page()
     if not cmd:
         specs = json.loads(open('result_specs.json').read())
 
@@ -259,4 +303,3 @@ if __name__ == "__main__":
         f = open('README.md', 'w')
         f.write(output_md)
         f.close()
-

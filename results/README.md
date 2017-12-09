@@ -14,6 +14,7 @@ some statistics with them in the future:
 - C++ OCL [cpu]
 - C++ OCL [gpu]
 - C++ OMP [cpu]
+- C++ TensorFlow [gpu]
 - C++ loop [cpu]
 - Java loop [cpu]
 - Julia (loop) [cpu]
@@ -53,7 +54,8 @@ Submitted by Benny Prijono on 2017-11-21
 | C++ Compiler | g++ 5.4.0 |
 | Python3 | 3.5.2 64bit |
 | TensorFlow | TensorFlow 1.4 (GPU) |
-| CUDA | Version 9.0.61 |
+| CUDA | CUDA 9.0.61 |
+|  | CudNN7 |
 | OpenCL | - Khronos OpenCL header 1.2 |
 |  | - Intel OpenCL driver 16.1.1 |
 |  | - NVidia OpenCL 1.2 driver |
@@ -86,7 +88,8 @@ Submitted by Benny Prijono on 2017-11-21
 | Julia (loop) [cpu] | 41.343 | 0.126 | 12.37x |
 | PyOCL [cpu] | 39.846 | 0.598 | 11.93x |
 | C++ loop [cpu] | 36.676 | 0.217 | 10.98x |
-| Py TensorFlow [gpu] | 29.887 | 0.068 | 8.94x |
+| Py TensorFlow [gpu] | 27.574 | 0.000 | 8.25x |
+| C++ TensorFlow [gpu] | 27.356 | 0.000 | 8.19x |
 | MXNet [gpu] | 12.843 | 0.043 | 3.84x |
 | PyCUDA [gpu] | 3.621 | 0.009 | 1.08x |
 | C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |

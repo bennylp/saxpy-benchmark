@@ -1,5 +1,6 @@
 [{
-    "title": "Python Loop vs Numpy (CPU)",
+    "title": "Python: Loop vs Numpy (CPU)",
+    "remarks": ["Comparison between simple Python loop and Numpy"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -10,8 +11,24 @@
     "legend": "lower right"
  },
  {
-    "title": "R Loop vs Tervektorisasi (CPU)",
+    "title": "Python: Loop vs Numpy 2 (CPU)",
+    "remarks": ["Same as above, on both Linux and Windows"],
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         },
+         { "data": "benny-windows.csv",
+           "title": "Windows"
+         }
+        ],
+    "columns": ["Python loop [cpu]", "Py Numpy [cpu]"],
+    "output": "python-loop-vs-numpy-cpu.png",
+    "legend": "lower right"
+ },
+ {
+    "title": "R: Loop vs Vectorized (CPU)",
     "title-id": "Loop vs Tervektorisasi di Bahasa R (CPU)",
+    "remarks": ["Implementation with various methods in R"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -26,21 +43,7 @@
     "legend": "right"
  },
  {
-    "title": "Python Loop vs Numpy (CPU)",
-    "series": 
-        [{ "data": "benny-linux.csv",
-           "title": "Linux"
-         },
-         { "data": "benny-windows.csv",
-           "title": "Windows"
-         }
-        ],
-    "columns": ["Python loop [cpu]", "Py Numpy [cpu]"],
-    "output": "python-loop-vs-numpy-cpu.png",
-    "legend": "lower right"
- },
- {
-    "title": "Python Loop vs Numpy vs Pandas (CPU)",
+    "title": "Python: Loop vs Numpy vs Pandas (CPU)",
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -54,7 +57,7 @@
     "legend": "lower right"
  },
  {
- 	"title": "Julia Loop vs Vector (CPU)",
+ 	"title": "Julia: Loop vs Vector (CPU)",
     "title-id": "Julia Loop vs Vektor (CPU)",
     "series": 
         [{ "data": "benny-linux.csv",
@@ -69,8 +72,8 @@
     "legend": "lower right"
  },
   {
-    "title": "Script vs Script vs Java vs C++(CPU)",
-    "title-id": "Skrip vs Skrip (CPU)",
+    "title": "Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)",
+    "remarks": ["Comparison among different programming languages"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -83,8 +86,9 @@
     "output": "script-vs-script-vs-java-vs-c++-cpu.png"
  },
  {
-    "title": "Python Vectorization Numpy vs Frameworks (CPU)",
+    "title": "Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)",
     "title-id": "Vektorisasi Python Numpy vs Framework (CPU)",
+    "remarks": ["SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow and MXNet"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -97,8 +101,9 @@
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
-    "title": "Numpy vs Frameworks (GPU and CPU)",
+    "title": "Numpy vs ML Frameworks (GPU and CPU)",
     "title-id": "Numpy vs Framework (GPU dan CPU)",
+    "remarks": ["Same as above, but compare on GPU as well"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -111,7 +116,8 @@
     "output": "vectorized-numpy-vs-frameworks-gpu.png"
  },
  {
-    "title": "Framework GPU vs Loop CPU",
+    "title": "ML Framework GPU vs Loop CPU",
+    "remarks": ["Comparing frameworks running on GPU with naive C++ loop running on CPU."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -126,6 +132,7 @@
  {
     "title": "C++ Parallel APIs (CPU)",
     "title-id": "API Paralel C++ (CPU)",
+    "remarks": ["Comparing naive C++ loop with OpenCL and OpenMP on CPU."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -139,6 +146,7 @@
  },
  {
     "title": "C++ CPU vs GPU",
+    "remarks": ["Comparing naive C++ loop with CUDA and OpenCL on GPU"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -152,6 +160,7 @@
  },
  {
     "title": "OpenCL vs PyOpenCL (CPU & GPU)",
+    "remarks": ["Comparing C++ OpenCL with OpenCL Python wrapper."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -165,6 +174,7 @@
  },
  {
     "title": "PyCUDA vs C++ (GPU)",
+    "remarks": ["Comparing PyCUDA (Python CUDA wrapper) with C++ OpenCL on GPU and C++ naive loop"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -177,8 +187,20 @@
     "output": "pycuda-vs-c++.png"
  },
  {
+    "title": "Tensorflow: Python vs C++ (GPU)",
+    "remarks": ["Comparing Tensorflow C++ and Python performance"],
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         }
+        ],
+    "columns": ["Py TensorFlow [gpu]", "C++ TensorFlow [gpu]"],
+    "output": "tensorflow-python-vs-c++.png"
+ },
+ {
     "title": "Conclusion",
     "title-id": "Perbandingan Performansi Berbagai Pemrograman \ndi CPU i7-6700 3.4GHz dan GPU GTX 1080",
+    "remarks": ["All results, excluding Python and R loops"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -187,7 +209,7 @@
            "title": "Windows"
          }         
         ],
-    "exclude": ["Python loop [cpu]", "R (loop) [cpu]"],
+    "exclude": ["Python loop [cpu]", "R (loop) [cpu]", "C++ TensorFlow [gpu]"],
     "output": "conclusion.png"
  }
 ]

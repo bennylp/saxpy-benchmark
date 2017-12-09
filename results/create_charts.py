@@ -248,6 +248,9 @@ def create_front_page():
             if c.isalnum():
                 a += c
                 last = c
+            elif c in ["&"]:
+                a += "-"
+                last = "-"
             elif c in ["."]:
                 pass
             elif last != "-":
@@ -279,7 +282,7 @@ def create_front_page():
         for remark in spec.get('remarks', []):
             doc += remark + "\n\n"
         if 'exclude' in spec:
-            doc += "**Excluded** from the charts:\n"
+            doc += "**Excluded** from this chart:\n"
             for col in spec.get('exclude', []):
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
                                                           known_columns[col], known_columns[col])

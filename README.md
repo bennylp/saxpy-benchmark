@@ -9,12 +9,12 @@
    - [Python: Loop vs Numpy vs Pandas (CPU)](#python-loop-vs-numpy-vs-pandas-cpu)
    - [Julia: Loop vs Vector (CPU)](#julia-loop-vs-vector-cpu)
    - [Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)](#numpy-vs-octave-vs-r-vs-java-vs-julia-vs-c-cpu)
-   - [Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)](#python-vectorization-numpy-vs-machine-learning-frameworks-cpu)
-   - [Numpy vs ML Frameworks (GPU and CPU)](#numpy-vs-ml-frameworks-gpu-and-cpu)
-   - [ML Framework GPU vs Loop CPU](#ml-framework-gpu-vs-loop-cpu)
+   - [Python Vectorization: Numpy vs Deep Learning Frameworks (CPU)](#python-vectorization-numpy-vs-deep-learning-frameworks-cpu)
+   - [Numpy vs Deep Learning Frameworks (GPU and CPU)](#numpy-vs-deep-learning-frameworks-gpu-and-cpu)
+   - [Deep Learning Frameworks GPU vs Loop CPU](#deep-learning-frameworks-gpu-vs-loop-cpu)
    - [C++ Parallel APIs (CPU)](#c-parallel-apis-cpu)
    - [C++ CPU vs GPU](#c-cpu-vs-gpu)
-   - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu-gpu)
+   - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu--gpu)
    - [PyCUDA vs C++ (GPU)](#pycuda-vs-c-gpu)
    - [Tensorflow: Python vs C++ (GPU)](#tensorflow-python-vs-c-gpu)
    - [Linux Conclusion](#linux-conclusion)
@@ -88,7 +88,7 @@ Comparison among different programming languages
 
 ![results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png](results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png?raw=true "results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png")
 
-## Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)
+## Python Vectorization: Numpy vs Deep Learning Frameworks (CPU)
 
 SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.
 
@@ -101,9 +101,9 @@ Note: CNTK result is way off, not sure why. Please have a look at the source cod
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
 
-## Numpy vs ML Frameworks (GPU and CPU)
+## Numpy vs Deep Learning Frameworks (GPU and CPU)
 
-Same as above, but compare on GPU as well
+Same as above, but on GPU as well
 
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
@@ -115,7 +115,7 @@ Same as above, but compare on GPU as well
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-gpu.png](results/charts-en/vectorized-numpy-vs-frameworks-gpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-gpu.png")
 
-## ML Framework GPU vs Loop CPU
+## Deep Learning Frameworks GPU vs Loop CPU
 
 Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
@@ -179,7 +179,7 @@ Comparing Tensorflow C++ and Python performance
 
 ## Linux Conclusion
 
-**Excluded** from the charts:
+**Excluded** from this chart:
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 
@@ -187,7 +187,7 @@ Comparing Tensorflow C++ and Python performance
 
 ## Windows Conclusion
 
-**Excluded** from the charts:
+**Excluded** from this chart:
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 - C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
@@ -198,7 +198,7 @@ Comparing Tensorflow C++ and Python performance
 
 ## Conclusion
 
-**Excluded** from the charts:
+**Excluded** from this chart:
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 - C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))

@@ -86,7 +86,7 @@
     "output": "script-vs-script-vs-java-vs-c++-cpu.png"
  },
  {
-    "title": "Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)",
+    "title": "Python Vectorization: Numpy vs Deep Learning Frameworks (CPU)",
     "title-id": "Vektorisasi Python Numpy vs Framework (CPU)",
     "remarks": ["SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.",
     		    "Note: CNTK result is way off, not sure why. Please have a look at the source code."],
@@ -99,9 +99,9 @@
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
-    "title": "Numpy vs ML Frameworks (GPU and CPU)",
+    "title": "Numpy vs Deep Learning Frameworks (GPU and CPU)",
     "title-id": "Numpy vs Framework (GPU dan CPU)",
-    "remarks": ["Same as above, but compare on GPU as well"],
+    "remarks": ["Same as above, but on GPU as well"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -111,7 +111,7 @@
     "output": "vectorized-numpy-vs-frameworks-gpu.png"
  },
  {
-    "title": "ML Framework GPU vs Loop CPU",
+    "title": "Deep Learning Frameworks GPU vs Loop CPU",
     "remarks": ["Comparing frameworks running on GPU with naive C++ loop running on CPU."],
     "series": 
         [{ "data": "benny-linux.csv",

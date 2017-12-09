@@ -38,9 +38,11 @@ some statistics with them in the future:
 
 
 
-# i7-6700 3.40GHz 4 cores CPU, NVidia GTX 1080 GPU
+# Ubuntu 16.04 + NVidia GTX 1080
 
 Submitted by Benny Prijono on 2017-11-21
+
+Same machine as Windows (dual-boot)
 
 
 ### Specs
@@ -122,9 +124,11 @@ Submitted by Benny Prijono on 2017-11-21
 
 
 
-# i7-6700 3.40GHz 4 cores CPU, NVidia GTX 475 GPU
+# Windows 10 + NVidia GTX 1080
 
 Submitted by Benny Prijono on 2017-11-14
+
+Same machine as Linux (dual-boot)
 
 
 ### Specs

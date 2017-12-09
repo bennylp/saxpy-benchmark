@@ -1,6 +1,184 @@
-# SAXPY CPU and GPGPU Benchmark
-## Machine Specifications
-### i7-6700 3.40GHz 4 cores CPU, NVidia GTX 1080 GPU
+# SAXPY CPU and GPGPU Benchmarks
+
+Table of Contents:
+
+- [Benchmarks](#benchmarks)
+   - [Python: Loop vs Numpy (CPU)](#python-loop-vs-numpy-cpu)
+   - [Python: Loop vs Numpy 2 (CPU)](#python-loop-vs-numpy-2-cpu)
+   - [R: Loop vs Vectorized (CPU)](#r-loop-vs-vectorized-cpu)
+   - [Python: Loop vs Numpy vs Pandas (CPU)](#python-loop-vs-numpy-vs-pandas-cpu)
+   - [Julia: Loop vs Vector (CPU)](#julia-loop-vs-vector-cpu)
+   - [Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)](#numpy-vs-octave-vs-r-vs-java-vs-julia-vs-c-cpu)
+   - [Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)](#python-vectorization-numpy-vs-machine-learning-frameworks-cpu)
+   - [Numpy vs ML Frameworks (GPU and CPU)](#numpy-vs-ml-frameworks-gpu-and-cpu)
+   - [ML Framework GPU vs Loop CPU](#ml-framework-gpu-vs-loop-cpu)
+   - [C++ Parallel APIs (CPU)](#c-parallel-apis-cpu)
+   - [C++ CPU vs GPU](#c-cpu-vs-gpu)
+   - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu-gpu)
+   - [PyCUDA vs C++ (GPU)](#pycuda-vs-c-gpu)
+   - [Tensorflow: Python vs C++ (GPU)](#tensorflow-python-vs-c-gpu)
+   - [Conclusion](#conclusion)
+- [Machine Specifications](#machine-specifications)
+   - [Ubuntu 16.04 + NVidia GTX 1080](#ubuntu-1604-nvidia-gtx-1080)
+   - [Windows 10 + NVidia GTX 1080](#windows-10-nvidia-gtx-1080)
+   - [MacBook Pro 13" late 2013, on board Intel Iris GPU](#macbook-pro-13-late-2013-on-board-intel-iris-gpu)
+
+
+# Benchmarks
+
+## Python: Loop vs Numpy (CPU)
+
+Comparison between simple Python loop and Numpy
+
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+
+![results/charts-en/python-loop-vs-numpy-linux-cpu.png](results/charts-en/python-loop-vs-numpy-linux-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-linux-cpu.png")
+
+## Python: Loop vs Numpy 2 (CPU)
+
+Same as above, on both Linux and Windows
+
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+
+![results/charts-en/python-loop-vs-numpy-cpu.png](results/charts-en/python-loop-vs-numpy-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-cpu.png")
+
+## R: Loop vs Vectorized (CPU)
+
+Implementation with various methods in R
+
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
+- R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
+- R (matrix) [cpu] ([src/saxpy_matrix.R](src/saxpy_matrix.R))
+- R (data.frame) [cpu] ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
+- R (data.table) [cpu] ([src/saxpy_datatable.R](src/saxpy_datatable.R))
+
+![results/charts-en/r-loop-vs-vec.png](results/charts-en/r-loop-vs-vec.png?raw=true "results/charts-en/r-loop-vs-vec.png")
+
+## Python: Loop vs Numpy vs Pandas (CPU)
+
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Py Pandas [cpu] ([src/saxpy_pandas.py](src/saxpy_pandas.py))
+
+![results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png](results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png")
+
+## Julia: Loop vs Vector (CPU)
+
+- Julia (loop) [cpu] ([src/saxpy_loop.jl](src/saxpy_loop.jl))
+- Julia (vec) [cpu] ([src/saxpy_array.jl](src/saxpy_array.jl))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+
+![results/charts-en/julia-loop-vs-vector.png](results/charts-en/julia-loop-vs-vector.png?raw=true "results/charts-en/julia-loop-vs-vector.png")
+
+## Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)
+
+Comparison among different programming languages
+
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Octave [cpu] ([src/saxpy.m](src/saxpy.m))
+- R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+- Java loop [cpu] ([src/SaxpyLoop.java](src/SaxpyLoop.java))
+- Julia (vec) [cpu] ([src/saxpy_array.jl](src/saxpy_array.jl))
+- Julia (loop) [cpu] ([src/saxpy_loop.jl](src/saxpy_loop.jl))
+
+![results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png](results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png?raw=true "results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png")
+
+## Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)
+
+SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow and MXNet
+
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
+- MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+
+![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
+
+## Numpy vs ML Frameworks (GPU and CPU)
+
+Same as above, but compare on GPU as well
+
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
+- MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
+- MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+
+![results/charts-en/vectorized-numpy-vs-frameworks-gpu.png](results/charts-en/vectorized-numpy-vs-frameworks-gpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-gpu.png")
+
+## ML Framework GPU vs Loop CPU
+
+Comparing frameworks running on GPU with naive C++ loop running on CPU.
+
+- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
+- MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+
+![results/charts-en/frameworks-gpu-vs-c++-cpu.png](results/charts-en/frameworks-gpu-vs-c++-cpu.png?raw=true "results/charts-en/frameworks-gpu-vs-c++-cpu.png")
+
+## C++ Parallel APIs (CPU)
+
+Comparing naive C++ loop with OpenCL and OpenMP on CPU.
+
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+- C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- C++ OMP [cpu] ([src/saxpy_omp.cpp](src/saxpy_omp.cpp))
+
+![results/charts-en/parallel-c++-cpu.png](results/charts-en/parallel-c++-cpu.png?raw=true "results/charts-en/parallel-c++-cpu.png")
+
+## C++ CPU vs GPU
+
+Comparing naive C++ loop with CUDA and OpenCL on GPU
+
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+- C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
+- C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+
+![results/charts-en/c++-cpu-vs-gpu.png](results/charts-en/c++-cpu-vs-gpu.png?raw=true "results/charts-en/c++-cpu-vs-gpu.png")
+
+## OpenCL vs PyOpenCL (CPU & GPU)
+
+Comparing C++ OpenCL with OpenCL Python wrapper.
+
+- PyOCL [cpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+- PyOCL [gpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+- C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+
+![results/charts-en/pyopencl-vs-opencl.png](results/charts-en/pyopencl-vs-opencl.png?raw=true "results/charts-en/pyopencl-vs-opencl.png")
+
+## PyCUDA vs C++ (GPU)
+
+Comparing PyCUDA (Python CUDA wrapper) with C++ OpenCL on GPU and C++ naive loop
+
+- PyCUDA [gpu] ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
+- C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+
+![results/charts-en/pycuda-vs-c++.png](results/charts-en/pycuda-vs-c++.png?raw=true "results/charts-en/pycuda-vs-c++.png")
+
+## Tensorflow: Python vs C++ (GPU)
+
+Comparing Tensorflow C++ and Python performance
+
+- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
+- C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+
+![results/charts-en/tensorflow-python-vs-c++.png](results/charts-en/tensorflow-python-vs-c++.png?raw=true "results/charts-en/tensorflow-python-vs-c++.png")
+
+## Conclusion
+
+All results, excluding Python and R loops
+
+![results/charts-en/conclusion.png](results/charts-en/conclusion.png?raw=true "results/charts-en/conclusion.png")
+
+
+
+# Machine Specifications
+## Ubuntu 16.04 + NVidia GTX 1080
 
 |    |    |
 |----|----|
@@ -21,7 +199,7 @@
 | R | version 3.2.3 64bit |
 | MXNet | mxnet-cu90 (0.12.1) |
 
-### i7-6700 3.40GHz 4 cores CPU, NVidia GTX 475 GPU
+## Windows 10 + NVidia GTX 1080
 
 |    |    |
 |----|----|
@@ -40,7 +218,7 @@
 | Octave | version 4.2.1 64bit |
 | R | version 3.4.2 64bit |
 
-### MacBook Pro 13" late 2013, on board Intel Iris GPU
+## MacBook Pro 13" late 2013, on board Intel Iris GPU
 
 |    |    |
 |----|----|
@@ -53,91 +231,4 @@
 | Octave | 3.8.0 |
 | Java | 1.8.0_92 |
 
-
-## Benchmarks
-### Python: Loop vs Numpy (CPU)
-
-Comparison between simple Python loop and Numpy
-
-![results/charts-en/python-loop-vs-numpy-linux-cpu.png](results/charts-en/python-loop-vs-numpy-linux-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-linux-cpu.png")
-
-### Python: Loop vs Numpy 2 (CPU)
-
-Same as above, on both Linux and Windows
-
-![results/charts-en/python-loop-vs-numpy-cpu.png](results/charts-en/python-loop-vs-numpy-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-cpu.png")
-
-### R: Loop vs Vectorized (CPU)
-
-Implementation with various methods in R
-
-![results/charts-en/r-loop-vs-vec.png](results/charts-en/r-loop-vs-vec.png?raw=true "results/charts-en/r-loop-vs-vec.png")
-
-### Python: Loop vs Numpy vs Pandas (CPU)
-
-![results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png](results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png")
-
-### Julia: Loop vs Vector (CPU)
-
-![results/charts-en/julia-loop-vs-vector.png](results/charts-en/julia-loop-vs-vector.png?raw=true "results/charts-en/julia-loop-vs-vector.png")
-
-### Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)
-
-Comparison among different programming languages
-
-![results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png](results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png?raw=true "results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png")
-
-### Python Vectorization: Numpy vs Machine Learning Frameworks (CPU)
-
-SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow and MXNet
-
-![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
-
-### Numpy vs ML Frameworks (GPU and CPU)
-
-Same as above, but compare on GPU as well
-
-![results/charts-en/vectorized-numpy-vs-frameworks-gpu.png](results/charts-en/vectorized-numpy-vs-frameworks-gpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-gpu.png")
-
-### ML Framework GPU vs Loop CPU
-
-Comparing frameworks running on GPU with naive C++ loop running on CPU.
-
-![results/charts-en/frameworks-gpu-vs-c++-cpu.png](results/charts-en/frameworks-gpu-vs-c++-cpu.png?raw=true "results/charts-en/frameworks-gpu-vs-c++-cpu.png")
-
-### C++ Parallel APIs (CPU)
-
-Comparing naive C++ loop with OpenCL and OpenMP on CPU.
-
-![results/charts-en/parallel-c++-cpu.png](results/charts-en/parallel-c++-cpu.png?raw=true "results/charts-en/parallel-c++-cpu.png")
-
-### C++ CPU vs GPU
-
-Comparing naive C++ loop with CUDA and OpenCL on GPU
-
-![results/charts-en/c++-cpu-vs-gpu.png](results/charts-en/c++-cpu-vs-gpu.png?raw=true "results/charts-en/c++-cpu-vs-gpu.png")
-
-### OpenCL vs PyOpenCL (CPU & GPU)
-
-Comparing C++ OpenCL with OpenCL Python wrapper.
-
-![results/charts-en/pyopencl-vs-opencl.png](results/charts-en/pyopencl-vs-opencl.png?raw=true "results/charts-en/pyopencl-vs-opencl.png")
-
-### PyCUDA vs C++ (GPU)
-
-Comparing PyCUDA (Python CUDA wrapper) with C++ OpenCL on GPU and C++ naive loop
-
-![results/charts-en/pycuda-vs-c++.png](results/charts-en/pycuda-vs-c++.png?raw=true "results/charts-en/pycuda-vs-c++.png")
-
-### Tensorflow: Python vs C++ (GPU)
-
-Comparing Tensorflow C++ and Python performance
-
-![results/charts-en/tensorflow-python-vs-c++.png](results/charts-en/tensorflow-python-vs-c++.png?raw=true "results/charts-en/tensorflow-python-vs-c++.png")
-
-### Conclusion
-
-All results, excluding Python and R loops
-
-![results/charts-en/conclusion.png](results/charts-en/conclusion.png?raw=true "results/charts-en/conclusion.png")
 

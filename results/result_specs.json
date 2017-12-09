@@ -1,10 +1,10 @@
 [
   {
-  "title": "i7-6700 3.40GHz 4 cores CPU, NVidia GTX 1080 GPU",
+  "title": "Ubuntu 16.04 + NVidia GTX 1080",
   "data": "benny-linux.csv",
   "date": "2017-11-21",
   "by": "Benny Prijono",
-  "remarks": "",
+  "remarks": "Same machine as Windows (dual-boot)",
   "details": [
     ["System", "HP Pavilion 550-227 desktop"],
     ["", "Intel i7-6700 CPU @ 3.40GHz 16GB RAM"],
@@ -25,11 +25,11 @@
   ]
  },
   {
-  "title": "i7-6700 3.40GHz 4 cores CPU, NVidia GTX 475 GPU",
+  "title": "Windows 10 + NVidia GTX 1080",
   "data": "benny-desktop1.csv",
   "date": "2017-11-14",
   "by": "Benny Prijono",
-  "remarks": "",
+  "remarks": "Same machine as Linux (dual-boot)",
   "details": [
     ["System", "HP Pavilion 550-227 desktop"],
     ["", "Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable)"],

@@ -11,19 +11,33 @@ import numpy as np
 import pandas as pd
 
 
-known_columns = set(['Python loop [cpu]', 'Py Numpy [cpu]', 'Py Pandas [cpu]',
-                     'C++ loop [cpu]',
-                     'C++ CUDA [gpu]',
-                     'C++ OCL [cpu]', 'C++ OCL [gpu]',
-                     'PyOCL [cpu]', 'PyOCL [gpu]', 'PyCUDA [gpu]',
-                     'Py TensorFlow [cpu]', 'Py TensorFlow [gpu]', 'C++ TensorFlow [gpu]',
-                     'Octave [cpu]',
-                     'R (loop) [cpu]', 'R (array) [cpu]', 'R (matrix) [cpu]', 'R (data.frame) [cpu]',
-                     'R (data.table) [cpu]',
-                     'Java loop [cpu]',
-                     'C++ OMP [cpu]',
-                     'MXNet [cpu]', 'MXNet [gpu]',
-                     'Julia (loop) [cpu]', 'Julia (vec) [cpu]'])
+known_columns = {
+    'Python loop [cpu]': 'saxpy_loop.py',
+    'Py Numpy [cpu]': 'saxpy_numpy.py',
+    'Py Pandas [cpu]': 'saxpy_pandas.py',
+    'C++ loop [cpu]': 'saxpy_cpu.cpp',
+    'C++ CUDA [gpu]': 'saxpy_cuda.cpp',
+    'C++ OCL [cpu]': 'saxpy_ocl1.cpp',
+    'C++ OCL [gpu]': 'saxpy_ocl1.cpp',
+    'PyOCL [cpu]': 'saxpy_pyocl.py',
+    'PyOCL [gpu]': 'saxpy_pyocl.py',
+    'PyCUDA [gpu]': 'saxpy_pycuda.py',
+    'Py TensorFlow [cpu]': 'saxpy_tf.py',
+    'Py TensorFlow [gpu]': 'saxpy_tf.py',
+    'C++ TensorFlow [gpu]': 'saxpy_tf.cc',
+    'Octave [cpu]': 'saxpy.m',
+    'R (loop) [cpu]': 'saxpy_loop.R',
+    'R (array) [cpu]': 'saxpy_array.R',
+    'R (matrix) [cpu]': 'saxpy_matrix.R',
+    'R (data.frame) [cpu]': 'saxpy_dataframe.R',
+    'R (data.table) [cpu]': 'saxpy_datatable.R',
+    'Java loop [cpu]': 'SaxpyLoop.java',
+    'C++ OMP [cpu]': 'saxpy_omp.cpp',
+    'MXNet [cpu]': 'saxpy_mxnet.py',
+    'MXNet [gpu]': 'saxpy_mxnet.py',
+    'Julia (loop) [cpu]': 'saxpy_loop.jl',
+    'Julia (vec) [cpu]': 'saxpy_array.jl'
+}
 
 
 def create_chart0(spec, lang, output_dir):
@@ -145,7 +159,7 @@ def create_chart(spec, output_md, use_rel=True):
     for idx in m.index:
         if idx not in known_columns:
             sys.stderr.write("Error: unrecognized column name '{}'. Standard names are required, choose one of:\n - {}\n".format(
-                idx, '\n - '.join(sorted(known_columns))))
+                idx, '\n - '.join(sorted(known_columns.keys()))))
             sys.exit(1)
     rel = m / m[-1]
     std = df.std()
@@ -223,28 +237,64 @@ def create_chart(spec, output_md, use_rel=True):
 
 
 def create_front_page():
+    def create_anchor(title):
+        a = ""
+        last = "-"
+        for c in title:
+            c = c.lower()
+            if c.isalnum():
+                a += c
+                last = c
+            elif c in ["."]:
+                pass
+            elif last != "-":
+                a += "-"
+                last = "-"
+        if a[-1] == "-":
+            a = a[:-1]
+        return a
+
     chart_specs = json.loads(open("charts.json").read())
     result_specs = json.loads(open("result_specs.json").read())
 
     doc = ""
-    doc += "# SAXPY CPU and GPGPU Benchmark\n"
-    doc += "## Machine Specifications\n"
+    doc += "# SAXPY CPU and GPGPU Benchmarks\n\n"
+    doc += "Table of Contents:\n\n"
+    doc += "- [Benchmarks](#benchmarks)\n"
+    for spec in chart_specs:
+        doc += "   - [{}](#{})\n".format(spec['title'],
+                                         create_anchor(spec['title']))
+    doc += "- [Machine Specifications](#machine-specifications)\n"
     for spec in result_specs:
-        doc += "### " + spec['title'] + "\n\n"
+        doc += "   - [{}](#{})\n".format(spec['title'],
+                                         create_anchor(spec['title']))
+    doc += "\n\n"
+
+    doc += "# Benchmarks\n\n"
+    for spec in chart_specs:
+        doc += "## " + spec['title'] + "\n\n"
+        for remark in spec.get('remarks', []):
+            doc += remark + "\n\n"
+        if 'columns' in spec:
+            for col in spec.get('columns', []):
+                doc += "- {} ([src/{}](src/{}))\n".format(col,
+                                                          known_columns[col], known_columns[col])
+            doc += "\n"
+
+        png_file = "results/charts-en/" + spec['output']
+        doc += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
+                                                    png_file, png_file)
+
+    doc += "\n\n"
+    doc += "# Machine Specifications\n"
+    for spec in result_specs:
+        doc += "## " + spec['title'] + "\n\n"
         doc += "|    |    |\n"
         doc += "|----|----|\n"
         for row in spec['details']:
             doc += "| {} | {} |\n".format(row[0], row[1])
         doc += "\n"
     doc += "\n"
-    doc += "## Benchmarks\n"
-    for spec in chart_specs:
-        doc += "### " + spec['title'] + "\n\n"
-        for remark in spec.get('remarks', []):
-            doc += remark + "\n\n"
-        png_file = "results/charts-en/" + spec['output']
-        doc += '![{}]({}?raw=true "{}")\n\n'.format(png_file,
-                                                    png_file, png_file)
 
     fname = "../front-page.md"
     print("Creating " + fname)
@@ -293,7 +343,8 @@ if __name__ == "__main__":
         specs = json.loads(open('result_specs.json').read())
 
         output_md = README_MD
-        output_md += "".join(["- %s\n" % nm for nm in sorted(known_columns)])
+        output_md += "".join(["- %s\n" %
+                              nm for nm in sorted(known_columns.keys())])
         output_md += "\n"
 
         for spec in specs:

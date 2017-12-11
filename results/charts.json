@@ -95,7 +95,7 @@
            "title": "Linux"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]", "Py CNTK [cpu]"],
+    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "Py MXNet [cpu]", "Py CNTK [cpu]"],
     "output": "vectorized-numpy-vs-frameworks-cpu.png"
  },
  {
@@ -107,7 +107,7 @@
            "title": "Linux"
          }
         ],
-    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "MXNet [cpu]", "Py TensorFlow [gpu]", "MXNet [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
+    "columns": ["Py Numpy [cpu]", "Py TensorFlow [cpu]", "Py MXNet [cpu]", "Py TensorFlow [gpu]", "Py MXNet [gpu]", "Py CNTK [gpu]", "Py CNTK [cpu]"],
     "output": "vectorized-numpy-vs-frameworks-gpu.png"
  },
  {
@@ -118,7 +118,7 @@
            "title": "Linux"
          }
         ],
-    "columns": ["Py TensorFlow [gpu]", "MXNet [gpu]", "Py CNTK [gpu]", "C++ loop [cpu]"],
+    "columns": ["Py TensorFlow [gpu]", "Py MXNet [gpu]", "Py CNTK [gpu]", "C++ loop [cpu]"],
     "output": "frameworks-gpu-vs-c++-cpu.png"
  },
  {
@@ -188,6 +188,17 @@
         ],
     "columns": ["Py TensorFlow [gpu]", "C++ TensorFlow [gpu]"],
     "output": "tensorflow-python-vs-c++.png"
+ },
+ {
+    "title": "GPU Conclusion",
+    "remarks": ["Benchmarking various GPU APIs (only on Linux since it has the most APIs)"],
+    "series": 
+        [{ "data": "benny-linux.csv",
+           "title": "Linux"
+         }
+        ],
+    "exclude": ["*cpu*"],
+    "output": "conclusion-gpus.png"
  },
  {
     "title": "Linux Conclusion",

@@ -33,8 +33,8 @@ known_columns = {
     'R (data.table) [cpu]': 'saxpy_datatable.R',
     'Java loop [cpu]': 'SaxpyLoop.java',
     'C++ OMP [cpu]': 'saxpy_omp.cpp',
-    'MXNet [cpu]': 'saxpy_mxnet.py',
-    'MXNet [gpu]': 'saxpy_mxnet.py',
+    'Py MXNet [cpu]': 'saxpy_mxnet.py',
+    'Py MXNet [gpu]': 'saxpy_mxnet.py',
     'Julia (loop) [cpu]': 'saxpy_loop.jl',
     'Julia (vec) [cpu]': 'saxpy_array.jl',
     'Py CNTK [gpu]': 'saxpy_cntk.py',
@@ -49,8 +49,15 @@ def create_chart0(spec, lang, output_dir):
     plt.style.use('ggplot')
 
     png_file = spec['output']
+    tmp_cols = spec.get('exclude', [])
     columns = spec.get('columns', [])
-    drop_columns = spec.get('exclude', [])
+    drop_columns = []
+    for col in tmp_cols:
+        if "*" in col:
+            col = col.replace("*", "")
+            drop_columns.extend([c for c in known_columns.keys() if col in c])
+        else:
+            drop_columns.append(col)
 
     data = {}
     for serie in spec['series']:
@@ -285,6 +292,8 @@ def create_front_page():
         if 'exclude' in spec:
             doc += "**Excluded** from this chart:\n"
             for col in spec.get('exclude', []):
+                if col not in known_columns:  # no need to print wildcards (e.g. *cpu*)
+                    continue
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
                                                           known_columns[col], known_columns[col])
             doc += "\n"

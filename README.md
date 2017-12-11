@@ -17,6 +17,7 @@
    - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu--gpu)
    - [PyCUDA vs C++ (GPU)](#pycuda-vs-c-gpu)
    - [Tensorflow: Python vs C++ (GPU)](#tensorflow-python-vs-c-gpu)
+   - [GPU Conclusion](#gpu-conclusion)
    - [Linux Conclusion](#linux-conclusion)
    - [Windows Conclusion](#windows-conclusion)
    - [Conclusion](#conclusion)
@@ -96,7 +97,7 @@ Note: CNTK result is way off, not sure why. Please have a look at the source cod
 
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
@@ -107,9 +108,9 @@ Same as above, but on GPU as well
 
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
@@ -120,7 +121,7 @@ Same as above, but on GPU as well
 Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
 - Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
@@ -175,6 +176,14 @@ Comparing Tensorflow C++ and Python performance
 - C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
 
 ![results/charts-en/tensorflow-python-vs-c++.png](results/charts-en/tensorflow-python-vs-c++.png?raw=true "results/charts-en/tensorflow-python-vs-c++.png")
+
+## GPU Conclusion
+
+Benchmarking various GPU APIs (only on Linux since it has the most APIs)
+
+**Excluded** from this chart:
+
+![results/charts-en/conclusion-gpus.png](results/charts-en/conclusion-gpus.png?raw=true "results/charts-en/conclusion-gpus.png")
 
 ## Linux Conclusion
 

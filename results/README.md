@@ -20,11 +20,11 @@ some statistics with them in the future:
 - Java loop [cpu]
 - Julia (loop) [cpu]
 - Julia (vec) [cpu]
-- MXNet [cpu]
-- MXNet [gpu]
 - Octave [cpu]
 - Py CNTK [cpu]
 - Py CNTK [gpu]
+- Py MXNet [cpu]
+- Py MXNet [gpu]
 - Py Numpy [cpu]
 - Py Pandas [cpu]
 - Py TensorFlow [cpu]
@@ -82,7 +82,7 @@ Note: same machine as Windows below (dual-boot)
 | Py CNTK [cpu] | 682.768 | 0.965 | 205.54x |
 | Py CNTK [gpu] | 406.687 | 1.101 | 122.43x |
 | Py Pandas [cpu] | 297.991 | 0.627 | 89.71x |
-| MXNet [cpu] | 226.005 | 1.247 | 68.04x |
+| Py MXNet [cpu] | 226.005 | 1.247 | 68.04x |
 | Octave [cpu] | 217.682 | 0.993 | 65.53x |
 | R (array) [cpu] | 151.504 | 0.774 | 45.61x |
 | R (data.frame) [cpu] | 145.518 | 0.431 | 43.81x |
@@ -98,7 +98,7 @@ Note: same machine as Windows below (dual-boot)
 | C++ loop [cpu] | 36.676 | 0.217 | 11.04x |
 | Py TensorFlow [gpu] | 27.574 | 0.000 | 8.30x |
 | C++ TensorFlow [gpu] | 27.356 | 0.000 | 8.24x |
-| MXNet [gpu] | 12.843 | 0.043 | 3.87x |
+| Py MXNet [gpu] | 12.843 | 0.043 | 3.87x |
 | PyCUDA [gpu] | 3.621 | 0.009 | 1.09x |
 | C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
 | C++ OCL [gpu] | 3.341 | 0.012 | 1.01x |
@@ -119,7 +119,7 @@ Note: same machine as Windows below (dual-boot)
 - **outlier "Py CNTK [cpu]" is removed from the chart because it is 205x slower**
 - **outlier "Py CNTK [gpu]" is removed from the chart because it is 122x slower**
 - **outlier "Py Pandas [cpu]" is removed from the chart because it is 89x slower**
-- **outlier "MXNet [cpu]" is removed from the chart because it is 68x slower**
+- **outlier "Py MXNet [cpu]" is removed from the chart because it is 68x slower**
 - **outlier "Octave [cpu]" is removed from the chart because it is 65x slower**
 - **outlier "R (array) [cpu]" is removed from the chart because it is 45x slower**
 - **outlier "R (data.frame) [cpu]" is removed from the chart because it is 43x slower**

@@ -32,8 +32,8 @@
 
 Comparison between simple Python loop and Numpy
 
-- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 
 ![results/charts-en/python-loop-vs-numpy-linux-cpu.png](results/charts-en/python-loop-vs-numpy-linux-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-linux-cpu.png")
 
@@ -41,8 +41,8 @@ Comparison between simple Python loop and Numpy
 
 Same as above, on both Linux and Windows
 
-- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 
 ![results/charts-en/python-loop-vs-numpy-cpu.png](results/charts-en/python-loop-vs-numpy-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-cpu.png")
 
@@ -50,27 +50,27 @@ Same as above, on both Linux and Windows
 
 Implementation with various methods in R
 
-- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
 - R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
-- R (matrix) [cpu] ([src/saxpy_matrix.R](src/saxpy_matrix.R))
 - R (data.frame) [cpu] ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
 - R (data.table) [cpu] ([src/saxpy_datatable.R](src/saxpy_datatable.R))
+- R (loop) [cpu] ([src/saxpy_loop.R](src/saxpy_loop.R))
+- R (matrix) [cpu] ([src/saxpy_matrix.R](src/saxpy_matrix.R))
 
 ![results/charts-en/r-loop-vs-vec.png](results/charts-en/r-loop-vs-vec.png?raw=true "results/charts-en/r-loop-vs-vec.png")
 
 ## Python: Loop vs Numpy vs Pandas (CPU)
 
-- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py Pandas [cpu] ([src/saxpy_pandas.py](src/saxpy_pandas.py))
+- Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
 
 ![results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png](results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png")
 
 ## Julia: Loop vs Vector (CPU)
 
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - Julia (loop) [cpu] ([src/saxpy_loop.jl](src/saxpy_loop.jl))
 - Julia (vec) [cpu] ([src/saxpy_array.jl](src/saxpy_array.jl))
-- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/julia-loop-vs-vector.png](results/charts-en/julia-loop-vs-vector.png?raw=true "results/charts-en/julia-loop-vs-vector.png")
 
@@ -78,13 +78,13 @@ Implementation with various methods in R
 
 Comparison among different programming languages
 
-- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
-- Octave [cpu] ([src/saxpy.m](src/saxpy.m))
-- R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - Java loop [cpu] ([src/SaxpyLoop.java](src/SaxpyLoop.java))
-- Julia (vec) [cpu] ([src/saxpy_array.jl](src/saxpy_array.jl))
 - Julia (loop) [cpu] ([src/saxpy_loop.jl](src/saxpy_loop.jl))
+- Julia (vec) [cpu] ([src/saxpy_array.jl](src/saxpy_array.jl))
+- Octave [cpu] ([src/saxpy.m](src/saxpy.m))
+- Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+- R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
 
 ![results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png](results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png?raw=true "results/charts-en/script-vs-script-vs-java-vs-c++-cpu.png")
 
@@ -94,10 +94,10 @@ SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow
 
 Note: CNTK result is way off, not sure why. Please have a look at the source code.
 
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
-- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-cpu.png](results/charts-en/vectorized-numpy-vs-frameworks-cpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-cpu.png")
 
@@ -105,13 +105,13 @@ Note: CNTK result is way off, not sure why. Please have a look at the source cod
 
 Same as above, but on GPU as well
 
+- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py TensorFlow [cpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
 - Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
-- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
-- Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 
 ![results/charts-en/vectorized-numpy-vs-frameworks-gpu.png](results/charts-en/vectorized-numpy-vs-frameworks-gpu.png?raw=true "results/charts-en/vectorized-numpy-vs-frameworks-gpu.png")
 
@@ -119,10 +119,10 @@ Same as above, but on GPU as well
 
 Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
-- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
-- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
-- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+- Py CNTK [gpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+- Py MXNet [gpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 
 ![results/charts-en/frameworks-gpu-vs-c++-cpu.png](results/charts-en/frameworks-gpu-vs-c++-cpu.png?raw=true "results/charts-en/frameworks-gpu-vs-c++-cpu.png")
 
@@ -130,9 +130,9 @@ Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
 Comparing naive C++ loop with OpenCL and OpenMP on CPU.
 
-- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ OMP [cpu] ([src/saxpy_omp.cpp](src/saxpy_omp.cpp))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/parallel-c++-cpu.png](results/charts-en/parallel-c++-cpu.png?raw=true "results/charts-en/parallel-c++-cpu.png")
 
@@ -140,11 +140,11 @@ Comparing naive C++ loop with OpenCL and OpenMP on CPU.
 
 Comparing naive C++ loop with CUDA, OpenCL, Thrust, and Cublas on GPU
 
-- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
+- C++ Cublas [gpu] ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ Thrust [gpu] ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
-- C++ Cublas [gpu] ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
+- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/c++-cpu-vs-gpu.png](results/charts-en/c++-cpu-vs-gpu.png?raw=true "results/charts-en/c++-cpu-vs-gpu.png")
 
@@ -152,10 +152,10 @@ Comparing naive C++ loop with CUDA, OpenCL, Thrust, and Cublas on GPU
 
 Comparing C++ OpenCL with OpenCL Python wrapper.
 
-- PyOCL [cpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
-- PyOCL [gpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
 - C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- PyOCL [cpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+- PyOCL [gpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
 
 ![results/charts-en/pyopencl-vs-opencl.png](results/charts-en/pyopencl-vs-opencl.png?raw=true "results/charts-en/pyopencl-vs-opencl.png")
 
@@ -163,8 +163,8 @@ Comparing C++ OpenCL with OpenCL Python wrapper.
 
 Comparing PyCUDA (Python CUDA wrapper) with native C++ CUDA GPU
 
-- PyCUDA [gpu] ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
 - C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
+- PyCUDA [gpu] ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
 
 ![results/charts-en/pycuda-vs-c++.png](results/charts-en/pycuda-vs-c++.png?raw=true "results/charts-en/pycuda-vs-c++.png")
 
@@ -172,8 +172,8 @@ Comparing PyCUDA (Python CUDA wrapper) with native C++ CUDA GPU
 
 Comparing Tensorflow C++ and Python performance
 
-- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 - C++ TensorFlow [gpu] ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+- Py TensorFlow [gpu] ([src/saxpy_tf.py](src/saxpy_tf.py))
 
 ![results/charts-en/tensorflow-python-vs-c++.png](results/charts-en/tensorflow-python-vs-c++.png?raw=true "results/charts-en/tensorflow-python-vs-c++.png")
 

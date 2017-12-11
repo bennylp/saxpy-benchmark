@@ -176,7 +176,8 @@
          }         
         ],
     "columns": ["PyCUDA [gpu]", "C++ CUDA [gpu]"],
-    "output": "pycuda-vs-c++.png"
+    "output": "pycuda-vs-c++.png",
+    "legend": "lower right"
  },
  {
     "title": "Tensorflow: Python vs C++ (GPU)",

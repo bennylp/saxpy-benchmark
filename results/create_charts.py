@@ -299,7 +299,7 @@ def create_front_page():
                                                           known_columns[col], known_columns[col])
             doc += "\n"
         if 'columns' in spec:
-            for col in spec.get('columns', []):
+            for col in sorted(spec.get('columns', [])):
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
                                                           known_columns[col], known_columns[col])
             doc += "\n"

@@ -53,10 +53,9 @@ Note: same machine as Windows below (dual-boot)
 
 |    |    |
 |----|----|
-| System | HP Pavilion 550-227 desktop |
-|  | Intel i7-6700 CPU @ 3.40GHz 16GB RAM |
+| System | Intel i7-6700 CPU @ 3.40GHz 16GB RAM 4x2 cores (HT) |
 | OS | Ubuntu Linux 16.04 64bit |
-| GPU | NVidia GeForce GTX 1080 8GB mem |
+| GPU | NVidia GeForce GTX 1080 8GB |
 | C++ Compiler | g++ 5.4.0 |
 | Python3 | 3.5.2 64bit |
 | TensorFlow | TensorFlow 1.4 (GPU) |
@@ -146,10 +145,9 @@ Note: same machine as Linux above (dual-boot)
 
 |    |    |
 |----|----|
-| System | HP Pavilion 550-227 desktop |
-|  | Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable) |
+| System | Intel i7-6700 CPU @ 3.40GHz 16GB RAM 4x2 cores (HT) |
 | OS | Windows 10 64bit |
-| GPU | NVidia GeForce GTX 475 4GB mem |
+| GPU | NVidia GeForce GTX 1080 8GB |
 | C++ Compiler | Visual Studio 2015 C++ compiler 64bit version |
 | Python | 2.7.12 64bit |
 | Python3 | 3.5.3 64bit |
@@ -190,50 +188,5 @@ Note: same machine as Linux above (dual-boot)
 ### Notes
 
 - **outlier "Python loop [cpu]" is removed from the chart because it is 375x slower**
-
-
-
-
-# MacBook Pro 13" late 2013, on board Intel Iris GPU
-
-Submitted by Benny Prijono on 2017-11-14
-
-
-### Specs
-
-|    |    |
-|----|----|
-| System | MacBook Pro 13" late 2013 |
-| OS | OS X 10.11.14 |
-| GPU | on board Intel Iris |
-| OpenCL | preinstalled (XCode 5.1.1) |
-| Python | 3.5.2 |
-| TensorFlow | 1.0.1 |
-| Octave | 3.8.0 |
-| Java | 1.8.0_92 |
-
-
- ### Result Details
-
-| Test   | Mean Time (ms) | StdDev (ms) | Time (rel)
-|--------| --------: | --------: | --------: |
-| Python loop [cpu] | 20491.674 | 2353.082 | 444.43x |
-| Octave [cpu] | 424.165 | 13.562 | 9.20x |
-| Py Numpy [cpu] | 422.904 | 1.792 | 9.17x |
-| Py TensorFlow [cpu] | 295.680 | 1.823 | 6.41x |
-| C++ OCL [gpu] | 54.344 | 0.318 | 1.18x |
-| Java loop [cpu] | 54.112 | 1.436 | 1.17x |
-| C++ loop [cpu] | 46.142 | 0.119 | 1.00x |
-| C++ OCL [cpu] | 46.108 | 0.079 | 1.00x |
-
-
-### Result
-
-![benny-macbook.png](benny-macbook.png?raw=true "benny-macbook.png")
-
-
-### Notes
-
-- **outlier "Python loop [cpu]" is removed from the chart because it is 444x slower**
 
 

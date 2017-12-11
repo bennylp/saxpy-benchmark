@@ -24,7 +24,6 @@
 - [Machine Specifications](#machine-specifications)
    - [Ubuntu 16.04, NVidia GTX 1080](#ubuntu-1604-nvidia-gtx-1080)
    - [Windows 10, NVidia GTX 1080](#windows-10-nvidia-gtx-1080)
-   - [MacBook Pro 13" late 2013, on board Intel Iris GPU](#macbook-pro-13-late-2013-on-board-intel-iris-gpu)
 
 
 # Benchmarks
@@ -225,10 +224,9 @@ Note: same machine as Windows below (dual-boot)
 
 |    |    |
 |----|----|
-| System | HP Pavilion 550-227 desktop |
-|  | Intel i7-6700 CPU @ 3.40GHz 16GB RAM |
+| System | Intel i7-6700 CPU @ 3.40GHz 16GB RAM 4x2 cores (HT) |
 | OS | Ubuntu Linux 16.04 64bit |
-| GPU | NVidia GeForce GTX 1080 8GB mem |
+| GPU | NVidia GeForce GTX 1080 8GB |
 | C++ Compiler | g++ 5.4.0 |
 | Python3 | 3.5.2 64bit |
 | TensorFlow | TensorFlow 1.4 (GPU) |
@@ -249,10 +247,9 @@ Note: same machine as Linux above (dual-boot)
 
 |    |    |
 |----|----|
-| System | HP Pavilion 550-227 desktop |
-|  | Intel i7-6700 CPU @ 3.40GHz (4 cores, HT capable) |
+| System | Intel i7-6700 CPU @ 3.40GHz 16GB RAM 4x2 cores (HT) |
 | OS | Windows 10 64bit |
-| GPU | NVidia GeForce GTX 475 4GB mem |
+| GPU | NVidia GeForce GTX 1080 8GB |
 | C++ Compiler | Visual Studio 2015 C++ compiler 64bit version |
 | Python | 2.7.12 64bit |
 | Python3 | 3.5.3 64bit |
@@ -263,18 +260,5 @@ Note: same machine as Linux above (dual-boot)
 | PyOpenCL | version 2017.2 |
 | Octave | version 4.2.1 64bit |
 | R | version 3.4.2 64bit |
-
-## MacBook Pro 13" late 2013, on board Intel Iris GPU
-
-|    |    |
-|----|----|
-| System | MacBook Pro 13" late 2013 |
-| OS | OS X 10.11.14 |
-| GPU | on board Intel Iris |
-| OpenCL | preinstalled (XCode 5.1.1) |
-| Python | 3.5.2 |
-| TensorFlow | 1.0.1 |
-| Octave | 3.8.0 |
-| Java | 1.8.0_92 |
 
 

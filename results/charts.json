@@ -138,7 +138,7 @@
  },
  {
     "title": "C++ CPU vs GPU",
-    "remarks": ["Comparing naive C++ loop with CUDA, OpenCL, and Thrust on GPU"],
+    "remarks": ["Comparing naive C++ loop with CUDA, OpenCL, Thrust, and Cublas on GPU"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -147,7 +147,7 @@
            "title": "Windows"
          }         
         ],
-    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]", "C++ Thrust [gpu]"],
+    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]", "C++ Thrust [gpu]", "C++ Cublas [gpu]"],
     "output": "c++-cpu-vs-gpu.png"
  },
  {

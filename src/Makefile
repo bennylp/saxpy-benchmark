@@ -31,7 +31,8 @@ TARGETS = saxpy_cpu$(EXE) \
 	  saxpy_cuda$(EXE) \
 	  saxpy_ocl1$(EXE) \
 	  saxpy_omp$(EXE) \
-	  saxpy_thrust$(EXE)
+	  saxpy_thrust$(EXE) \
+	  saxpy_cublas$(EXE) \
 
 #	  saxpy_ocl2$(EXE) \
 
@@ -117,6 +118,9 @@ saxpy_omp$(EXE): saxpy_omp.cpp saxpy.h
 
 saxpy_thrust$(EXE): saxpy_thrust.cpp saxpy.h
 	nvcc $(CUDA_CFLAGS) $(CUDA_LDFLAGS) -o saxpy_thrust$(EXE) saxpy_thrust.cpp
+		
+saxpy_cublas$(EXE): saxpy_cublas.cpp saxpy.h
+	nvcc $(CUDA_CFLAGS) $(CUDA_LDFLAGS) -o saxpy_cublas$(EXE) saxpy_cublas.cpp -lcublas
 		
 SaxpyLoop.class: SaxpyLoop.java
 	javac SaxpyLoop.java

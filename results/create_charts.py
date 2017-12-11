@@ -39,7 +39,8 @@ known_columns = {
     'Julia (vec) [cpu]': 'saxpy_array.jl',
     'Py CNTK [gpu]': 'saxpy_cntk.py',
     'Py CNTK [cpu]': 'saxpy_cntk.py',
-    'C++ Thrust [gpu]': 'saxpy_trust.cpp'
+    'C++ Thrust [gpu]': 'saxpy_trust.cpp',
+    'C++ Cublas [gpu]': 'saxpy_cublas.cpp'
 }
 
 

@@ -11,6 +11,7 @@ When creating a CSV, please standardize the column names to the following, other
 the CSV will be rejected by `create_charts.py`. The names are standardized in case we want to do
 some statistics with them in the future:
 - C++ CUDA [gpu]
+- C++ Cublas [gpu]
 - C++ OCL [cpu]
 - C++ OCL [gpu]
 - C++ OMP [cpu]
@@ -100,8 +101,9 @@ Note: same machine as Windows below (dual-boot)
 | C++ TensorFlow [gpu] | 27.356 | 0.000 | 8.24x |
 | Py MXNet [gpu] | 12.843 | 0.043 | 3.87x |
 | PyCUDA [gpu] | 3.621 | 0.009 | 1.09x |
-| C++ CUDA [gpu] | 3.467 | 0.022 | 1.04x |
+| C++ CUDA [gpu] | 3.446 | 0.002 | 1.04x |
 | C++ OCL [gpu] | 3.341 | 0.012 | 1.01x |
+| C++ Cublas [gpu] | 3.329 | 0.002 | 1.00x |
 | C++ Thrust [gpu] | 3.322 | 0.006 | 1.00x |
 
 

@@ -138,7 +138,7 @@
  },
  {
     "title": "C++ CPU vs GPU",
-    "remarks": ["Comparing naive C++ loop with CUDA and OpenCL on GPU"],
+    "remarks": ["Comparing naive C++ loop with CUDA, OpenCL, and Thrust on GPU"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -147,7 +147,7 @@
            "title": "Windows"
          }         
         ],
-    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]"],
+    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]", "C++ Thrust [gpu]"],
     "output": "c++-cpu-vs-gpu.png"
  },
  {
@@ -161,12 +161,12 @@
            "title": "Windows"
          }         
         ],
-    "columns": ["PyOCL [cpu]", "PyOCL [gpu]", "C++ OCL [cpu]", "C++ OCL [gpu]", "C++ loop [cpu]"],
+    "columns": ["PyOCL [cpu]", "PyOCL [gpu]", "C++ OCL [cpu]", "C++ OCL [gpu]"],
     "output": "pyopencl-vs-opencl.png"
  },
  {
     "title": "PyCUDA vs C++ (GPU)",
-    "remarks": ["Comparing PyCUDA (Python CUDA wrapper) with C++ OpenCL on GPU and C++ naive loop"],
+    "remarks": ["Comparing PyCUDA (Python CUDA wrapper) with native C++ CUDA GPU"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -175,7 +175,7 @@
            "title": "Windows"
          }         
         ],
-    "columns": ["PyCUDA [gpu]", "C++ OCL [gpu]", "C++ loop [cpu]"],
+    "columns": ["PyCUDA [gpu]", "C++ CUDA [gpu]"],
     "output": "pycuda-vs-c++.png"
  },
  {

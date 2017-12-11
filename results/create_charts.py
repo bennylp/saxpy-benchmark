@@ -38,7 +38,8 @@ known_columns = {
     'Julia (loop) [cpu]': 'saxpy_loop.jl',
     'Julia (vec) [cpu]': 'saxpy_array.jl',
     'Py CNTK [gpu]': 'saxpy_cntk.py',
-    'Py CNTK [cpu]': 'saxpy_cntk.py'
+    'Py CNTK [cpu]': 'saxpy_cntk.py',
+    'C++ Thrust [gpu]': 'saxpy_trust.cpp'
 }
 
 

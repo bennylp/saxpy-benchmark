@@ -138,11 +138,12 @@ Comparing naive C++ loop with OpenCL and OpenMP on CPU.
 
 ## C++ CPU vs GPU
 
-Comparing naive C++ loop with CUDA and OpenCL on GPU
+Comparing naive C++ loop with CUDA, OpenCL, and Thrust on GPU
 
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+- C++ Thrust [gpu] ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
 
 ![results/charts-en/c++-cpu-vs-gpu.png](results/charts-en/c++-cpu-vs-gpu.png?raw=true "results/charts-en/c++-cpu-vs-gpu.png")
 
@@ -154,17 +155,15 @@ Comparing C++ OpenCL with OpenCL Python wrapper.
 - PyOCL [gpu] ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
 - C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
-- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/pyopencl-vs-opencl.png](results/charts-en/pyopencl-vs-opencl.png?raw=true "results/charts-en/pyopencl-vs-opencl.png")
 
 ## PyCUDA vs C++ (GPU)
 
-Comparing PyCUDA (Python CUDA wrapper) with C++ OpenCL on GPU and C++ naive loop
+Comparing PyCUDA (Python CUDA wrapper) with native C++ CUDA GPU
 
 - PyCUDA [gpu] ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
-- C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
-- C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+- C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
 
 ![results/charts-en/pycuda-vs-c++.png](results/charts-en/pycuda-vs-c++.png?raw=true "results/charts-en/pycuda-vs-c++.png")
 

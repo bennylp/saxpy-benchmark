@@ -31,6 +31,7 @@
 
 The following benchmarks have been implemented:
 
+|    |    |
 |:--:|----|
 | [**C++ Bulk [gpu]**](src/saxpy_bulk.cpp) |  [Bulk](https://github.com/jaredhoberock/bulk) is yet another parallel algorithms on top of CUDA. It claims to have better scalability than Thrust. | 
 | [**C++ CUDA [gpu]**](src/saxpy_cuda.cpp) |  NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit is the base library for accessing GPUs. | 

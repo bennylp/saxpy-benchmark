@@ -31,95 +31,125 @@
 
 The following benchmarks are implemented:
 
-- **PyCUDA [gpu]** ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
-  Implementation with [PyCUDA](https://mathema.tician.de/software/pycuda/), the Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).
-
-- **Py CNTK [gpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
-  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
-
-- **R (loop) [cpu]** ([src/saxpy_loop.R](src/saxpy_loop.R))
-  Simple loop in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
-
-- **R (data.table) [cpu]** ([src/saxpy_datatable.R](src/saxpy_datatable.R))
-  Implementation with `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
-
-- **Py CNTK [cpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
-  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
-
-- **Julia (loop) [cpu]** ([src/saxpy_loop.jl](src/saxpy_loop.jl))
-  Plain loop in [Julia](https://julialang.org/) programming language.
-
-- **C++ cuBLAS [gpu]** ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
-  A GPU implementation with NVidia [cuBLAS](https://developer.nvidia.com/cublas), a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).
-
-- **Py Numpy [cpu]** ([src/saxpy_numpy.py](src/saxpy_numpy.py))
-  Vectorized implementation with Python [Numpy](http://www.numpy.org/) array.
-
-- **Octave [cpu]** ([src/saxpy.m](src/saxpy.m))
-  Implementation in [GNU Octave](https://www.gnu.org/software/octave/), a high-level language primarily intended for numerical computations.
-
 - **Java loop [cpu]** ([src/SaxpyLoop.java](src/SaxpyLoop.java))
+
   Plain Java loop
 
-- **R (data.frame) [cpu]** ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
-  Implementation with `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+- **C++ OCL [cpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 
-- **C++ OCL [gpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
   Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.
 
-- **C++ TensorFlow [gpu]** ([src/saxpy_tf.cc](src/saxpy_tf.cc))
-  Implementation in C++ for GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+- **R (array) [cpu]** ([src/saxpy_array.R](src/saxpy_array.R))
+
+  Implementation with array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Julia (vec) [cpu]** ([src/saxpy_array.jl](src/saxpy_array.jl))
+
+  Vectorized implementation with array in [Julia](https://julialang.org/) programming language.
 
 - **R (matrix) [cpu]** ([src/saxpy_matrix.R](src/saxpy_matrix.R))
+
   Implementation with matrix in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
 
+- **C++ loop [cpu]** ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+
+  Plain C++ `for` loop
+
+- **Py MXNet [gpu]** ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+
+  Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.
+
+- **Py TensorFlow [cpu]** ([src/saxpy_tf.py](src/saxpy_tf.py))
+
+  Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+
+- **Py Pandas [cpu]** ([src/saxpy_pandas.py](src/saxpy_pandas.py))
+
+  Vectorized implementation with Python [Pandas](https://pandas.pydata.org/) dataframe.
+
+- **R (loop) [cpu]** ([src/saxpy_loop.R](src/saxpy_loop.R))
+
+  Simple loop in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Py CNTK [gpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+
+  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
+
+- **Octave [cpu]** ([src/saxpy.m](src/saxpy.m))
+
+  Implementation in [GNU Octave](https://www.gnu.org/software/octave/), a high-level language primarily intended for numerical computations.
+
+- **R (data.table) [cpu]** ([src/saxpy_datatable.R](src/saxpy_datatable.R))
+
+  Implementation with `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Julia (loop) [cpu]** ([src/saxpy_loop.jl](src/saxpy_loop.jl))
+
+  Plain loop in [Julia](https://julialang.org/) programming language.
+
+- **R (data.frame) [cpu]** ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
+
+  Implementation with `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **C++ TensorFlow [gpu]** ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+
+  Implementation in C++ for GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+
+- **C++ Thrust [gpu]** ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
+
+  A GPU implementation with NVidia [Thrust](https://thrust.github.io/), a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
+
+- **C++ Bulk [gpu]** ([src/saxpy_bulk.cpp](src/saxpy_bulk.cpp))
+
+  A GPU implementation with [Bulk](https://github.com/jaredhoberock/bulk), yet another parallel algorithms on top of CUDA.
+
+- **PyOCL [gpu]** ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+
+  CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).
+
+- **C++ CUDA [gpu]** ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
+
+  Low level implementation with the base NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
+
+- **C++ cuBLAS [gpu]** ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
+
+  A GPU implementation with NVidia [cuBLAS](https://developer.nvidia.com/cublas), a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).
+
+- **PyCUDA [gpu]** ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
+
+  Implementation with [PyCUDA](https://mathema.tician.de/software/pycuda/), the Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).
+
 - **Py MXNet [cpu]** ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+
   Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.
 
 - **Py TensorFlow [gpu]** ([src/saxpy_tf.py](src/saxpy_tf.py))
+
   Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
-
-- **C++ loop [cpu]** ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
-  Plain C++ `for` loop
-
-- **Julia (vec) [cpu]** ([src/saxpy_array.jl](src/saxpy_array.jl))
-  Vectorized implementation with array in [Julia](https://julialang.org/) programming language.
-
-- **R (array) [cpu]** ([src/saxpy_array.R](src/saxpy_array.R))
-  Implementation with array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
-
-- **Py TensorFlow [cpu]** ([src/saxpy_tf.py](src/saxpy_tf.py))
-  Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
-
-- **Python loop [cpu]** ([src/saxpy_loop.py](src/saxpy_loop.py))
-  Simple Python `for` loop.
-
-- **Py Pandas [cpu]** ([src/saxpy_pandas.py](src/saxpy_pandas.py))
-  Vectorized implementation with Python [Pandas](https://pandas.pydata.org/) dataframe.
-
-- **C++ CUDA [gpu]** ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
-  Low level implementation with the base NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
-
-- **C++ Thrust [gpu]** ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
-  A GPU implementation with NVidia [Thrust](https://thrust.github.io/), a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
-
-- **Py MXNet [gpu]** ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
-  Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.
 
 - **C++ OMP [cpu]** ([src/saxpy_omp.cpp](src/saxpy_omp.cpp))
+
   Parallel programming with [OpenMP](http://www.openmp.org/). Only CPU version is implemented.
 
-- **C++ Bulk [gpu]** ([src/saxpy_bulk.cpp](src/saxpy_bulk.cpp))
-  A GPU implementation with [Bulk](https://github.com/jaredhoberock/bulk), yet another parallel algorithms on top of CUDA.
+- **Py Numpy [cpu]** ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+
+  Vectorized implementation with Python [Numpy](http://www.numpy.org/) array.
+
+- **C++ OCL [gpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+
+  Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.
+
+- **Py CNTK [cpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+
+  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
+
+- **Python loop [cpu]** ([src/saxpy_loop.py](src/saxpy_loop.py))
+
+  Simple Python `for` loop.
 
 - **PyOCL [cpu]** ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
-  CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).
 
-- **PyOCL [gpu]** ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
   CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).
-
-- **C++ OCL [cpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
-  Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.
 
 
 # Results

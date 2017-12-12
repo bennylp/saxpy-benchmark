@@ -292,14 +292,12 @@ def create_front_page():
 
     doc += "# Benchmarks\n\n"
     doc += "The following benchmarks have been implemented:\n\n"
-    doc += "|    |    |\n"
     doc += "|:--:|----|\n"
     for col in sorted(known_columns.keys()):
         # doc += "- **{}** ([src/{}](src/{}))\n\n".format(col,
         #                                                known_columns[col][0], known_columns[col][0])
         #doc += "  {}\n\n".format(known_columns[col][1])
-        doc += "| **{}** ([src/{}](src/{})) | ".format(col,
-                                                       known_columns[col][0], known_columns[col][0])
+        doc += "| [**{}**](src/{}) | ".format(col, known_columns[col][0])
         doc += " {} | \n".format(known_columns[col][1])
     doc += "\n"
     doc += "\n"

@@ -13,37 +13,37 @@ import pandas as pd
 
 known_columns = {
     'Python loop [cpu]': ['saxpy_loop.py', 'Simple Python `for` loop.'],
-    'Py Numpy [cpu]': ['saxpy_numpy.py', 'Vectorized implementation with Python [Numpy](http://www.numpy.org/) array.'],
-    'Py Pandas [cpu]': ['saxpy_pandas.py', 'Vectorized implementation with Python [Pandas](https://pandas.pydata.org/) dataframe.'],
+    'Py Numpy [cpu]': ['saxpy_numpy.py', 'With Python [Numpy](http://www.numpy.org/) array.'],
+    'Py Pandas [cpu]': ['saxpy_pandas.py', 'With Python [Pandas](https://pandas.pydata.org/) dataframe.'],
     'Java loop [cpu]': ['SaxpyLoop.java', 'Plain Java loop'],
-    'Julia (loop) [cpu]': ['saxpy_loop.jl', 'Plain loop in [Julia](https://julialang.org/) programming language.'],
-    'Julia (vec) [cpu]': ['saxpy_array.jl', 'Vectorized implementation with array in [Julia](https://julialang.org/) programming language.'],
-    'Octave [cpu]': ['saxpy.m', 'Implementation in [GNU Octave](https://www.gnu.org/software/octave/), a high-level language primarily intended for numerical computations.'],
+    'Julia (loop) [cpu]': ['saxpy_loop.jl', 'SIMD optimized [Julia](https://julialang.org/) loop.'],
+    'Julia (vec) [cpu]': ['saxpy_array.jl', 'With [Julia](https://julialang.org/) array operation.'],
+    'Octave [cpu]': ['saxpy.m', '[GNU Octave](https://www.gnu.org/software/octave/) is a high-level language primarily intended for numerical computations.'],
     'R (loop) [cpu]': ['saxpy_loop.R', 'Simple loop in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
-    'R (array) [cpu]': ['saxpy_array.R', 'Implementation with array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
-    'R (matrix) [cpu]': ['saxpy_matrix.R', 'Implementation with matrix in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
-    'R (data.frame) [cpu]': ['saxpy_dataframe.R', 'Implementation with `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
-    'R (data.table) [cpu]': ['saxpy_datatable.R', 'Implementation with `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (array) [cpu]': ['saxpy_array.R', 'With array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (matrix) [cpu]': ['saxpy_matrix.R', 'With matrix in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (data.frame) [cpu]': ['saxpy_dataframe.R', 'With `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (data.table) [cpu]': ['saxpy_datatable.R', 'With `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
 
     'C++ loop [cpu]': ['saxpy_cpu.cpp', 'Plain C++ `for` loop'],
-    'C++ CUDA [gpu]': ['saxpy_cuda.cpp', 'Low level implementation with the base NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.'],
-    'C++ Thrust [gpu]': ['saxpy_trust.cpp', 'A GPU implementation with NVidia [Thrust](https://thrust.github.io/), a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.'],
-    'C++ cuBLAS [gpu]': ['saxpy_cublas.cpp', 'A GPU implementation with NVidia [cuBLAS](https://developer.nvidia.com/cublas), a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).'],
-    'C++ Bulk [gpu]': ['saxpy_bulk.cpp', 'A GPU implementation with [Bulk](https://github.com/jaredhoberock/bulk), yet another parallel algorithms on top of CUDA.'],
-    'C++ OCL [cpu]': ['saxpy_ocl1.cpp', 'Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
-    'C++ OCL [gpu]': ['saxpy_ocl1.cpp', 'Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
-    'C++ OMP [cpu]': ['saxpy_omp.cpp', 'Parallel programming with [OpenMP](http://www.openmp.org/). Only CPU version is implemented.'],
-    'C++ TensorFlow [gpu]': ['saxpy_tf.cc', 'Implementation in C++ for GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
+    'C++ CUDA [gpu]': ['saxpy_cuda.cpp', 'NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit is the base library for accessing GPUs.'],
+    'C++ Thrust [gpu]': ['saxpy_trust.cpp', 'NVidia [Thrust](https://thrust.github.io/) is a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.'],
+    'C++ cuBLAS [gpu]': ['saxpy_cublas.cpp', 'NVidia [cuBLAS](https://developer.nvidia.com/cublas) is a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).'],
+    'C++ Bulk [gpu]': ['saxpy_bulk.cpp', '[Bulk](https://github.com/jaredhoberock/bulk) is yet another parallel algorithms on top of CUDA. It claims to have better scalability than Thrust.'],
+    'C++ OCL [cpu]': ['saxpy_ocl1.cpp', '[OpenCL](https://en.wikipedia.org/wiki/OpenCL) is a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
+    'C++ OCL [gpu]': ['saxpy_ocl1.cpp', '[OpenCL](https://en.wikipedia.org/wiki/OpenCL) is a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
+    'C++ OMP [cpu]': ['saxpy_omp.cpp', '[OpenMP](http://www.openmp.org/) is API specification for parallel programming.'],
+    'C++ TensorFlow [gpu]': ['saxpy_tf.cc', '[TensorFlow](https://www.tensorflow.org/) is a deep learning library from Google.'],
 
-    'PyOCL [cpu]': ['saxpy_pyocl.py', 'CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
-    'PyOCL [gpu]': ['saxpy_pyocl.py', 'CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
-    'PyCUDA [gpu]': ['saxpy_pycuda.py', 'Implementation with [PyCUDA](https://mathema.tician.de/software/pycuda/), the Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).'],
-    'Py CNTK [gpu]': ['saxpy_cntk.py', 'Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.'],
-    'Py CNTK [cpu]': ['saxpy_cntk.py', 'Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.'],
-    'Py MXNet [cpu]': ['saxpy_mxnet.py', 'Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.'],
-    'Py MXNet [gpu]': ['saxpy_mxnet.py', 'Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.'],
-    'Py TensorFlow [cpu]': ['saxpy_tf.py', 'Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
-    'Py TensorFlow [gpu]': ['saxpy_tf.py', 'Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
+    'PyOCL [cpu]': ['saxpy_pyocl.py', '[PyOpenCL](https://mathema.tician.de/software/pyopencl/) is a Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
+    'PyOCL [gpu]': ['saxpy_pyocl.py', '[PyOpenCL](https://mathema.tician.de/software/pyopencl/) is a Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
+    'PyCUDA [gpu]': ['saxpy_pycuda.py', '[PyCUDA](https://mathema.tician.de/software/pycuda/) is a Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).'],
+    'Py CNTK [gpu]': ['saxpy_cntk.py', '[CNTK](https://cntk.ai/) is a deep learning library.'],
+    'Py CNTK [cpu]': ['saxpy_cntk.py', '[CNTK](https://cntk.ai/) is a deep learning library.'],
+    'Py MXNet [cpu]': ['saxpy_mxnet.py', '[MXNet](https://mxnet.incubator.apache.org/) is a deep learning library.'],
+    'Py MXNet [gpu]': ['saxpy_mxnet.py', '[MXNet](https://mxnet.incubator.apache.org/) is a deep learning library.'],
+    'Py TensorFlow [cpu]': ['saxpy_tf.py', '[TensorFlow](https://www.tensorflow.org/) is a deep learning library.'],
+    'Py TensorFlow [gpu]': ['saxpy_tf.py', '[TensorFlow](https://www.tensorflow.org/) is a deep learning library.'],
 
 }
 
@@ -291,11 +291,17 @@ def create_front_page():
     doc += "\n\n"
 
     doc += "# Benchmarks\n\n"
-    doc += "The following benchmarks are implemented:\n\n"
+    doc += "The following benchmarks have been implemented:\n\n"
+    doc += "|    |    |\n"
+    doc += "|:--:|----|\n"
     for col in sorted(known_columns.keys()):
-        doc += "- **{}** ([src/{}](src/{}))\n\n".format(col,
-                                                        known_columns[col][0], known_columns[col][0])
-        doc += "  {}\n\n".format(known_columns[col][1])
+        # doc += "- **{}** ([src/{}](src/{}))\n\n".format(col,
+        #                                                known_columns[col][0], known_columns[col][0])
+        #doc += "  {}\n\n".format(known_columns[col][1])
+        doc += "| **{}** ([src/{}](src/{})) | ".format(col,
+                                                       known_columns[col][0], known_columns[col][0])
+        doc += " {} | \n".format(known_columns[col][1])
+    doc += "\n"
     doc += "\n"
 
     doc += "# Results\n\n"

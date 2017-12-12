@@ -292,7 +292,7 @@ def create_front_page():
 
     doc += "# Benchmarks\n\n"
     doc += "The following benchmarks are implemented:\n\n"
-    for col in known_columns.keys():
+    for col in sorted(known_columns.keys()):
         doc += "- **{}** ([src/{}](src/{}))\n\n".format(col,
                                                         known_columns[col][0], known_columns[col][0])
         doc += "  {}\n\n".format(known_columns[col][1])

@@ -41,17 +41,9 @@ void dump_vector(const char *name, Iterator begin, Iterator end)
 template <class Vector, class SyncFunction>
 int saxpy_main(Vector dummy, SyncFunction sync)
 {
-   const unsigned N = (1 << 26);
-   const float XVAL = 3;
-   const float YVAL = 4;
-   const float AVAL = 1.5;
-
    std::cout << "N: " << N << std::endl;
-   Vector x(N);
-   Vector y(N);
-
-   thrust::fill(x.begin(), x.end(), XVAL);
-   thrust::fill(y.begin(), y.end(), YVAL);
+   Vector x(N, XVAL);
+   Vector y(N, YVAL);
 
    sync();
    saxpy_timer t;

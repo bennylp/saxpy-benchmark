@@ -12,35 +12,39 @@ import pandas as pd
 
 
 known_columns = {
-    'Python loop [cpu]': 'saxpy_loop.py',
-    'Py Numpy [cpu]': 'saxpy_numpy.py',
-    'Py Pandas [cpu]': 'saxpy_pandas.py',
-    'C++ loop [cpu]': 'saxpy_cpu.cpp',
-    'C++ CUDA [gpu]': 'saxpy_cuda.cpp',
-    'C++ OCL [cpu]': 'saxpy_ocl1.cpp',
-    'C++ OCL [gpu]': 'saxpy_ocl1.cpp',
-    'PyOCL [cpu]': 'saxpy_pyocl.py',
-    'PyOCL [gpu]': 'saxpy_pyocl.py',
-    'PyCUDA [gpu]': 'saxpy_pycuda.py',
-    'Py TensorFlow [cpu]': 'saxpy_tf.py',
-    'Py TensorFlow [gpu]': 'saxpy_tf.py',
-    'C++ TensorFlow [gpu]': 'saxpy_tf.cc',
-    'Octave [cpu]': 'saxpy.m',
-    'R (loop) [cpu]': 'saxpy_loop.R',
-    'R (array) [cpu]': 'saxpy_array.R',
-    'R (matrix) [cpu]': 'saxpy_matrix.R',
-    'R (data.frame) [cpu]': 'saxpy_dataframe.R',
-    'R (data.table) [cpu]': 'saxpy_datatable.R',
-    'Java loop [cpu]': 'SaxpyLoop.java',
-    'C++ OMP [cpu]': 'saxpy_omp.cpp',
-    'Py MXNet [cpu]': 'saxpy_mxnet.py',
-    'Py MXNet [gpu]': 'saxpy_mxnet.py',
-    'Julia (loop) [cpu]': 'saxpy_loop.jl',
-    'Julia (vec) [cpu]': 'saxpy_array.jl',
-    'Py CNTK [gpu]': 'saxpy_cntk.py',
-    'Py CNTK [cpu]': 'saxpy_cntk.py',
-    'C++ Thrust [gpu]': 'saxpy_trust.cpp',
-    'C++ Cublas [gpu]': 'saxpy_cublas.cpp'
+    'Python loop [cpu]': ['saxpy_loop.py', 'Simple Python `for` loop.'],
+    'Py Numpy [cpu]': ['saxpy_numpy.py', 'Vectorized implementation with Python [Numpy](http://www.numpy.org/) array.'],
+    'Py Pandas [cpu]': ['saxpy_pandas.py', 'Vectorized implementation with Python [Pandas](https://pandas.pydata.org/) dataframe.'],
+    'Java loop [cpu]': ['SaxpyLoop.java', 'Plain Java loop'],
+    'Julia (loop) [cpu]': ['saxpy_loop.jl', 'Plain loop in [Julia](https://julialang.org/) programming language.'],
+    'Julia (vec) [cpu]': ['saxpy_array.jl', 'Vectorized implementation with array in [Julia](https://julialang.org/) programming language.'],
+    'Octave [cpu]': ['saxpy.m', 'Implementation in [GNU Octave](https://www.gnu.org/software/octave/), a high-level language primarily intended for numerical computations.'],
+    'R (loop) [cpu]': ['saxpy_loop.R', 'Simple loop in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (array) [cpu]': ['saxpy_array.R', 'Implementation with array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (matrix) [cpu]': ['saxpy_matrix.R', 'Implementation with matrix in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (data.frame) [cpu]': ['saxpy_dataframe.R', 'Implementation with `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+    'R (data.table) [cpu]': ['saxpy_datatable.R', 'Implementation with `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.'],
+
+    'C++ loop [cpu]': ['saxpy_cpu.cpp', 'Plain C++ `for` loop'],
+    'C++ CUDA [gpu]': ['saxpy_cuda.cpp', 'Low level implementation with the base NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.'],
+    'C++ Thrust [gpu]': ['saxpy_trust.cpp', 'A GPU implementation with NVidia [Thrust](https://thrust.github.io/), a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.'],
+    'C++ cuBLAS [gpu]': ['saxpy_cublas.cpp', 'A GPU implementation with NVidia [cuBLAS](https://developer.nvidia.com/cublas), a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).'],
+    'C++ Bulk [gpu]': ['saxpy_bulk.cpp', 'A GPU implementation with [Bulk](https://github.com/jaredhoberock/bulk), yet another parallel algorithms on top of CUDA.'],
+    'C++ OCL [cpu]': ['saxpy_ocl1.cpp', 'Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
+    'C++ OCL [gpu]': ['saxpy_ocl1.cpp', 'Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.'],
+    'C++ OMP [cpu]': ['saxpy_omp.cpp', 'Parallel programming with [OpenMP](http://www.openmp.org/). Only CPU version is implemented.'],
+    'C++ TensorFlow [gpu]': ['saxpy_tf.cc', 'Implementation in C++ for GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
+
+    'PyOCL [cpu]': ['saxpy_pyocl.py', 'CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
+    'PyOCL [gpu]': ['saxpy_pyocl.py', 'CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).'],
+    'PyCUDA [gpu]': ['saxpy_pycuda.py', 'Implementation with [PyCUDA](https://mathema.tician.de/software/pycuda/), the Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).'],
+    'Py CNTK [gpu]': ['saxpy_cntk.py', 'Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.'],
+    'Py CNTK [cpu]': ['saxpy_cntk.py', 'Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.'],
+    'Py MXNet [cpu]': ['saxpy_mxnet.py', 'Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.'],
+    'Py MXNet [gpu]': ['saxpy_mxnet.py', 'Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.'],
+    'Py TensorFlow [cpu]': ['saxpy_tf.py', 'Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
+    'Py TensorFlow [gpu]': ['saxpy_tf.py', 'Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.'],
+
 }
 
 
@@ -276,6 +280,7 @@ def create_front_page():
     doc += "# SAXPY CPU and GPGPU Benchmarks\n\n"
     doc += "**Table of Contents**:\n\n"
     doc += "- [Benchmarks](#benchmarks)\n"
+    doc += "- [Results](#results)\n"
     for spec in chart_specs:
         doc += "   - [{}](#{})\n".format(spec['title'],
                                          create_anchor(spec['title']))
@@ -286,6 +291,14 @@ def create_front_page():
     doc += "\n\n"
 
     doc += "# Benchmarks\n\n"
+    doc += "The following benchmarks are implemented:\n\n"
+    for col in known_columns.keys():
+        doc += "- **{}** ([src/{}](src/{}))\n".format(col,
+                                                      known_columns[col][0], known_columns[col][0])
+        doc += "  {}\n\n".format(known_columns[col][1])
+    doc += "\n"
+
+    doc += "# Results\n\n"
     for spec in chart_specs:
         doc += "## " + spec['title'] + "\n\n"
         for remark in spec.get('remarks', []):
@@ -296,12 +309,12 @@ def create_front_page():
                 if col not in known_columns:  # no need to print wildcards (e.g. *cpu*)
                     continue
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
-                                                          known_columns[col], known_columns[col])
+                                                          known_columns[col][0], known_columns[col][0])
             doc += "\n"
         if 'columns' in spec:
             for col in sorted(spec.get('columns', [])):
                 doc += "- {} ([src/{}](src/{}))\n".format(col,
-                                                          known_columns[col], known_columns[col])
+                                                          known_columns[col][0], known_columns[col][0])
             doc += "\n"
 
         png_file = "results/charts-en/" + spec['output']

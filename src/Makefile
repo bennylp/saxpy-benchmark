@@ -4,7 +4,7 @@
 #
 
 ###################################################################
-# Step 1: Configure your compiler
+# Step 1: Configure your host compiler
 ###################################################################
 # Windows / Visual Studio tools
 #CC = cl
@@ -33,6 +33,7 @@ TARGETS = saxpy_cpu$(EXE) \
 	  saxpy_omp$(EXE) \
 	  saxpy_thrust$(EXE) \
 	  saxpy_cublas$(EXE) \
+	  saxpy_bulk$(EXE) \
 
 #	  saxpy_ocl2$(EXE) \
 
@@ -52,6 +53,11 @@ CUDA_LDFLAGS =
 
 #CUDA_CFLAGS =
 #CUDA_LDFLAGS =
+
+#
+# Bulk
+#
+BULK_CFLAGS = -I/home/bennylp/Desktop/opt/src/bulk
 
 #
 # OpenCL settings
@@ -121,6 +127,9 @@ saxpy_thrust$(EXE): saxpy_thrust.cpp saxpy.h
 		
 saxpy_cublas$(EXE): saxpy_cublas.cpp saxpy.h
 	nvcc $(CUDA_CFLAGS) $(CUDA_LDFLAGS) -o saxpy_cublas$(EXE) saxpy_cublas.cpp -lcublas
+		
+saxpy_bulk$(EXE): saxpy_bulk.cpp saxpy.h
+	nvcc $(CUDA_CFLAGS) $(BULK_CFLAGS) $(CUDA_LDFLAGS) -o saxpy_bulk$(EXE) saxpy_bulk.cpp
 		
 SaxpyLoop.class: SaxpyLoop.java
 	javac SaxpyLoop.java

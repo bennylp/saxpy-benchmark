@@ -3,6 +3,7 @@
 **Table of Contents**:
 
 - [Benchmarks](#benchmarks)
+- [Results](#results)
    - [Python: Loop vs Numpy (CPU)](#python-loop-vs-numpy-cpu)
    - [Python: Loop vs Numpy 2 (CPU)](#python-loop-vs-numpy-2-cpu)
    - [R: Loop vs Vectorized (CPU)](#r-loop-vs-vectorized-cpu)
@@ -13,7 +14,7 @@
    - [Numpy vs Deep Learning Frameworks (GPU and CPU)](#numpy-vs-deep-learning-frameworks-gpu-and-cpu)
    - [Deep Learning Frameworks GPU vs Loop CPU](#deep-learning-frameworks-gpu-vs-loop-cpu)
    - [C++ Parallel APIs (CPU)](#c-parallel-apis-cpu)
-   - [C++ CPU vs GPU](#c-cpu-vs-gpu)
+   - [C++ GPU (vs CPU)](#c-gpu-vs-cpu)
    - [OpenCL vs PyOpenCL (CPU & GPU)](#opencl-vs-pyopencl-cpu--gpu)
    - [PyCUDA vs C++ (GPU)](#pycuda-vs-c-gpu)
    - [Tensorflow: Python vs C++ (GPU)](#tensorflow-python-vs-c-gpu)
@@ -27,6 +28,101 @@
 
 
 # Benchmarks
+
+The following benchmarks are implemented:
+
+- **PyCUDA [gpu]** ([src/saxpy_pycuda.py](src/saxpy_pycuda.py))
+  Implementation with [PyCUDA](https://mathema.tician.de/software/pycuda/), the Python wrapper for [CUDA](https://developer.nvidia.com/cuda-toolkit).
+
+- **Py CNTK [gpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
+
+- **R (loop) [cpu]** ([src/saxpy_loop.R](src/saxpy_loop.R))
+  Simple loop in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **R (data.table) [cpu]** ([src/saxpy_datatable.R](src/saxpy_datatable.R))
+  Implementation with `data.table` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Py CNTK [cpu]** ([src/saxpy_cntk.py](src/saxpy_cntk.py))
+  Implementation for CPU and GPU with [CNTK](https://cntk.ai/), a deep learning library.
+
+- **Julia (loop) [cpu]** ([src/saxpy_loop.jl](src/saxpy_loop.jl))
+  Plain loop in [Julia](https://julialang.org/) programming language.
+
+- **C++ cuBLAS [gpu]** ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
+  A GPU implementation with NVidia [cuBLAS](https://developer.nvidia.com/cublas), a fast GPU-accelerated implementation of the standard basic linear algebra subroutines (BLAS).
+
+- **Py Numpy [cpu]** ([src/saxpy_numpy.py](src/saxpy_numpy.py))
+  Vectorized implementation with Python [Numpy](http://www.numpy.org/) array.
+
+- **Octave [cpu]** ([src/saxpy.m](src/saxpy.m))
+  Implementation in [GNU Octave](https://www.gnu.org/software/octave/), a high-level language primarily intended for numerical computations.
+
+- **Java loop [cpu]** ([src/SaxpyLoop.java](src/SaxpyLoop.java))
+  Plain Java loop
+
+- **R (data.frame) [cpu]** ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
+  Implementation with `data.frame` in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **C++ OCL [gpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+  Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.
+
+- **C++ TensorFlow [gpu]** ([src/saxpy_tf.cc](src/saxpy_tf.cc))
+  Implementation in C++ for GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+
+- **R (matrix) [cpu]** ([src/saxpy_matrix.R](src/saxpy_matrix.R))
+  Implementation with matrix in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Py MXNet [cpu]** ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+  Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.
+
+- **Py TensorFlow [gpu]** ([src/saxpy_tf.py](src/saxpy_tf.py))
+  Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+
+- **C++ loop [cpu]** ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
+  Plain C++ `for` loop
+
+- **Julia (vec) [cpu]** ([src/saxpy_array.jl](src/saxpy_array.jl))
+  Vectorized implementation with array in [Julia](https://julialang.org/) programming language.
+
+- **R (array) [cpu]** ([src/saxpy_array.R](src/saxpy_array.R))
+  Implementation with array in [R](https://www.r-project.org/), a free software environment for statistical computing and graphics.
+
+- **Py TensorFlow [cpu]** ([src/saxpy_tf.py](src/saxpy_tf.py))
+  Implementation for CPU and GPU with [TensorFlow](https://www.tensorflow.org/), a deep learning library.
+
+- **Python loop [cpu]** ([src/saxpy_loop.py](src/saxpy_loop.py))
+  Simple Python `for` loop.
+
+- **Py Pandas [cpu]** ([src/saxpy_pandas.py](src/saxpy_pandas.py))
+  Vectorized implementation with Python [Pandas](https://pandas.pydata.org/) dataframe.
+
+- **C++ CUDA [gpu]** ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
+  Low level implementation with the base NVidia [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
+
+- **C++ Thrust [gpu]** ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
+  A GPU implementation with NVidia [Thrust](https://thrust.github.io/), a parallel algorithms library which resembles the C++ Standard Template Library (STL). Thrust is included with [CUDA](https://developer.nvidia.com/cuda-toolkit) toolkit.
+
+- **Py MXNet [gpu]** ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
+  Implementation for CPU and GPU with [MXNet](https://mxnet.incubator.apache.org/), a deep learning library.
+
+- **C++ OMP [cpu]** ([src/saxpy_omp.cpp](src/saxpy_omp.cpp))
+  Parallel programming with [OpenMP](http://www.openmp.org/). Only CPU version is implemented.
+
+- **C++ Bulk [gpu]** ([src/saxpy_bulk.cpp](src/saxpy_bulk.cpp))
+  A GPU implementation with [Bulk](https://github.com/jaredhoberock/bulk), yet another parallel algorithms on top of CUDA.
+
+- **PyOCL [cpu]** ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+  CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).
+
+- **PyOCL [gpu]** ([src/saxpy_pyocl.py](src/saxpy_pyocl.py))
+  CPU and GPU implementation with [PyOpenCL](https://mathema.tician.de/software/pyopencl/), the Python wrapper for [OpenCL](https://en.wikipedia.org/wiki/OpenCL).
+
+- **C++ OCL [cpu]** ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
+  Parallel programming with [OpenCL](https://en.wikipedia.org/wiki/OpenCL), a framework for writing programs that execute across heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.
+
+
+# Results
 
 ## Python: Loop vs Numpy (CPU)
 
@@ -48,7 +144,7 @@ Same as above, on both Linux and Windows
 
 ## R: Loop vs Vectorized (CPU)
 
-Implementation with various methods in R
+Benchmarking various vectorization methods in R (array, matrix, data.frame, data.table) vs plain loop
 
 - R (array) [cpu] ([src/saxpy_array.R](src/saxpy_array.R))
 - R (data.frame) [cpu] ([src/saxpy_dataframe.R](src/saxpy_dataframe.R))
@@ -60,6 +156,8 @@ Implementation with various methods in R
 
 ## Python: Loop vs Numpy vs Pandas (CPU)
 
+Benchmarking the performance of Numpy vs Panda (vs plain Python loop)
+
 - Py Numpy [cpu] ([src/saxpy_numpy.py](src/saxpy_numpy.py))
 - Py Pandas [cpu] ([src/saxpy_pandas.py](src/saxpy_pandas.py))
 - Python loop [cpu] ([src/saxpy_loop.py](src/saxpy_loop.py))
@@ -67,6 +165,8 @@ Implementation with various methods in R
 ![results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png](results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png?raw=true "results/charts-en/python-loop-vs-numpy-vs-pandas-cpu.png")
 
 ## Julia: Loop vs Vector (CPU)
+
+Comparing the performance of Julia loop vs Julia vector/array (vs C++)
 
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - Julia (loop) [cpu] ([src/saxpy_loop.jl](src/saxpy_loop.jl))
@@ -76,7 +176,7 @@ Implementation with various methods in R
 
 ## Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)
 
-Comparison among different programming languages
+Comparing the performance of SAXPY in different programming languages
 
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 - Java loop [cpu] ([src/SaxpyLoop.java](src/SaxpyLoop.java))
@@ -92,7 +192,7 @@ Comparison among different programming languages
 
 SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.
 
-Note: CNTK result is way off, not sure why. Please have a look at the source code.
+Note: CNTK result is way off, not sure why. Please have a look at the source code, maybe I did something wrong.
 
 - Py CNTK [cpu] ([src/saxpy_cntk.py](src/saxpy_cntk.py))
 - Py MXNet [cpu] ([src/saxpy_mxnet.py](src/saxpy_mxnet.py))
@@ -128,7 +228,7 @@ Comparing frameworks running on GPU with naive C++ loop running on CPU.
 
 ## C++ Parallel APIs (CPU)
 
-Comparing naive C++ loop with OpenCL and OpenMP on CPU.
+Comparing naive C++ loop with several parallel programming APIs (OpenCL and OpenMP) on CPU.
 
 - C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ OMP [cpu] ([src/saxpy_omp.cpp](src/saxpy_omp.cpp))
@@ -136,21 +236,22 @@ Comparing naive C++ loop with OpenCL and OpenMP on CPU.
 
 ![results/charts-en/parallel-c++-cpu.png](results/charts-en/parallel-c++-cpu.png?raw=true "results/charts-en/parallel-c++-cpu.png")
 
-## C++ CPU vs GPU
+## C++ GPU (vs CPU)
 
-Comparing naive C++ loop with CUDA, OpenCL, Thrust, and Cublas on GPU
+Comparing various C++ GPU libraries (CUDA, OpenCL, Thrust, Bulk, cuBLAS)
 
+- C++ Bulk [gpu] ([src/saxpy_bulk.cpp](src/saxpy_bulk.cpp))
 - C++ CUDA [gpu] ([src/saxpy_cuda.cpp](src/saxpy_cuda.cpp))
-- C++ Cublas [gpu] ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ Thrust [gpu] ([src/saxpy_trust.cpp](src/saxpy_trust.cpp))
+- C++ cuBLAS [gpu] ([src/saxpy_cublas.cpp](src/saxpy_cublas.cpp))
 - C++ loop [cpu] ([src/saxpy_cpu.cpp](src/saxpy_cpu.cpp))
 
 ![results/charts-en/c++-cpu-vs-gpu.png](results/charts-en/c++-cpu-vs-gpu.png?raw=true "results/charts-en/c++-cpu-vs-gpu.png")
 
 ## OpenCL vs PyOpenCL (CPU & GPU)
 
-Comparing C++ OpenCL with OpenCL Python wrapper.
+Comparing C++ OpenCL with PyOpenCL, the OpenCL Python wrapper.
 
 - C++ OCL [cpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))
 - C++ OCL [gpu] ([src/saxpy_ocl1.cpp](src/saxpy_ocl1.cpp))

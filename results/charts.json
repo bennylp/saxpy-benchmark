@@ -28,7 +28,7 @@
  {
     "title": "R: Loop vs Vectorized (CPU)",
     "title-id": "Loop vs Tervektorisasi di Bahasa R (CPU)",
-    "remarks": ["Implementation with various methods in R"],
+    "remarks": ["Benchmarking various vectorization methods in R (array, matrix, data.frame, data.table) vs plain loop"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -44,6 +44,7 @@
  },
  {
     "title": "Python: Loop vs Numpy vs Pandas (CPU)",
+    "remarks": ["Benchmarking the performance of Numpy vs Panda (vs plain Python loop)"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -59,6 +60,7 @@
  {
  	"title": "Julia: Loop vs Vector (CPU)",
     "title-id": "Julia Loop vs Vektor (CPU)",
+    "remarks": ["Comparing the performance of Julia loop vs Julia vector/array (vs C++)"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -73,7 +75,7 @@
  },
   {
     "title": "Numpy vs Octave vs R vs Java vs Julia vs C++ (CPU)",
-    "remarks": ["Comparison among different programming languages"],
+    "remarks": ["Comparing the performance of SAXPY in different programming languages"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -89,7 +91,7 @@
     "title": "Python Vectorization: Numpy vs Deep Learning Frameworks (CPU)",
     "title-id": "Vektorisasi Python Numpy vs Framework (CPU)",
     "remarks": ["SAXPY array operation in Numpy vs machine learning frameworks such as Tensorflow, MXNet, and CNTK. Only tested on Linux.",
-    		    "Note: CNTK result is way off, not sure why. Please have a look at the source code."],
+    		    "Note: CNTK result is way off, not sure why. Please have a look at the source code, maybe I did something wrong."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -124,7 +126,7 @@
  {
     "title": "C++ Parallel APIs (CPU)",
     "title-id": "API Paralel C++ (CPU)",
-    "remarks": ["Comparing naive C++ loop with OpenCL and OpenMP on CPU."],
+    "remarks": ["Comparing naive C++ loop with several parallel programming APIs (OpenCL and OpenMP) on CPU."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -137,8 +139,8 @@
     "output": "parallel-c++-cpu.png"
  },
  {
-    "title": "C++ CPU vs GPU",
-    "remarks": ["Comparing naive C++ loop with CUDA, OpenCL, Thrust, and Cublas on GPU"],
+    "title": "C++ GPU (vs CPU)",
+    "remarks": ["Comparing various C++ GPU libraries (CUDA, OpenCL, Thrust, Bulk, cuBLAS)"],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
@@ -147,12 +149,12 @@
            "title": "Windows"
          }         
         ],
-    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]", "C++ Thrust [gpu]", "C++ Cublas [gpu]"],
+    "columns": ["C++ loop [cpu]", "C++ CUDA [gpu]", "C++ OCL [gpu]", "C++ Thrust [gpu]", "C++ cuBLAS [gpu]", "C++ Bulk [gpu]"],
     "output": "c++-cpu-vs-gpu.png"
  },
  {
     "title": "OpenCL vs PyOpenCL (CPU & GPU)",
-    "remarks": ["Comparing C++ OpenCL with OpenCL Python wrapper."],
+    "remarks": ["Comparing C++ OpenCL with PyOpenCL, the OpenCL Python wrapper."],
     "series": 
         [{ "data": "benny-linux.csv",
            "title": "Linux"
